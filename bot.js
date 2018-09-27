@@ -45,7 +45,7 @@ client.on("ready", () => {
 
 client.on('message', message => {
     let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + 'role')) {
+    if(message.content.startsWith(prefix + '1')) {
         let member = message.mentions.users.first();
         let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
         console.log(role);
