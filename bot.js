@@ -13,12 +13,32 @@ client.on('message', msg => {
 
 
 
-client.on('voiceStateUpdate', (old, now) => {
-  const channel = client.channels.get('489800301021233163');
-  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
-  const size = channel.name.match(/\[\s(\d+)\s\]/);
-  if (!size) return channel.setName(`4 EVER Online: ${currentSize}`);
-  if (currentSize !== size) channel.setName(`4 EVER Online: ${currentSize}`);
+var ss = 0;
+
+client.on('voiceStateUpdate', (o,n) => {
+    if (o.voiceChannel && !n.voiceChannel) {
+        ss-=1
+        n.guild.channels.get("489800301021233163").edit({
+            name : "4 EVER Online : [" + ss+ "]"
+        })
+    };
+    if (n.voiceChannel && !o.voiceChannel) {
+        ss+=1
+        n.guild.channels.get("489800301021233163").edit({
+            name : "4EVER Online : [" + ss+ "]"
+        })
+    }
+})
+client.on("ready", () => {
+    client.guilds.get("أيدي السيرفر").members.forEach(m => {
+        if (m.voiceChannel) {
+            ss+=1
+        };
+        client.channels.get("ايدي الروم").edit({
+            name : "Voice Online : [" + ss+ "]"
+        })
+    });
+    client.user.setGame(" Community©", "https://twitch.tv/©");
 });
 
 
