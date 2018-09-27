@@ -30,11 +30,11 @@ client.on('voiceStateUpdate', (o,n) => {
     }
 })
 client.on("ready", () => {
-    client.guilds.get("أيدي السيرفر").members.forEach(m => {
+    client.guilds.get("483960386693890058").members.forEach(m => {
         if (m.voiceChannel) {
             ss+=1
         };
-        client.channels.get("ايدي الروم").edit({
+        client.channels.get("489800301021233163").edit({
             name : "Voice Online : [" + ss+ "]"
         })
     });
