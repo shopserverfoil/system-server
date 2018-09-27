@@ -13,8 +13,6 @@ client.on('message', msg => {
 
 
 
-
-
 var ss = 0;
 
 client.on('voiceStateUpdate', (o,n) => {
