@@ -12,33 +12,15 @@ client.on('message', msg => {
 });
 
 
-var ss = 0;
 
-client.on('voiceStateUpdate', (o,n) => {
-    if (o.voiceChannel && !n.voiceChannel) {
-        ss-=1
-        n.guild.channels.get("489800301021233163").edit({
-            name : "Voice Online : [" + ss+ "]"
-        })
-    };
-    if (n.voiceChannel && !o.voiceChannel) {
-        ss+=1
-        n.guild.channels.get("489800301021233163").edit({
-            name : "4 EVER Online : [" + ss+ "]"
-        })
-    }
-})
-client.on("ready", () => {
-    client.guilds.get("483960386693890058").members.forEach(m => {
-        if (m.voiceChannel) {
-            ss+=1
-        };
-        client.channels.get("489800301021233163").edit({
-            name : "4 EVER Online : [" + ss+ "]"
-        })
-    });
-    client.user.setGame(" Community©", "https://twitch.tv/©");
+client.on('voiceStateUpdate', (old, now) => {
+  const channel = client.channels.get('489800301021233163');
+  const currentSize = channel.guild.members.filter(m => m.voiceChannel).size;
+  const size = channel.name.match(/\[\s(\d+)\s\]/);
+  if (!size) return channel.setName(`Voice Online: ${currentSize}`);
+  if (currentSize !== size) channel.setName(`Voice Online: ${currentSize}`);
 });
+
 
 
 
