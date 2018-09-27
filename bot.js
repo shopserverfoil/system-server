@@ -130,16 +130,9 @@ if(command === `كلم`) {
 
 
 
-const client = new Discord.Client();
 
 const prefix = "#";
-client.on('ready', () => {
-  console.log('╔[════════════════════════════════════]╗');
-  console.log('            ╔[════════════]╗')
-  console.log('           ELBobBot Is Online')
-  console.log('            ╚[════════════]╝')
-  console.log('╚[════════════════════════════════════]╝');
-});
+
 
 
 
