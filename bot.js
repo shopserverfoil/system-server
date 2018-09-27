@@ -45,7 +45,7 @@ client.on("ready", () => {
 
 
 client.on('message', async message =>{
-  var prefix = "+";  //alpha codes
+  var prefix = "";  //alpha codes
 if (message.author.omar) return; //alpha codes
 if (!message.content.startsWith(prefix)) return; //alpha codes
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
