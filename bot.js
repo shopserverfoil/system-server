@@ -18,7 +18,7 @@ client.on('voiceStateUpdate', (o,n) => {
     if (o.voiceChannel && !n.voiceChannel) {
         ss-=1
         n.guild.channels.get("489800301021233163").edit({
-            name : "Voice Online : [" + ss+ "]"
+            name : "4 EVER Online : [" + ss+ "]"
         })
     };
     if (n.voiceChannel && !o.voiceChannel) {
