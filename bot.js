@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const prefix = "#";
+const prefix = "!";
 client.on('ready', () => {
   console.log('╔[════════════════════════════════════]╗');
   console.log('            ╔[════════════]╗')
@@ -33,7 +33,7 @@ client.on('message', message => {
 ╰━━━┻━━━┻━━━┻━━┻━━┻━━━┻━━┻━╯
 
 ╔[❖════════════❖]╗
-             Prefix = ' ! '
+             Prefix = ' # '
 ╚[❖════════════❖]╝
 
 ╔[❖════════════❖]╗
@@ -2859,4 +2859,4 @@ client.on('message' , message => {
  });
 
 
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN);
