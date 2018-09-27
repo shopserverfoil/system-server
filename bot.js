@@ -43,120 +43,62 @@ client.on("ready", () => {
  
 
 
-client.on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + '1')) {
-        let member = message.mentions.users.first();
-        let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
-        console.log(role);
-        if(member) {
-              if(role.startsWith('-')) {
-                let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-                console.log(roleRe);
-                let role1 = message.guild.roles.find('name', roleRe);
-                console.log(`hi`);
-const ee =new Discord.RichEmbed()
- .setDescription('**:x: I can’t find the role.**')
- .setFooter('Requested By '+message.author.username,message.author.avatarURL)
-        if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1.id);
-                
-                     const e = new Discord.RichEmbed()
-                     
-                 .setDescription(':white_check_mark:** Changed Roles For **'+member+'**,** '+'**'+'-'+role1.name+'**')
-                .setFooter('Requested By '+message.author.username,message.author.avatarURL)
-                .setColor('BLACK')
-                 message.channel.send(e)
-            } else if(!role.startsWith('-')) {
-                let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-                let role1 = message.guild.roles.find('name', roleRe);
-const ee =new Discord.RichEmbed()
- .setDescription('**:x: I can’t find the role.**')
- .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-        if(!role1) return message.channel.send(ee);                message.guild.member(member).addRole(role1);
-                const e = new Discord.RichEmbed()
-                
-                .setDescription(':white_check_mark:** Changed Roles For **'+member+'**,** '+'**'+'+'+role1.name+'**')
-                .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-                .setColor('BLACK')
-                 message.channel.send(e)
-            } else {
-                message.reply(`يجب عليك كتابة اسم الرتبة`);
-            } 
-        }
- else if(args[0] == 'all') {
-  if(role.startsWith('-')) { 
-       let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-         let role1 = message.guild.roles.find('name', roleRe);
-                   message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
-           message.guild.members.forEach(m => {
-            message.guild.member(m).removeRole(role1.id);
-        });
-         msg.edit(`** <a:like:472979723358699520>  Done...\n**` +role1.name+`** Has Taken From __${message.guild.members.size}__ Member**`);
-    });
-  }
-    if(role) {
-    let role1 = message.guild.roles.find('name', role);
-    if(!role1) return;
-    message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-        message.guild.members.forEach(m => {
-            message.guild.member(m).addRole(role1);
-        });
-        msg.edit(`** <a:like:472979723358699520>  Done...\n**` +  role1.name+`** Has Given To __${message.guild.members.size}__ Members **`);
-    });
+client.on('message', ALPHACODES => { 
+  var sender = ALPHACODES.author
+  if(!ALPHACODES.guild) return
+  if(!sw[ALPHACODES.guild.id]) sw[ALPHACODES.guild.id] = {
+  onoff: 'Off',
+  ch:    'Welcome',
+  msk:   'Welcome'
 }
-} else if(args[0] == 'humans') {
-     if(role.startsWith('-')) { 
-       let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-         let role1 = message.guild.roles.find('name', roleRe);
-                   message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
-           message.guild.members.forEach(m => {
-            message.guild.member(m).removeRole(role1.id);
-        });
-         msg.edit(`** <a:like:472979723358699520>  Done...\n**` +role1.name+`** Has Taken From __${message.guild.members.size}__ Member**`);
-    });
-  }
-
-    if(role) {
-        let role1 = message.guild.roles.find('name', role);
-
- const ee =new Discord.RichEmbed()
- .setDescription('I Cann’t Find This Role')
- .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-        if(!role1) return message.channel.send(ee);
-        message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-            message.guild.members.filter(m =>m.user.bot == false).forEach(m => {
-                message.guild.member(m).addRole(role1);
-            });
-        msg.edit(`** <a:like:472979723358699520>  Done...**`);
-        });
-    }
-} else if(args[0] == 'bots') {
-     if(role.startsWith('-')) { 
-       let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-         let role1 = message.guild.roles.find('name', roleRe);
-                   message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
-           message.guild.members.forEach(m => {
-            message.guild.member(m).removeRole(role1.id);
-        });
-         msg.edit(`** <a:like:472979723358699520>  Done...**`);
-    });
-  }
-    if(role) {
-        let role1 = message.guild.roles.find('name', role);
-       const ee =new Discord.RichEmbed()
- .setDescription('I Cann’t Find This Role')
- .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-        if(!role1) return message.channel.send(ee);
-        message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-            message.guild.members.filter(m =>m.user.bot == true).forEach(m => {
-                message.guild.member(m).addRole(role1);
-            });
-        msg.edit(`** <a:like:472979723358699520>  Done...\n**` +role1.name+`** Has Given To __${message.guild.members.size}__ Member**`);
+        if(ALPHACODES.content.startsWith(prefix + `set-wlc`)) {        
+        let perms = ALPHACODES.member.hasPermission(`MANAGE_CHANNELS`)
+        if(!perms) return ALPHACODES.channel.send('**You need `Manage Channels` permission**')
+        let args = ALPHACODES.content.split(" ").slice(1)
+        if(!args.join(" ")) return ALPHACODES.reply(`
+  ** ${prefix}set-wlc toggle **
+  ** ${prefix}set-wlc set [Channel Name] **
+  ** ${prefix}set-wlc msg [Welcome ALPHACODES] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
+        let state = args[0]
+        if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'set' || !state.trim().toLowerCase() == 'msg' ) return ALPHACODES.reply(`
+ ** ${prefix}set-wlc toggle **
+ ** ${prefix}set-wlc set [Channel Name] **
+ ** ${prefix}set-wlc msg [Welcome ALPHACODES] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
+        if(state.trim().toLowerCase() == 'toggle') { 
+        if(sw[ALPHACODES.guild.id].onoff === 'Off') return [ALPHACODES.channel.send(`**Welcome ALPHACODES Is **on** !**`), sw[ALPHACODES.guild.id].onoff = 'On']
+        if(sw[ALPHACODES.guild.id].onoff === 'On')  return [ALPHACODES.channel.send(`**Welcome ALPHACODES Is **off** !**`), sw[ALPHACODES.guild.id].onoff = 'Off']
+}
+        if(state.trim().toLowerCase() == 'set') {
+        let newch = ALPHACODES.content.split(" ").slice(2).join(" ")
+        if(!newch) return ALPHACODES.reply(`${prefix}set-wlc set [Channel name]`)
+        if(!ALPHACODES.guild.channels.find(`name`,newch)) return ALPHACODES.reply(`**I Cant Find This Channel.**`)
+            sw[ALPHACODES.guild.id].ch = newch
+            ALPHACODES.channel.send(`**Welcome channel Has Been Changed to ${newch}.**`)
+} 
+        if(state.trim().toLowerCase() == 'msg') {
+        let newmsg = ALPHACODES.content.split(" ").slice(2).join(" ")
+        if(!newmsg) return ALPHACODES.reply(`${prefix}set-wlc msg [New ALPHACODES]`)
+            sw[ALPHACODES.guild.id].msk = newmsg
+            ALPHACODES.channel.send(`**Welcome ALPHACODES Has Been Changed to ${newmsg}.**`)
+} 
+}
+        if(ALPHACODES.content === prefix + 'set-wlc info') {
+        let perms = ALPHACODES.member.hasPermission(`MANAGE_GUILD`) 
+        if(!perms) return ALPHACODES.reply(`You don't have permissions.`)
+        var embed = new Discord.RichEmbed()
+        .addField(`Welcome ALPHACODES  `, `
+On/Off  : __${sw[ALPHACODES.guild.id].onoff}__
+Channel : __${sw[ALPHACODES.guild.id].ch}__
+ALPHACODES : __${sw[ALPHACODES.guild.id].msk}__`)
+        .setColor(`BLUE`)
+        ALPHACODES.channel.send({embed})
+}
+        fs.writeFile("./setwlc.json", JSON.stringify(sw), (err) => {
+        if (err) console.error(err)
 });
-}
-}
-}
-});
+})
+//by ALPHA CODES 
+
 
 
 
