@@ -67,7 +67,7 @@ const prefix = "";
   if (!message.guild.member(user)
   .bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
  
-  message.guild.member(user).kick(7, user);
+  message.guild.member(user).kick();
  
   const kickembed = new Discord.RichEmbed()
   .setAuthor(`KICKED!`, user.displayAvatarURL)
