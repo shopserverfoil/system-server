@@ -69,17 +69,18 @@ const prefix = "";
  
   message.guild.member(user).kick(7, user);
  
-  const banembed = new Discord.RichEmbed()
-  .setAuthor('Kicked !', user.displayAvatarURL)
+  const kickembed = new Discord.RichEmbed()
+  .setAuthor(`KICKED!`, user.displayAvatarURL)
   .setColor("RANDOM")
   .setTimestamp()
-  .addField("User:",  `[ + ${user.tag} + ]`)
-  .addField("By:", `[  + ${message.author.tag} +  ]`)
-  .addField("Reason:", `[ + ${reason} +  ]`)
-  client.channels.get("483960386693890058").send({embed : banembed})
+  .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
+  .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
+  .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
+  message.channel.send({
+    embed : kickembed
+  })
 }
 });
-
 
 
 
