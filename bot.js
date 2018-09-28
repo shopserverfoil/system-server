@@ -40,7 +40,20 @@ client.on("ready", () => {
     client.user.setGame(" Community©", "https://twitch.tv/©");
 });
 
- 
+
+
+
+
+client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" هلا !!");
+    }
+});
+
+
+
 
 
 client.login(process.env.BOT_TOKEN);
