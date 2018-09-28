@@ -54,7 +54,7 @@ const prefix = "";
  
   let args = message.content.split(" ").slice(1);
  
-  if (command == "كيك") {
+  if (command == "kick") {
                if(!message.channel.guild) return;
          
   if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
