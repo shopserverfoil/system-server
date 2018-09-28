@@ -44,64 +44,116 @@ client.on("ready", () => {
 
 
 
-client.on('message', MEGA => { 
-  var sender = MEGA.author
-  if(!MEGA.guild) return
-  if(!sw[MEGA.guild.id]) sw[MEGA.guild.id] = {
-  onoff: 'Off',
-  ch:    'Welcome',
-  msk:   'Welcome'
-}
-        if(MEGA.content.startsWith(prefix + `set-wlc`)) {        
-        let perms = MEGA.member.hasPermission(`MANAGE_CHANNELS`)
-        if(!perms) return MEGA.channel.send('**You need `Manage Channels` permission**')
-        let args = MEGA.content.split(" ").slice(1)
-        if(!args.join(" ")) return MEGA.reply(`
-  ** ${prefix}set-wlc toggle **
-  ** ${prefix}set-wlc set [Channel Name] **
-  ** ${prefix}set-wlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
-        let state = args[0]
-        if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'set' || !state.trim().toLowerCase() == 'msg' ) return MEGA.reply(`
- ** ${prefix}set-wlc toggle **
- ** ${prefix}set-wlc set [Channel Name] **
- ** ${prefix}set-wlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
-        if(state.trim().toLowerCase() == 'toggle') { 
-        if(sw[MEGA.guild.id].onoff === 'Off') return [MEGA.channel.send(`**Welcome MEGA Is **on** !**`), sw[MEGA.guild.id].onoff = 'On']
-        if(sw[MEGA.guild.id].onoff === 'On')  return [MEGA.channel.send(`**Welcome MEGA Is **off** !**`), sw[MEGA.guild.id].onoff = 'Off']
-}
-        if(state.trim().toLowerCase() == 'set') {
-        let newch = MEGA.content.split(" ").slice(2).join(" ")
-        if(!newch) return MEGA.reply(`${prefix}set-wlc set [Channel name]`)
-        if(!MEGA.guild.channels.find(`name`,newch)) return MEGA.reply(`**I Cant Find This Channel.**`)
-            sw[MEGA.guild.id].ch = newch
-            MEGA.channel.send(`**Welcome channel Has Been Changed to ${newch}.**`)
-} 
-        if(state.trim().toLowerCase() == 'msg') {
-        let newmsg = MEGA.content.split(" ").slice(2).join(" ")
-        if(!newmsg) return MEGA.reply(`${prefix}set-wlc msg [New MEGA]`)
-            sw[MEGA.guild.id].msk = newmsg
-            MEGA.channel.send(`**Welcome MEGA Has Been Changed to ${newmsg}.**`)
-} 
-}
-        if(MEGA.content === prefix + 'set-wlc info') {
-        let perms = MEGA.member.hasPermission(`MANAGE_GUILD`) 
-        if(!perms) return MEGA.reply(`You don't have permissions.`)
-        var embed = new Discord.RichEmbed()
-        .addField(`Welcome MEGA  `, `
-On/Off  : __${sw[MEGA.guild.id].onoff}__
-Channel : __${sw[MEGA.guild.id].ch}__
-MEGA : __${sw[MEGA.guild.id].msk}__`)
-        .setColor(`BLUE`)
-            MEGA.channel.send({embed})
-}
-        fs.writeFile("./setwlc.json", JSON.stringify(sw), (err) => {
-        if (err) console.error(err)
-});
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const fs = require('fs');
+const moment = require('moment');
+const jimp = require('jimp');
+const Canvas = require('canvas');
+ 
+client.on('guildMemberAdd', member => {
+     const welcomer =  member.guild.channels.find('name', 'chat');
+const w = ['./w1.png'];
+ 
+         let Image = Canvas.Image,
+            canvas = new Canvas(400, 200),
+            ctx = canvas.getContext('2d');
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 400, 200);
+             
+         
+ 
+                let url = member.user.displayAvatarURL.endsWith("https://media.discordapp.net/attachments/480494772772012032/495314501042700299/1538162429226.png?width=400&height=165") ? member.user.displayAvatarURL.slice(100) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                        if (err) return console.log(err);
+                       
+                        ctx.font = "bold 12px Arial";
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#f1f1f1";
+                        ctx.textAlign = "center";
+                        ctx.fillText(`welcome to Brix`, 300, 130);
+                       
+                        ctx.font = "bold 12px Arial";
+                        ctx.fontSize = '20px';
+                        ctx.fillStyle = "#f1f1f1";
+                        ctx.textAlign = "center";
+                        ctx.fillText(member.user.username, 200, 150);
+ 
+                let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.beginPath();
+                              ctx.arc(77, 101, 62, 0, Math.PI*2);
+                              ctx.stroke();
+                                 ctx.clip();
+                                 ctx.drawImage(ava, 13, 38, 128, 126);  
+                         
+               
+                             
+welcomer.sendFile(canvas.toBuffer())
+ 
+ 
+ 
+     
+     
+                    }  )  
+     
+                   
+ 
 })
-//by MEGA
-
-
-
+      });                    
+});
+var dat = JSON.parse("{}");
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) });
+}
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("483960386693890058");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        });
+    });
+});
+ 
+ 
+ 
+client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.get("483961152234061824");
+    if (!channel) {
+        console.log("!the channel id it's not correct");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('-');
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("483960386693890058");
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+                    setTimeout(function() {
+ channel.send(`**invited by** ${Invite.inviter} `) ;
+                    },1500);
+ }
+            dat[Inv] = Invite.uses;
+       
+       });
+    });
+});
 
 
 client.login(process.env.BOT_TOKEN);
