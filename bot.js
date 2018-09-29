@@ -165,112 +165,43 @@ client.on('message', msg => {
 
 
 
+client.on("message", async message => {
+      if(message.author.bot) return;
+      if(message.channel.type === "dm") return;
 
-client.on('message', message => {
-    var prefix = "";
-   if(!message.channel.guild) return;
-if(message.content.startsWith(prefix + 'مسح')) {
-if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
-let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-let request = `Requested By ${message.author.username}`;
-message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
-msg.react('✅')
-.then(() => msg.react('❌'))
-.then(() =>msg.react('✅'))
+      let prefix = "باند";
+      let messageArray = message.content.split (" ");
+      let cmd = messageArray[0];
+      let args = messageArray.slice(1);
 
-let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
 
-let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-reaction1.on("collect", r => {
-message.channel.send(`Chat will delete`).then(m => m.delete(5000));
-var msg;
-        msg = parseInt();
 
-      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-      message.channel.sendMessage("", {embed: {
-        title: "`` Chat Deleted ``",
-        color: 0x06DF00,
-        footer: {
+        if(cmd === `${prefix}ban`){
 
+
+
+          let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+          if(!kUser) return message.channel.send("فين العضو ؟");
+          let kReason = args.join(" ").slice(22);
+          if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما عندك برمشن");
+          if(kUser.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما تقدر تسوي بان للأدمين")
+
+          let banEmbed = new Discord.RichEmbed()
+          .setDescription("~Ban~")
+          .setColor("#8e0505")
+          .addField("Banned User", `${bUser} with ID ${bUser.id}`)
+          .addField("Banned By", `<@${message.author.id}> with the id ${message.author.id}`)
+          .addField("Banned In", message.channel)
+          .addField("Time", message.createdAt)
+          .addField("Reason", kReason);
+
+          let banChannel = message.guild.channels.find('name', 'kick-ban');
+          if(!banChannel) return message.channel.send("لم اجد روم kick-ban");
+
+          message.guild.member(bUser).kick(bReason)
+          banChannel.send(banEmbed);
         }
-      }}).then(msg => {msg.delete(3000)});
-
-})
-reaction2.on("collect", r => {
-message.channel.send(`**Chat deletion cancelled**`).then(m => m.delete(5000));
-msg.delete();
-})
-})
-}
-});
-
-
-
-
-
-
-const d = require("discord.js");
-const fs = require("fs");
-var json = JSON.parse(fs.readFileSync("json.json", "utf8"));
-
-client.on("message", (message) => {
-    var command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
-    if (!message.content.startsWith(prefix)) return;
-    switch(command) {
-        case "mute" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : false,
-                CONNECT : false
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : true};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
         });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Muted in the server!🤐**`);
-        break;
-        case "unmute" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : null,
-                CONNECT : null
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : false};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Unmuted!😀**`);
-    }
-})
-
-.on("guildMemberAdd", (member) => {
-    if(json[member.guild.id + member.user.id]) {
-        if (json[member.guild.id + member.user.id].muted == true) {
-            member.guild.channels.forEach(c => {
-                c.overwritePermissions(member.user.id, {
-                    SEND_MESSAGES : false,
-                  CONNECT : false
-                })
-            })
-        }
-    }
-})
-
-
-
-
 
 
 
