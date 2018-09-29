@@ -75,7 +75,7 @@ client.on('message', message => {
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'مسح')) {
 if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
-if(!message.member.hasPermission('`MANAGE_MESSAGES`')) return message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
 let request = `Requested By ${message.author.username}`;
 message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
@@ -110,7 +110,6 @@ msg.delete();
 })
 }
 });
-
 
 
 
