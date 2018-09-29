@@ -71,32 +71,48 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if(message.content.startsWith(prefix + "مسح")) {
-         var args = message.content.split(" ").slice(1);
- if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You need MANAGE_MESSAGES permission noob');
-  if (!args[0]) return message.channel.send('You didn\'t provide any number!!!');
+    var prefix = "";
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'مسح')) {
+if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+let request = `Requested By ${message.author.username}`;
+message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
+msg.react('✅')
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
 
-  message.channel.bulkDelete(args[0]).then(() => {
-    const embed = new Discord.RichEmbed()
-      .setColor(0xF16104)
-      .setDescription(`Cleared ${args[0]} messages.`);
-    message.channel.send({ embed });
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
 
-    const actionlog = message.guild.channels.find('name', 'log');
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+message.channel.send(`Chat will delete`).then(m => m.delete(5000));
+var msg;
+        msg = parseInt();
 
-    if (!actionlog) return message.channel.send('Can\'t find action-log channel. Are you sure that this channel exists and I have permission to view it? **CANNOT POST LOG.**');
-    const embedlog = new Discord.RichEmbed()
-      .setDescription('~Purge~')
-      .setColor(0xF16104)
-      .addField('Purged By', `<@${message.author.id}> with ID ${message.author.id}`)
-      .addField('Purged in', message.channel)
-      .addField('Time', message.createdAt);
-    actionlog.send(embedlog);
-   
-  });
-};
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "`` Chat Deleted ``",
+        color: 0x06DF00,
+        footer: {
 
+        }
+      }}).then(msg => {msg.delete(3000)});
+
+})
+reaction2.on("collect", r => {
+message.channel.send(`**Chat deletion cancelled**`).then(m => m.delete(5000));
+msg.delete();
+})
+})
+}
 });
+
+
+
 
 
 
@@ -145,6 +161,56 @@ client.on('message', message => {
       message.channel.send(kayan);
     
     });
+
+
+
+
+
+client.on('message', message => {
+        var prefix = ''; // هنا تقدر تغير البرفكس
+	var command = message.content.split(" ")[0];
+	if(command == prefix + 'رسالة') { // الكوماند') !bc
+		var args = message.content.split(' ').slice(1).join(' ');
+		if(message.author.bot) return;
+		if(!args) return message.channel.send(`**➥ Useage:** ${prefix}bc كلامك`);
+		
+		let bcSure = new Discord.RichEmbed()
+		.setTitle(`:mailbox_with_mail: **هل انت متأكد انك تريد ارسال رسالتك الى** ${message.guild.memberCount} **عضو**`)
+		.setThumbnail(client.user.avatarURL)
+		.setColor('RANDOM')
+		.setDescription(`**\n:envelope: ➥ رسالتك**\n\n${args}`)
+		.setTimestamp()
+		.setFooter(message.author.tag, message.author.avatarURL)
+		
+		message.channel.send(bcSure).then(msg => {
+			msg.react('✅').then(() => msg.react('❎'));
+			message.delete();
+			
+			
+			let yesEmoji = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
+			let noEmoji = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
+			
+			let sendBC = msg.createReactionCollector(yesEmoji);
+			let dontSendBC = msg.createReactionCollector(noEmoji);
+			
+			sendBC.on('collect', r => {
+				message.guild.members.forEach(member => {
+					member.send(args.replace(`[user]`, member)).catch();
+					if(message.attachments.first()){
+						member.sendFile(message.attachments.first().url).catch();
+					}
+				})
+				message.channel.send(`:timer: **يتم الان الارسال الى** \`\`${message.guild.memberCount}\`\` **عضو**`).then(msg => msg.delete(5000));
+				msg.delete();
+			})
+			dontSendBC.on('collect', r => {
+				msg.delete();
+				message.reply(':white_check_mark: **تم الغاء ارسال رسالتك بنجاح**').then(msg => msg.delete(5000));
+			});
+		})
+	}
+});
+
 
 
 
