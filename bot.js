@@ -75,7 +75,7 @@ client.on('message', message => {
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'مسح')) {
 if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
-if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
+if(!message.member.hasPermission('ليس لديك صلاحية')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
 let request = `Requested By ${message.author.username}`;
 message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
@@ -216,28 +216,6 @@ client.on('message', message => {
 
 
 
-client.on('message', message => {
-        var prefix = "";
-        if(message.content.startsWith(prefix + 'اسحب')) {
-      if (message.mentions.users.size === 0 && message.mentions.roles.size === 0) {
-        return message.reply('**يجب عليك المنشن اولاّ**❌').catch(console.error);
-      }
-      if (!message.guild.member(client.user).hasPermission('DEAFEN_MEMBERS')) {
-        return message.reply('للأسف البوت لا يمتلك صلاحيات لتنفيذ هذه الأمر**❌').catch(console.error);
-      }
-     
-      const deafenMember = (member) => {
-        if (!member || !member.voiceChannel) return;
-        if (member.serverDeaf) return message.channel.send(`${member}('DEAFEN_MEMBERS') **تم السحب ✅**:x:`);
-        member.setDeaf(true).catch(console.error);
-        if(!message.member.hasPermission("DEAFEN_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ديفن **❌ ").then(m => m.delete(5000));
-      };
-     
-      message.mentions.users.forEach(user => deafenMember(message.guild.member(user)));
-      message.mentions.roles.forEach(role => role.members.forEach(member => deafenMember(member)));
-        }
-        
-    });
 
 
 
