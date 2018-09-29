@@ -221,7 +221,7 @@ client.on('guildMemberAdd', Sal => { //By Salto7#4595
     .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
     .setColor('RANDOM')
     .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+    var channel =Sal.guild.channels.find('name', 'chat') // هنا حط اسم الروم الي تبيه يكتب فيه
     if (!channel) return;
     channel.send({embed : embed});
     });
