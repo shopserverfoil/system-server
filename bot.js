@@ -228,7 +228,7 @@ client.on('message', message => {
      
       const deafenMember = (member) => {
         if (!member || !member.voiceChannel) return;
-        if (member.serverDeaf) return message.channel.send(`${member} **لديه ديفن بالفعل**:x:`);
+        if (member.serverDeaf) return message.channel.send(`${member} **DEAFEN_MEMBERS**:x:`);
         member.setDeaf(true).catch(console.error);
         if(!message.member.hasPermission("DEAFEN_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ديفن **❌ ").then(m => m.delete(5000));
       };
