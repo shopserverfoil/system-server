@@ -208,7 +208,7 @@ msg.delete();
 
 
 
-cclient.on('guildMemberAdd', Sal => { //By Salto7#4595
+client.on('guildMemberAdd', Sal => { //By Salto7#4595
     var embed = new Discord.RichEmbed()
     .setAuthor(Sal.user.username, Sal.user.avatarURL)
     .setThumbnail(Sal.user.avatarURL)
