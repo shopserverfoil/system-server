@@ -188,6 +188,29 @@ client.on('message', message => {
 
 
 
+client.on('message', message => {
+        var prefix = "";
+        if(message.content.startsWith(prefix + 'اسحب')) {
+      if (message.mentions.users.size === 0 && message.mentions.roles.size === 0) {
+        return message.reply('**يجب عليك المنشن اولاّ**❌').catch(console.error);
+      }
+      if (!message.guild.member(client.user).hasPermission('DEAFEN_MEMBERS')) {
+        return message.reply('للأسف البوت لا يمتلك صلاحيات لتنفيذ هذه الأمر**❌').catch(console.error);
+      }
+     
+      const deafenMember = (member) => {
+        if (!member || !member.voiceChannel) return;
+        if (member.serverDeaf) return message.channel.send(`${member} **لديه ديفن بالفعل**:x:`);
+        member.setDeaf(true).catch(console.error);
+        if(!message.member.hasPermission("DEAFEN_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ديفن **❌ ").then(m => m.delete(5000));
+      };
+     
+      message.mentions.users.forEach(user => deafenMember(message.guild.member(user)));
+      message.mentions.roles.forEach(role => role.members.forEach(member => deafenMember(member)));
+        }
+        
+    });
+
 
 
 
