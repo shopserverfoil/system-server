@@ -70,13 +70,13 @@ client.on('message', message => {
 
 
 client.on('message', function(msg) {
-  if(msg.content.startsWith ('السيرفر')) {
+  if(msg.content.startsWith ('معلومات السيرفر')) {
     if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(msg.guild.iconURL)
     .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ ${msg.guild.name} ]**`,true)
-    .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${msg.guild.region} ]**`,true)
+    .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${"Egypt"} ]**`,true)
     .addField(':military_medal:** الرتب :**',`**[ ${msg.guild.roles.size} ]**`,true)
     .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ ${msg.guild.memberCount} ]**`,true)
     .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ ${msg.guild.members.filter(m=>m.presence.status == 'online').size} ]**`,true)
