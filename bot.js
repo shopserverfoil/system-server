@@ -48,9 +48,11 @@ client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
     {
-    message.reply("** :poop:  ????? ????? ??? ?? ??**");
+    message.reply("** :poop: كل زق**");
     }
 });
+
+
 
 
 client.on('message', message => {
@@ -66,96 +68,99 @@ client.on('message', message => {
 
 
 
+
+
 client.on('message', msg => {
-  if (msg.content === '????????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'السعودية') {      
+    msg.react("🇸🇦")
+    msg.channel.send("🇸🇦")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '???') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'مصر') {      
+    msg.react("🇪🇬")
+    msg.channel.send("🇪🇬")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '??????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'المغرب') {      
+    msg.react("🇲🇦")
+    msg.channel.send("🇲🇦")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '??????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'العراق') {      
+    msg.react("🇮🇶")
+    msg.channel.send("🇮🇶")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '???????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'الجزائر') {      
+    msg.react("🇩🇿")
+    msg.channel.send("🇩🇿")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '????????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'الامارات') {      
+    msg.react("🇦🇪")
+    msg.channel.send("🇦🇪")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'تونس') {      
+    msg.react("🇹🇳")
+    msg.channel.send("🇹🇳")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '?????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'سوريا') {      
+    msg.react("🇸🇾")
+    msg.channel.send("🇸🇾")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '?????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'ليبيا') {      
+    msg.react("🇱🇾")
+    msg.channel.send("🇱🇾")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '???') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'قطر') {      
+    msg.react("🇶🇦")
+    msg.channel.send("🇶🇦")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '???????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'الصومال') {      
+    msg.react("🇸🇴")
+    msg.channel.send("🇸🇴")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'عمان') {      
+    msg.react("🇴🇲")
+    msg.channel.send("🇴🇲")
   }
 });
 
 client.on('message', msg => {
-  if (msg.content === '?????????') {      
-    msg.react("????")
-    msg.channel.send("????")
+  if (msg.content === 'موريتانيا') {      
+    msg.react("🇲🇷")
+    msg.channel.send("🇲🇷")
   }
 });
+
 
 
 
@@ -164,18 +169,18 @@ client.on('message', msg => {
 client.on('message', message => {
     var prefix = "";
    if(!message.channel.guild) return;
-if(message.content.startsWith(prefix + '???')) {
+if(message.content.startsWith(prefix + 'مسح')) {
 if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
 let request = `Requested By ${message.author.username}`;
 message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
-msg.react('?')
-.then(() => msg.react('?'))
-.then(() =>msg.react('?'))
+msg.react('✅')
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
 
-let reaction1Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
-let reaction2Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
 
 let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
 let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
@@ -201,7 +206,6 @@ msg.delete();
 })
 }
 });
-
 
 
 
