@@ -1,15 +1,23 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '!';
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}`);
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
+});
+
+  
 
 
 
-     if(cmd === `${prefix}tempmute`){
+
+
+if(cmd === `${prefix}tempmute`){
 
      if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("You can't do that.");
      let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -105,6 +113,14 @@ client.on('ready', () => {
     message.channel.send(`**${unmute2} was successfully Unmuted**`);
     message.delete();
   }
+
+
+
+
+
+
+
+
 
 
 
