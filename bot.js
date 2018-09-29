@@ -162,43 +162,26 @@ client.on('message', msg => {
 
 
 
-client.on("message", async message => {
-      if(message.author.bot) return;
-      if(message.channel.type === "dm") return;
+client.on('message', function(msg) {
+  if(msg.content.startsWith ('$server')) {
+    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(msg.guild.iconURL)
+    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ ${msg.guild.name} ]**`,true)
+    .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${msg.guild.region} ]**`,true)
+    .addField(':military_medal:** الرتب :**',`**[ ${msg.guild.roles.size} ]**`,true)
+    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ ${msg.guild.memberCount} ]**`,true)
+    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ ${msg.guild.members.filter(m=>m.presence.status == 'online').size} ]**`,true)
+    .addField(':pencil:** الرومات الكتابية :**',`**[ ${msg.guild.channels.filter(m => m.type === 'text').size} ]**`,true)
+    .addField(':loud_sound:** رومات الصوت :**',`**[ ${msg.guild.channels.filter(m => m.type === 'voice').size} ]**`,true)
+    .addField(':crown:** صاحب السيرفر :**',`**[ ${msg.guild.owner} ]**`,true)
+    .addField(':id:** ايدي السيرفر :**',`**[ ${msg.guild.id} ]**`,true)
+    .addField(':date:** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
+    msg.channel.send({embed:embed});
+  }
+});
 
-      let prefix = "ban";
-      let messageArray = message.content.split (" ");
-      let cmd = messageArray[0];
-      let args = messageArray.slice(1);
-
-
-
-        if(cmd === `${prefix}ban`){
-
-
-
-          let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-          if(!kUser) return message.channel.send("فين العضو ؟");
-          let kReason = args.join(" ").slice(22);
-          if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما عندك برمشن");
-          if(kUser.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما تقدر تسوي بان للأدمين")
-
-          let banEmbed = new Discord.RichEmbed()
-          .setDescription("~Ban~")
-          .setColor("#8e0505")
-          .addField("Banned User", `${bUser} with ID ${bUser.id}`)
-          .addField("Banned By", `<@${message.author.id}> with the id ${message.author.id}`)
-          .addField("Banned In", message.channel)
-          .addField("Time", message.createdAt)
-          .addField("Reason", kReason);
-
-          let banChannel = message.guild.channels.find('name', 'kick-ban');
-          if(!banChannel) return message.channel.send("لم اجد روم kick-ban");
-
-          message.guild.member(bUser).kick(bReason)
-          banChannel.send(banEmbed);
-        }
-        });
 
 
 
