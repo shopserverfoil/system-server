@@ -206,24 +206,24 @@ msg.delete();
 
 
 
-client.on('message', async function (message)  {
-if(message.content.startsWith(prefix+"السيرفر")) {
-const vlevel = ['None', 'Low (Must have verified email)', 'Medium (Must be register for 5 mineuts)', 'High (Need to wait 10 minutes)', 'Very High (Need verified phone on account)']
-const members = await message.guild.members.filter(m=> m.presence.status === 'online').size + message.guild.members.filter(m=> m.presence.status === 'idle').size + message.guild.members.filter(m=> m.presence.status === 'dnd').size  
-message.channel.send(new discord.RichEmbed() 
-.setAuthor(`${message.guild.name} [Server Icon URL]`, message.guild.iconURL)
-.setURL(message.guild.iconURL)
-.addField('🆔 ايدي السيرفر', message.guild.id, true)
-.addField('👑 اونر السيرفر', message.guild.owner, true)
-.addField('🗺 منطقة', message.guild.region, true)
-.addField(`👥 الاعضاء [${message.guild.memberCount}]`, `${members} online` ,true)
-.addField(`💬 القنوات`, `**${message.guild.channels.filter(c => c.type === 'category').size}** الاقسام | **${message.guild.channels.filter(c=> c.type === 'text').size}**روم كتابي | **${message.guild.channels.filter(c=> c.type === 'voice').size}** روم صوتي` ,true)
-.addField(`💠 مستوى التحقق`, vlevel[message.guild.verificationLevel] ,true)
-.addField(`👔 الرتب`, message.guild.roles.size ,true)
-.addField(`📆 تم انشأوها`, message.guild.createdAt ,true)
-)
-}
-})
+
+client.on('guildMemberAdd', Sal => { //By Salto7#4595
+    var embed = new Discord.RichEmbed()
+    .setAuthor(Sal.user.username, Sal.user.avatarURL)
+    .setThumbnail(Sal.user.avatarURL)
+    .setImage('https://media.discordapp.net/attachments/480494772772012032/495314501042700299/1538162429226.png?width=400&height=165') //هنا حط الصوره الي تبيها
+    .setTitle('عضو جديد!')
+    .setDescription('**welcome To 4Ever :cherry_blossom:** ')
+    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
+    .addField('``تاق العضو``', Sal.user.discriminator, true)
+    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
+    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
+    .setColor('RANDOM')
+    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
+    var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+    if (!channel) return;
+    channel.send({embed : embed});
+    });
 
 
 
