@@ -213,14 +213,14 @@ client.on('guildMemberAdd', Sal => { //By Salto7#4595
     .setThumbnail(Sal.user.avatarURL)
     .setImage('https://media.discordapp.net/attachments/480494772772012032/495314501042700299/1538162429226.png?width=400&height=165') //هنا حط الصوره الي تبيها
     .setTitle('عضو جديد!')
-    .setDescription('**welcome To 4Ever :cherry_blossom:** ')
+    .setDescription('**welcome To 4Ever :cherry_blossom:**')
     .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
     .addField('``تاق العضو``', Sal.user.discriminator, true)
     .addField('``تم الانشاء في``', Sal.user.createdAt, true)
     .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
     .setColor('RANDOM')
     .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+    var channel =Sal.guild.channels.find('name', '**welcome To 4Ever :cherry_blossom:**') // هنا حط اسم الروم الي تبيه يكتب فيه
     if (!channel) return;
     channel.send({embed : embed});
     });
