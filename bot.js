@@ -207,23 +207,15 @@ msg.delete();
 
 
 
-client.on('guildMemberAdd', Sal => { //By Salto7#4595
-    var embed = new Discord.RichEmbed()
-    .setAuthor(Sal.user.username, Sal.user.avatarURL)
-    .setThumbnail(Sal.user.avatarURL)
-    .setImage('https://media.discordapp.net/attachments/480494772772012032/495314501042700299/1538162429226.png?width=400&height=165') //هنا حط الصوره الي تبيها
-    .setTitle('عضو جديد!')
-    .setDescription('**welcome To 4Ever :cherry_blossom:**')
-    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
-    .addField('``تاق العضو``', Sal.user.discriminator, true)
-    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
-    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
-    .setColor('RANDOM')
-    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('483961152234061824', '**welcome To 4Ever :cherry_blossom:**') // هنا حط اسم الروم الي تبيه يكتب فيه
-    if (!channel) return;
-    channel.send({embed : embed});
-    });
+
+
+client.on("ready", () => {
+    client.user.setGame("on " + client.users.size + " users")
+}).on("guildCreate", () => {
+    client.user.setGame("on " + client.users.size + " users")
+}).on("guildDelete", () => {
+    client.user.setGame("on " + client.users.size + " users")
+})
 
 
 
