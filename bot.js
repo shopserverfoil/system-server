@@ -147,13 +147,13 @@ client.on('message', message => {
 	if(command == prefix + 'رسالة') { // الكوماند !bc
 		var args = message.content.split(' ').slice(1).join(' ');
 		if(message.author.bot) return;
-		if(!args) return message.channel.send(`**➥ Useage:** ${prefix} < رسالة < كلامك`);
+		if(!args) return message.channel.send(`**:mailbox_with_mail: ${prefix} < رسالة < كلامك**`);
 		
 		let bcSure = new Discord.RichEmbed()
 		.setTitle(`:mailbox_with_mail: ** هل انت متأكد انك تريد ارسال رسالتك الى الاعضاء** ${message.guild.memberCount} **عضو**`)
 		.setThumbnail(client.user.avatarURL)
 		.setColor('RANDOM')
-		.setDescription(`**\n:envelope: ➥ رسالتك**\n\n${args}`)
+		.setDescription(`**\:mailbox_with_mail: رسالتك**\n\n${args}`)
 		.setTimestamp()
 		.setFooter(message.author.tag, message.author.avatarURL)
 		
