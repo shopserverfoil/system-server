@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`system server`,
+client.user.setGame(`system server`,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -26,6 +26,7 @@ client.user.setGame(`system server`,
   console.log('')
   console.log('')
 });
+
 
 
 
@@ -327,6 +328,8 @@ client.on('message', function(msg) {
 
 
 
+
+
 var ss = 0;
 
 client.on('voiceStateUpdate', (o,n) => {
@@ -352,11 +355,9 @@ client.on("ready", () => {
             name : "4 Ever Online : [" + ss+ "]"
         })
     });
-   
+    client6.user.setGame("HerpoPlex Community©", "https://twitch.tv/©");
 });
 // جميع الحقوق محفوظة لدى : ! M, ♪ ♡#6456
-
-
 
 
 
