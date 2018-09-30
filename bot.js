@@ -28,7 +28,7 @@ var embed = new Discord.RichEmbed()
 var embed = new Discord.RichEmbed()
 
  
-.setDescription(`**<@${message.author.id}>لقد تم سحب العضو إليك ✅**`)
+.setDescription(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`)
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
