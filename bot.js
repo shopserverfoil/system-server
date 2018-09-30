@@ -43,7 +43,7 @@ client.on('message', async message => { // Alpha Codes Server.
         if(!message.guild.member(client.user).hasPermission('EMBED_LINKS')) return message.channel.send(':no_entry: | I dont have **EMBED_LINKS** Permission!');
        
         let bcCommand = new Discord.RichEmbed()
-        .setTitle(':white_check_mark: **BroadCast Command.**')
+        .setTitle(':white_check_mark: **رسالة جماعية**')
         .setColor('GREEN')
         .setDescription(`**\n${prefix}bc <MESSAGE>**\n➥ \`\`Send for all members the message.\`\`\n\n**${prefix}bc <ROLE> <MESSAGE>**\n➥ \`\`Send the message to members have the role selected.\`\`\n\n**${prefix}bc admins <MESSAGE>**\n➥ \`\`Send the message to members have ADMINISTRATOR permission.\`\`\n\n**${prefix}bc members <MESSAGE>**\n➥ \`\`Send the message to members not have ADMINISTRATOR permission.\`\``)
         .setTimestamp()
