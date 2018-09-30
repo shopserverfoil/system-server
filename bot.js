@@ -45,7 +45,7 @@ client.on('message', async message => { // Alpha Codes Server.
         let bcCommand = new Discord.RichEmbed()
         .setTitle(':mailbox_with_mail:  **رسالة جماعية**')
         .setColor('GREEN')
-        .setDescription(`**\n${prefix} <رسالة < هنا الرسالة الي تبيها**\n➥ \`\`Send for all members the message.\`\`\n\n**${prefix} رسالة <ROLE> <MESSAGE>**\n➥ \`\`Send the message to members have the role selected.\`\`\n\n**${prefix}bc admins <MESSAGE>**\n➥ \`\`Send the message to members have ADMINISTRATOR permission.\`\`\n\n**${prefix}bc members <MESSAGE>**\n➥ \`\`Send the message to members not have ADMINISTRATOR permission.\`\``)
+        .setDescription(`**\n${prefix} <رسالة < هنا الرسالة الي تبيها**\n➥ \`\`.ترسل لكل اعضاء السيرفر\`\`\n\n**${prefix} رسالة <ROLE> <MESSAGE>**\n➥ \`\`Send the message to members have the role selected.\`\`\n\n**${prefix}bc admins <MESSAGE>**\n➥ \`\`Send the message to members have ADMINISTRATOR permission.\`\`\n\n**${prefix}bc members <MESSAGE>**\n➥ \`\`Send the message to members not have ADMINISTRATOR permission.\`\``)
         .setTimestamp()
         .setFooter(message.author.tag, message.author.avatarURL)
        
