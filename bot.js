@@ -55,7 +55,7 @@ client.on('message', message => {
  
   if (message.content.startsWith('رسالة')) 
           if (!args[0]) {
-message.channel.send("**يجب عليك كتابة }رسالة{ لارسال رسالة جماعية :envelope:  **");
+message.channel.send("**يجب عليك كتابة }رسالة{ واكتب رسالتك هنا  :envelope:  **");
 return;
 }
 message.guild.members.forEach(m => {
