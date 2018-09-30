@@ -90,7 +90,7 @@ var embed = new Discord.RichEmbed()
 var embed = new Discord.RichEmbed()
 
  
-.setDescription(`**<@${message.author.id}>لقد تم سحب العضو إليك ✅**`)
+.setDescription(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`)
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 message.guild.members.get(usermentioned).send(embed)
 } else {
@@ -140,13 +140,14 @@ client.on('message', message => {
 
 
 
+
 client.on('message', message => {
-        var prefix = '!'; // هنا تقدر تغير البرفكس
+        var prefix = ''; // هنا تقدر تغير البرفكس
 	var command = message.content.split(" ")[0];
-	if(command == prefix + ('رسالة')
+	if(command == prefix + 'رسالة') { // الكوماند !bc
 		var args = message.content.split(' ').slice(1).join(' ');
 		if(message.author.bot) return;
-		if(!args) return message.channel.send(`** ${prefix} :mailbox_with_mail:  < رسالة < كلامك**`);
+		if(!args) return message.channel.send(`**➥ Useage:** ${prefix} < رسالة < كلامك`);
 		
 		let bcSure = new Discord.RichEmbed()
 		.setTitle(`:mailbox_with_mail: ** هل انت متأكد انك تريد ارسال رسالتك الى الاعضاء** ${message.guild.memberCount} **عضو**`)
@@ -174,7 +175,7 @@ client.on('message', message => {
 						member.sendFile(message.attachments.first().url).catch();
 					}
 				})
-				message.channel.send(`:timer: **يتم الان الارسال الى** \`\`${message.guild.memberCount}\`\` **عضو**`).then(msg => msg.delete(5000));
+				message.channel.send(`:mailbox_with_mail:  ** يتم الان الارسال الى الاعضاء** \`\`${message.guild.memberCount}\`\` **عضو**`).then(msg => msg.delete(5000));
 				msg.delete();
 			})
 			dontSendBC.on('collect', r => {
@@ -184,8 +185,6 @@ client.on('message', message => {
 		})
 	}
 });
-
-
 
 
 
