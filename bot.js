@@ -44,5 +44,35 @@ message.react("❌")
 
 
 
+client.on('message', message => {
+   
+    let args = message.content.split(' ').slice(1).join(' ');
+   
+  if (message.content === 'ping') {
+      message.channel.send(`<@${message.author.id}> Ping..!`)
+  }
+ 
+ 
+  if (message.content.startsWith('رسالة')) 
+          if (!args[0]) {
+message.channel.send("**يجب عليك كتابة }رسالة{ لارسال رسالة جماعية :envelope:  **");
+return;
+}
+message.guild.members.forEach(m => {
+   if(!message.member.hasPermission('ADMINISTRATOR')) return;
+   m.send(`${args}`);
+ 
+});
+  }
+ 
+});
+
+
+
+
+
+
+
+
 
 client.login(process.env.BOT_TOKEN);
