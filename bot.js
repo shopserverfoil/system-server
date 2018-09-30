@@ -306,7 +306,7 @@ message.react("❌")
 
 
 client.on('message', function(msg) {
-  if(msg.content.startsWith ('$server')) {
+  if(msg.content.startsWith ('معلومات السيرفر')) {
     if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
     let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
