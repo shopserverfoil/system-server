@@ -35,7 +35,7 @@ client.on("ready", () => {
             name : "4 Ever Online : [" + ss+ "]"
         })
     });
-    client6.user.setGame("HerpoPlex Community©", "https://twitch.tv/©");
+    client.user.setGame("HerpoPlex Community©", "https://twitch.tv/©");
 });
 // جميع الحقوق محفوظة لدى : ! M, ♪ ♡#6456
 
