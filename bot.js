@@ -110,7 +110,7 @@ message.react("")
 client.on('message', message => {
      if(message.content.startsWith(prefix + "مسح")) {
          var args = message.content.split(" ").slice(1);
- if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You need MANAGE_MESSAGES permission noob');
+ if (!message.member.hasPermission('')) return message.reply('');
   if (!args[0]) return message.channel.send('You didn\'t provide any number!!!');
 
   message.channel.bulkDelete(args[0]).then(() => {
