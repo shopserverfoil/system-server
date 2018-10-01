@@ -202,24 +202,25 @@ client.on('message', message => {
 
 
 
+
 client.on('message', message => {
      if(message.content.startsWith(prefix + "مسح")) {
          var args = message.content.split(" ").slice(1);
  if (!message.member.hasPermission('')) return message.reply('');
   if (!args[0]) return message.channel.send('');
 
-  message.channel.bulkDelete({args[0]}).then(() => {
+  message.channel.bulkDelete(args[0]).then(() => {
     const embed = new Discord.RichEmbed()
-      .setColor(0xF16104)
-      .setDescription(`Cleared ${args[0]}`);
+      .setColor("BLACK")
+      .setDescription(`Cleared ${args[0]} messages.`);
     message.channel.send({ embed });
 
     const actionlog = message.guild.channels.find('name', 'log');
 
-    if (!actionlog) return message.channel.send('Can\'t find action-log channel. Are you sure that this channel exists and I have permission to view it? **CANNOT POST LOG.**');
+    if (!actionlog) return message.channel.send('');
     const embedlog = new Discord.RichEmbed()
       .setDescription('~Purge~')
-      .setColor(0xF16104)
+      .setColor("RED")
       .addField('Purged By', `<@${message.author.id}> with ID ${message.author.id}`)
       .addField('Purged in', message.channel)
       .addField('Time', message.createdAt);
