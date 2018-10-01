@@ -219,9 +219,9 @@ client.on('message', message => {
 
     if (!actionlog) return message.channel.send('');
     const embedlog = new Discord.RichEmbed()
-      .setDescription('~Purge~')
+      .setDescription('**تم المسح **')
       .setColor("RED")
-      .addField('Purged By', `<@${message.author.id}> with ID ${message.author.id}`)
+      .addField('**:wastebasket: تم المسح بواسطة **', `<@${message.author.id}> with ID ${message.author.id}`)
       .addField('Purged in', message.channel)
       .addField('Time', message.createdAt);
     actionlog.send(embedlog);
