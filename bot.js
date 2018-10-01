@@ -36,7 +36,7 @@ client.on("ready", () => {
             name : "4 Ever Online : [" + ss+ "]"
         })
     });
-    client6.user.setGame("Community©", "");
+    client.user.setGame("Community©", "");
 });
 // جميع الحقوق محفوظة لدى : ! M, ♪ ♡#6456
 
