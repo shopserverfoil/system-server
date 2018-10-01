@@ -161,7 +161,7 @@ const prefix = "";
   .addField("User:",  `[ + ${user.tag} + ]`)
   .addField("By:", `[  + ${message.author.tag} +  ]`)
   .addField("Reason:", `[ + ${reason} +  ]`)
-  client.channels.get("آي دي روم اللوق").send({embed : banembed})
+  client.channels.get("490729182326947890").send({embed : banembed})
 }
 });
 
