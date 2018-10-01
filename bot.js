@@ -171,48 +171,92 @@ message.react("")
 
 
 
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-
-  let prefix = "كيك";
-  let messageArray = message.content.split (" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
 
 
-
-    if(cmd === `${prefix}kick`){
-
-
-
-      let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-      if(!kUser) return message.channel.send("فين العضو ؟");
-      let kReason = args.join(" ").slice(22);
-      if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما عندك برمشن");
-      if(kUser.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما تقدر تسوي كيك للأدمين")
-
-      let kickEmbed = new Discord.RichEmbed()
-      .setDescription("~Kick~")
-      .setColor("#e56b00")
-      .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
-      .addField("Kicked By", `<@${message.author.id}> with the id ${message.author.id}`)
-      .addField("Kicked In", message.channel)
-      .addField("Time", message.createdAt)
-      .addField("Reason", kReason);
-
-      let kickChannel = message.guild.channels.find('name', 'log-kick-ban');
-      if(!kickChannel) return message.channel.send("لم اجد روم ال kick-ban");
-
-      message.guild.member(kUser).kick(kReason)
-      kickChannel.send(kickEmbed);
-    }
+client.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='الاعضاء')
+      var kayan = new Discord.RichEmbed()
+      .setThumbnail(message.author.avatarURL)
+      .setFooter(message.author.username, message.author.avatarURL) 
+      .setTitle('🌷| Members info')
+      .addBlankField(true)
+      .addField('📗| Online',
+      `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+      .addField('📕| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
+      .addField('📙| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
+      .addField('📓| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
+      .addField('➡| Server Members',`${message.guild.memberCount}`)
+      message.channel.send(kayan);
+    
     });
 
 
 
 
 
+
+
+
+
+
+
+
+client.on('message', message => {
+if (!points[message.author.id]) points[message.author.id] = {
+    points: 0,
+  };
+  if(!message.guild) return;
+    let id = message.author.id,prefix="اسرع";
+    if (spee[id] && (new Date).getTime() - spee[id] < 15*1000) {
+        let r = (new Date).getTime() - spee[id];
+        r = 15*1000 - r;
+    message.channel.send(`**Sorry, Please Wait ${pretty(r, {verbose:true})}...**`).then(m => m.delete(5000));
+    return;
+    }
+    if ( message.content == prefix+'speed'){
+       
+        try{
+}catch(e){
+ 
+}
+ 
+    if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
+ 
+ 
+const item = type[Math.floor(Math.random() * type.length)];
+const filter = response => {  
+    return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
+};
+message.channel.send('**Game is Start now...!**').then(msg => {
+ 
+ const embed = new Discord.RichEmbed()
+ .setColor("0054dd")
+     .setAuthor(`⏳ |You have »15« seconds to type the word`)
+          .setImage(`${item.type}`)
+ .setFooter(`${message.author.tag}`, message.author.avatarURL)
+ 
+ 
+         
+msg.channel.send(embed).then(() => {
+        message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
+        .then((collected) => {
+                  const sh = new Discord.RichEmbed()
+  .setColor("04791c")
+  .setDescription('**✅ |Good Job +1P**')
+   .setFooter(`${collected.first().author}`)
+  message.channel.sendEmbed(sh);
+            let won = collected.first().author; // في هذا السطر يقوم الكود بسحب الأي دي الذي قام بالأجابة اولاً
+            points[won.id].points++;
+          })
+          .catch(collected => { // في حال لم يقم أحد بالإجابة
+            message.channel.send(`🔚 |**Time Is End**`);
+          })
+        })
+    })
+    spee[id] = (new Date).getTime()
+}
+});
 
 
 
