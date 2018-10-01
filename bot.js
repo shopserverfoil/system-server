@@ -203,7 +203,7 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
+if (points[message.author.id]) points[message.author.id] = {
     points: 0,
   };
   if(!message.guild) return;
