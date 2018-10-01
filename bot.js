@@ -172,8 +172,6 @@ client.on('message', message =>{
     if(message.content === 'السلام عليكم'){
 let start = Date.now(); message.channel.send('**:rose:  وعليكم السلام منور**').then(message => { 
 message.edit(`\`\`\`js
-Time taken: ${() - start} ms
-Discord API: ${(0)} ms\`\`\``);
     });
     }
 });
