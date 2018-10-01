@@ -171,7 +171,6 @@ message.react("")
 client.on('message', message =>{
     if(message.content === 'السلام عليكم'){
 let start = Date.now(); message.channel.send('**:rose:  وعليكم السلام منور**').then(message => { 
-message.edit(`\`\`\`js
     });
     }
 });
