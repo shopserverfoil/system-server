@@ -219,11 +219,17 @@ client.on('message', message => {
 
     if (!actionlog) return message.channel.send('');
     const embedlog = new Discord.RichEmbed()
-      .setDescription('**:wastebasket: تم المسح **')
+      .setDescription('**            :wastebasket: تم المسح **')
       .setColor("RED")
-      .addField('**:arrow_down:  تم المسح بواسطة **', `<@${message.author.id}> with ID ${message.author.id}`)
-      .addField('**:arrow_down:  المسؤل عن المسح**', message.channel)
-      .addField('**:arrow_down:  تم المسح في تاريخ**', message.createdAt);
+      
+    
+    .addField('**:arrow_down:  تم المسح بواسطة **', `<@${message.author.id}> with ID ${message.author.id}`)
+      
+    
+    .addField('**:arrow_down:  المسؤل عن المسح**', message.channel)
+      
+    
+    .addField('**:arrow_down:  تم المسح في تاريخ**', message.createdAt);
     actionlog.send(embedlog);
    
   });
