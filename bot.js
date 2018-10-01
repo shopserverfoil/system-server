@@ -150,7 +150,7 @@ const prefix = "";
   if (message.mentions.users.size < 1) return message.reply("**:warning: منشن العضو لطردة**");
   
   if (!message.guild.member(user)
-  bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
+  .bannable return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
  
   message.guild.member(user).kick(7, user);
  
