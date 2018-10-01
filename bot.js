@@ -208,10 +208,10 @@ client.on('message', message => {
  if (!message.member.hasPermission('')) return message.reply('');
   if (!args[0]) return message.channel.send('');
 
-  message.channel.bulkDelete().then(() => {
+  message.channel.bulkDelete({args[0]}).then(() => {
     const embed = new Discord.RichEmbed()
       .setColor(0xF16104)
-      .setDescription(`Cleared `);
+      .setDescription(`Cleared ${args[0]}`);
     message.channel.send({ embed });
 
     const actionlog = message.guild.channels.find('name', 'log');
