@@ -174,7 +174,6 @@ client.on('message', message => {
 if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'اسحب')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
- if (message.mentions.usrs.size === 1) {
  if (message.mentions.users.size === 1)("" +prefix+ "** يجب أن تمنشن العضو  ❌**")
 }
 if (message.member.voiceChannel != null) {
