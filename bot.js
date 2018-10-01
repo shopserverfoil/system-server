@@ -168,15 +168,23 @@ message.react("")
 
 
 
-client.on('message', message =>{
-    if(message.content === 'السلام عليكم'){
-let start = Date.now(); message.channel.send('**:rose:  وعليكم السلام منور**').then(message => { 
-    });
-    }
+
+
+
+
+
+client.on('message', async msg => {
+      client.snek = require('snekfetch');
+    var p = "h"
+  if(msg.content.startsWith(p + "isay")) {
+   let args = msg.content.split(' ').slice(1).join(' ');
+  if(!args) return args.missing(msg, 'No text added', this.help);
+  msg.channel.startTyping();
+  const searchMessage = await msg.channel.send('🖌️Painting...');
+  const { body } = await client.snek.get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${encodeURIComponent(args)}`);
+  msg.channel.send({file: { attachment:body.message, name: 'clyde.png'}}).then(()=> { searchMessage.delete(); msg.channel.stopTyping(); });
+};
 });
-
-
-
 
 
 
