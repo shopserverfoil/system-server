@@ -127,6 +127,8 @@ client.on('message', message => {
 
 
 
+
+
 client.on('message', message => {
 const prefix = "";
   if (message.author.kick) return;
@@ -145,9 +147,10 @@ const prefix = "";
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
  
-  if (message.mentions.users < 1) return message.reply(" :warning: منشن شخص العضو لطردة ");
+  if (message.mentions.users.size < 1) return message.reply("**:warning: منشن العضو لطردة**");
+  
   if (!message.guild.member(user)
-  .bannable) return message.reply(" :warning: لايمكنني طرد شخص اعلى من رتبتي ");
+  .bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
  
   message.guild.member(user).kick(7, user);
  
@@ -158,9 +161,15 @@ const prefix = "";
   .addField("User:",  `[ + ${user.tag} + ]`)
   .addField("By:", `[  + ${message.author.tag} +  ]`)
   .addField("Reason:", `[ + ${reason} +  ]`)
-  client.channels.get("490729182326947890").send({embed : banembed})
+  client.channels.get("آي دي روم اللوق").send({embed : banembed})
 }
 });
+
+
+
+
+
+
 
 
 
