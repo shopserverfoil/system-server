@@ -163,4 +163,41 @@ message.react("")
 
 
 
+
+
+
+lient.on('message', message => {
+    if(!message.channel.guild) return; 
+if(message.content.startsWith(prefix + 'مسح')) {
+if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات | ❌**').then(m => m.delete(5000));
+// if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('**يجب ان تمتلك صلاحيه ``ADMINISTRATOR`` | ❌'); 
+message.react('✅')
+message.react('❌')
+.then(() => message.react('✅'))
+.then(() =>message.react('❌'))
+
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+let reaction1 = message.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = message.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+    message.channel.send({file : "https://cdn.discordapp.com/attachments/456652875150655489/489905534066098196/deleted.png"})
+})
+reaction2.on("collect", r => {
+message.channel.send('**تم الغاء عمليه مسح العالم بنجاح | ✅ **')
+})
+}
+});
+
+
+
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
