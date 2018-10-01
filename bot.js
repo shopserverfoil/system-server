@@ -295,7 +295,7 @@ if(hours3 > 12) {
 const embed = new Discord.RichEmbed()
                 .setThumbnail("https://i.imgur.com/ib3n4Hq.png") 
                 .setTitle( "『التاريخ  والوقت』")
-                .setColor('RANDOM')
+                .setColor('GREEN')
                 .setFooter(emoko.author.username, emoko.author.avatarURL)
                 .addField('الامارات',
                 "『"+ hours + ":" + minutes +":"+ seconds + "』")
@@ -304,9 +304,6 @@ const embed = new Discord.RichEmbed()
                 .addField('مصر',
                 "『"+ hours3 + ":" + minutes +":"+ seconds  + "』") 
                 
-                .addField('Date',
-                "『"+ Day + "-" + Month + "-" + Year +  "』")
-
 
   emoko.channel.sendEmbed(embed);
    }
