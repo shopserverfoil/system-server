@@ -167,14 +167,13 @@ const prefix = "";
 
 
 
-
-
 client.on('message', message => {
     var prefix = "";
 if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'اسحب')) {
  if (message.member.hasPermission("MOVE_MEMBERS")) {
- if (message.mentions.users.size === 1)("" +prefix+ "** يجب أن تمنشن العضو  ❌**")
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("" +prefix+ "** يجب أن تمنشن العضو  ❌**")
 }
 if (message.member.voiceChannel != null) {
  if (message.mentions.members.first().voiceChannel != null) {
@@ -197,14 +196,8 @@ message.channel.send(""+ message.mentions.members.first() +"**❌ أن العض�
  message.channel.send("**أنت لست متواجد في روم صوتي لسحب العضو إليك ❌**")
 }
 } else {
-message.react("❌")
+message.react("")
  }}});
-
-
-
-
-
-
 
 
 
