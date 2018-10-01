@@ -145,7 +145,7 @@ const prefix = "";
   let user = message.mentions.users.first();
   let reason = message.content.split(" ").slice(2).join(" ");
  
-  if (message.mentions.users.size < 1) return message.reply(" :warning: منشن شخص العضو لطردة ");
+  if (message.mentions.users < 1) return message.reply(" :warning: منشن شخص العضو لطردة ");
   if (!message.guild.member(user)
   .bannable) return message.reply(" :warning: لايمكنني طرد شخص اعلى من رتبتي ");
  
