@@ -126,44 +126,35 @@ client.on('message', message => {
 
 
 
-
-
-
-client.on('message', message => {
-const prefix = "";
-  if (message.author.kick) return;
-  if (!message.content.startsWith(prefix)) return;
+client.on('message',async msg => {//Alpha Codes
+//Alpha Codes//Alpha Codes//Alpha Codes//Alpha Codes//Alpha Codes
+  var prefix = "!";//Alpha Codes
+//Alpha Codes
+  if(msg.content.startsWith(prefix + "user")) {//Alpha Codes
+  if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **go play minecraft**');
+  if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');
+  msg.guild.createChannel(`يتم تحضير الروم :[]` , 'voice').then(time => {
+    time.overwritePermissions(msg.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+  setInterval(() => {
+      var currentTime = new Date(),
+Year = currentTime.getFullYear(),
+Month = currentTime.getMonth() + 1,
+Dat = currentTime.getDate()//Alpha Codes
+      time.setName(`Members : ◤ → ${client.users.size} ← ◢`);
+ },1000);
+  });//Alpha Codes
+  }
  
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
- 
-  let args = message.content.split(" ").slice(1);
- 
-  if (command == "كيك") {
-               if(!message.channel.guild) return;
-         
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I Don't Have KICK_Members Permission");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
- 
-  if (message.mentions.users.size < 1) return message.reply("**:warning: منشن العضو لطردة**");
-  
-  if (!message.guild.member(user)
-  return(` message.reply "لايمكنني طرد شخص اعلى من رتبتي"`);
- 
-  message.guild.member(user).kick(7, user);
- 
-  const banembed = new Discord.RichEmbed()
-  .setAuthor('Kicked !', user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setTimestamp()
-  .addField("User:",  `[ + ${user.tag} + ]`)
-  .addField("By:", `[  + ${message.author.tag} +  ]`)
-  .addField("Reason:", `[ + ${reason} +  ]`)
-  client.channels.get("490729182326947890").send({embed : banembed})
-}
 });
+
+
+
+
+
+
 
 
 
