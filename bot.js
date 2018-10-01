@@ -85,7 +85,7 @@ client.on('message', message => {
 		let bcSure = new Discord.RichEmbed()
 		.setTitle(`**:mailbox_with_mail: هل انت متأكد انك تريد ارسال رسالتك **`)
 		.setThumbnail(client.user.avatarURL)
-		.setColor('RANDOM')
+		.setColor('GREEN')
  		.setDescription(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀`)
 		.setTimestamp()
 		.setFooter(message.author.tag, message.author.avatarURL)
