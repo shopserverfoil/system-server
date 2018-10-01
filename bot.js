@@ -10,6 +10,7 @@ client.on('ready', () => {
 
 
 
+
 var ss = 0;
 
 client.on('voiceStateUpdate', (o,n) => {
@@ -35,13 +36,9 @@ client.on("ready", () => {
             name : "4 Ever Online : [" + ss+ "]"
         })
     });
-    client6.user.setGame("HerpoPlex Community©", "https://twitch.tv/©");
+    client6.user.setGame("Community©", "");
 });
 // جميع الحقوق محفوظة لدى : ! M, ♪ ♡#6456
-
-
-
-
 
 
 
