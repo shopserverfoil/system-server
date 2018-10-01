@@ -152,9 +152,9 @@ client.on('message', message => {
         if(!time) time = '7d';
  
         if(!ms(time)) {
-            var reason = message.content.split(' ')[2];
+            var reason = message.content.split('7d')[2];
         }else {
-            var reason = message.content.split(' ')[3];
+            var reason = message.content.split('7d')[3];
         }
        
         if(!reason) reason = 'No reason provided.';
