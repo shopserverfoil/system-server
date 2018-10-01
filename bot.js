@@ -223,10 +223,10 @@ client.on('message', message => {
       .setColor("RED")
       
     
-    .addField('**:arrow_down:  تم المسح بواسطة **', `<@${message.author.id}> with ID ${message.author.id}`)
+    .addField('**:arrow_down:  تم المسح بواسطة **', `<@${message.author.id}>  ${message.author.id}`)
       
     
-    .addField('**:arrow_down:  المسؤل عن المسح**', message.channel)
+    .addField('**:arrow_down:  الشات الممسوح  **', message.channel)
       
     
     .addField('**:arrow_down:  تم المسح في تاريخ**', message.createdAt);
