@@ -86,7 +86,7 @@ client.on('message', message => {
 		.setTitle(`**:mailbox_with_mail: هل انت متأكد انك تريد ارسال رسالتك **`)
 		.setThumbnail(client.user.avatarURL)
 		.setColor('RANDOM')
- 		.setDescription(`󠀀󠀀󠀀󠀀  󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀${args}`)
+ 		.setDescription(`󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀󠀀`)
 		.setTimestamp()
 		.setFooter(message.author.tag, message.author.avatarURL)
 		
