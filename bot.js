@@ -108,7 +108,7 @@ client.on('message', message => {
 						member.sendFile(message.attachments.first().url).catch();
 					}
 				})
-				message.channel.send(`:timer: **يتم الان الارسال الى** \`\`${message.guild.memberCount}\`\` **عضو**`).then(msg => msg.delete(5000));
+				message.channel.send(`:timer: **يتم الان الارسال الى اعضاء السيرفر**`).then(msg => msg.delete(5000));
 				msg.delete();
 			})
 			dontSendBC.on('collect', r => {
