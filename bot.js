@@ -86,7 +86,7 @@ client.on('message', message => {
 		.setTitle(`:mailbox_with_mail:  هل انت متأكد انك تريد ارسال رسالتك الى اعضاء السيرفر**`)
 		.setThumbnail(client.user.avatarURL)
 		.setColor('RANDOM')
- 		.setDescription(`**\n  الرسالة التي تريد ارسالها :envelope:**\n\n${args}`)
+ 		.setDescription(`\n\n\n${args}`)
 		.setTimestamp()
 		.setFooter(message.author.tag, message.author.avatarURL)
 		
