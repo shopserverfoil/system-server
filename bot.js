@@ -171,63 +171,45 @@ message.react("")
 
 
 
+client.on("message", async message => {
+  if(message.author.bot) return;
+  if(message.channel.type === "dm") return;
+
+  let prefix = "كيك";
+  let messageArray = message.content.split (" ");
+  let cmd = messageArray[0];
+  let args = messageArray.slice(1);
 
 
-const d = require("discord.js");
-const fs = require("fs");
-var json = JSON.parse(fs.readFileSync("json.json", "utf8"));
 
-client.on("message", (message) => {
-    var command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
-    if (!message.content.startsWith(prefix)) return;
-    switch(command) {
-        case "اسكت" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : false,
-                CONNECT : false
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : true};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Muted in the server!🤐**`);
-        break;
-        case "تكلم" : 
-        if (!message.channel.type =="text") return;
-        if (!message.member.hasPermission("MANAGE_CHANNELS")) return;
-        if (!message.mentions.members.first()) return;
-        message.guild.channels.forEach(c => {
-            c.overwritePermissions(message.mentions.members.first().id, {
-                SEND_MESSAGES : null,
-                CONNECT : null
-            })
-        })
-        json[message.guild.id + message.mentions.members.first().id] = {muted : false};
-        fs.writeFile("json.json", JSON.stringify(json), err => {
-            if (err) console.error(err);
-        });
-        message.channel.send(`** <@${message.mentions.members.first().id}> Unmuted!😀**`);
+    if(cmd === `${prefix}kick`){
+
+
+
+      let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      if(!kUser) return message.channel.send("فين العضو ؟");
+      let kReason = args.join(" ").slice(22);
+      if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما عندك برمشن");
+      if(kUser.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما تقدر تسوي كيك للأدمين")
+
+      let kickEmbed = new Discord.RichEmbed()
+      .setDescription("~Kick~")
+      .setColor("#e56b00")
+      .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
+      .addField("Kicked By", `<@${message.author.id}> with the id ${message.author.id}`)
+      .addField("Kicked In", message.channel)
+      .addField("Time", message.createdAt)
+      .addField("Reason", kReason);
+
+      let kickChannel = message.guild.channels.find('name', 'log-kick-ban');
+      if(!kickChannel) return message.channel.send("لم اجد روم ال kick-ban");
+
+      message.guild.member(kUser).kick(kReason)
+      kickChannel.send(kickEmbed);
     }
-})
+    });
 
-.on("guildMemberAdd", (member) => {
-    if(json[member.guild.id + member.user.id]) {
-        if (json[member.guild.id + member.user.id].muted == true) {
-            member.guild.channels.forEach(c => {
-                c.overwritePermissions(member.user.id, {
-                    SEND_MESSAGES : false,
-                  CONNECT : false
-                })
-            })
-        }
-    }
-})
+
 
 
 
