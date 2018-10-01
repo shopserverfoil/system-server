@@ -294,12 +294,12 @@ if(hours3 > 12) {
 
 const embed = new Discord.RichEmbed()
                 .setThumbnail("https://i.imgur.com/ib3n4Hq.png") 
-                .setTitle( "『التاريخ  والوقت』")
+                .setTitle( "**『توقيت البلاد』**")
                 .setColor('GREEN')
                 .setFooter(emoko.author.username, emoko.author.avatarURL)
-                .addField('الامارات',
+                .addField('**الامارات**',
                 "『"+ hours + ":" + minutes +":"+ seconds + "』")
-                 .addField('مكه المكرمه',
+                 .addField('**السعودية**',
                 "『"+ hours2 + ":" + minutes +":"+ seconds  + "』") 
                 .addField('مصر',
                 "『"+ hours3 + ":" + minutes +":"+ seconds  + "』") 
