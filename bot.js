@@ -208,7 +208,7 @@ client.on('message', message => {
  if (!message.member.hasPermission('')) return message.reply('');
   if (!args[0]) return message.channel.send('You didn\'t provide any number!!!');
 
-  message.channel.bulkDelete(args[0]).then(() => {
+  message.channel.bulkDelete().then(() => {
     const embed = new Discord.RichEmbed()
       .setColor(0xF16104)
       .setDescription(`Cleared ${args[0]} messages.`);
