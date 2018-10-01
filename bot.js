@@ -125,7 +125,7 @@ client.on('message', message => {
     const embedlog = new Discord.RichEmbed()
       .setDescription('~Purge~')
       .setColor(0xF16104)
-      .addField('Purged By', `<@${message.author.id}> with ID ${message.author.id}`)
+      .addField('Purged By', (`<@${message.author.id}> with ID ${message.author.id}`)
       .addField('Purged in', message.channel)
       .addField('Time', message.createdAt);
     actionlog.send(embedlog);
