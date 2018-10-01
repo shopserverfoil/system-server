@@ -116,7 +116,7 @@ client.on('message', message => {
   message.channel.bulkDelete(args[0]).then(() => {
     const embed = new Discord.RichEmbed()
       .setColor(0xF16104)
-      .setDescription(`Cleared ${args[0]} messages.`);
+      .setDescription(`Cleared ${args[0]} messages.('');
     message.channel.send({ embed });
 
     const actionlog = message.guild.channels.find('name', 'log');
