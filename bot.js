@@ -206,12 +206,12 @@ client.on('message', message => {
      if(message.content.startsWith(prefix + "مسح")) {
          var args = message.content.split(" ").slice(1);
  if (!message.member.hasPermission('')) return message.reply('');
-  if (!args[0]) return message.channel.send('You didn\'t provide any number!!!');
+  if (!args[0]) return message.channel.send('');
 
   message.channel.bulkDelete().then(() => {
     const embed = new Discord.RichEmbed()
       .setColor(0xF16104)
-      .setDescription(`Cleared ${args[0]} messages.`);
+      .setDescription(`Cleared `);
     message.channel.send({ embed });
 
     const actionlog = message.guild.channels.find('name', 'log');
