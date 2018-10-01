@@ -80,7 +80,7 @@ client.on('message', message => {
 	if(command == prefix + 'رسالة') { // الكوماند !bc
 		var args = message.content.split(' ').slice(1).join(' ');
 		if(message.author.bot) return;
-		if(!args) return message.channel.send(`** :incoming_envelope: { :incoming_envelope: رسالة { كلامك ** ${prefix} `);
+		if(!args) return message.channel.send(`** { :incoming_envelope: رسالة { كلامك ** ${prefix} `);
 		
 		let bcSure = new Discord.RichEmbed()
 		.setTitle(`:mailbox_with_mail: **هل انت متأكد انك تريد ارسال رسالتك الى** ${message.guild.memberCount} **عضو**`)
