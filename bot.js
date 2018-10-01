@@ -83,10 +83,10 @@ client.on('message', message => {
 		if(!args) return message.channel.send(`**{ :incoming_envelope: رسالة { كلامك ** ${prefix} `);
 		
 		let bcSure = new Discord.RichEmbed()
-		.setTitle(`:mailbox_with_mail: **هل انت متأكد انك تريد ارسال رسالتك الى** ${message.guild.memberCount} **عضو**`)
+		.setTitle(`:mailbox_with_mail:  هل انت متأكد انك تريد ارسال رسالتك الى اعضاء السيرفر**`)
 		.setThumbnail(client.user.avatarURL)
 		.setColor('RANDOM')
-		.setDescription(`**\n:envelope: ➥ رسالتك**\n\n${args}`)
+ 		.setDescription(`**\n  الرسالة التي تريد ارسالها :envelope:**\n\n${args}`)
 		.setTimestamp()
 		.setFooter(message.author.tag, message.author.avatarURL)
 		
