@@ -100,7 +100,7 @@ message.channel.send(""+ message.mentions.members.first() +"**❌ أن العض�
  message.channel.send("**أنت لست متواجد في روم صوتي لسحب العضو إليك ❌**")
 }
 } else {
-message.react("❌")
+message.react("")
  }}});
 
 
