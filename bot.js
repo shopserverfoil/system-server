@@ -354,7 +354,7 @@ const embed = new Discord.RichEmbed()
 
 
 
-
+client.on('message', message => {
 var cats = [
 
 "https://cdn.discordapp.com/attachments/479044877745782801/479045993132720128/download_1.jpg",
