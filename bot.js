@@ -321,16 +321,9 @@ const embed = new Discord.RichEmbed()
 
 
 
+
+
  
-
-
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag} !`);
-    client.user.setGame(`❦ العقل السليم في البعد عن الحريم `,`www.twitch.tv/AlphaCodes`);
-  });
-  
-  
-  client.login("NDc4OTU0ODAzNjU3OTY1NTY5.DpU70A.k5UlZRHoYmS-ak0_PO1uSEjaKmw");
 
 
 
