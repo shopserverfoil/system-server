@@ -366,7 +366,7 @@ const embed = new Discord.RichEmbed()
       } else {
         getvalueof = message.author;
       }
-      (`SELECT * FROM scores WHERE userId ="${getvalueof.id}"`).then(row => {
+      (`SELECT * FROM scores WHERE userId ="${getvalueof.id}"`)then(row => {
    if (!row) return message.reply("sadly you do not have any points yet!");
         message.channel.send(getvalueof.toString()+',** your :credit_card: balance is '+'`$'+`${row.points}`+'`**');
         console.log('[credit] Send By: ' + message.author.username)
