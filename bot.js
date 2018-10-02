@@ -359,9 +359,8 @@ const embed = new Discord.RichEmbed()
 
 
 
-
-const Discord = require("discord.js");
-const ms = require("ms");
+ client.on('message', message => {
+if ms = require("ms");
  
 module.exports.run = async (bot, message, args) => {
  
