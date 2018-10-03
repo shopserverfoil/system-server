@@ -358,25 +358,33 @@ const embed = new Discord.RichEmbed()
 
 
 
-const HeRo = new Discord.Client();
-client.on('message', message => {
-var prefix = "وش اليوم";
 
-    if (message.content === prefix + "وش اليوم") {
-        if (!message.channel.guild) return message.reply('** This command only for servers **');  
-        var currentTime = new Date(),
-            Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate();
 
-            var Date15= new Discord.RichEmbed()
-            .setTitle("**「  Date - التاريخ 」 **")
-            .setColor('RANDOM')
-            .setTimestamp()
-            .setDescription( "「"+ Day + "-" + Month + "-" + Year + "」")
-             message.channel.sendEmbed(Date15);
-    }
-});
+
+
+
+
+client.on('guildMemberRemove', Sal => { //By Salto7#4595
+  var embed = new Discord.RichEmbed()
+  .setAuthor(Sal.user.username, Sal.user.avatarURL)
+  .setThumbnail(Sal.user.avatarURL)
+  .setImage('https://i.ytimg.com/vi/1AGeF_BXyzQ/maxresdefault.jpg') //هنا حط الصوره الي تبيها
+  .setTitle('خرج عضو')
+  .setDescription('الله معك مع السلامه')
+  .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
+  .addField('``تاق العضو``', Sal.user.discriminator, true)
+  .addField('``تم الانشاء في``', Sal.user.createdAt, true)
+  .addField(' 👤 الان ',`**[ ${Sal.guild.memberCount} ]**`,true)
+  .setColor('RED')
+  .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
+  var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+  if (!channel) return;
+  channel.send({embed : embed});
+  });
+
+
+
+
 
 
 
