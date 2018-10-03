@@ -358,47 +358,25 @@ const embed = new Discord.RichEmbed()
 
 
 
+const HeRo = new Discord.Client();
+client.on('message', message => {
+var prefix = "وش اليوم";
 
-client.on("message", async message => {
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
+    if (message.content === prefix + "وش اليوم") {
+        if (!message.channel.guild) return message.reply('** This command only for servers **');  
+        var currentTime = new Date(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate();
 
-  let prefix = "كيك";
-  let messageArray = message.content.split (" ");
-  let cmd = messageArray[0];
-  let args = messageArray.slice(1);
-
-
-
-    if(cmd === `${prefix}kick`){
-
-
-
-      let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-      if(!kUser) return message.channel.send("فين العضو ؟");
-      let kReason = args.join(" ").slice(22);
-      if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما عندك برمشن");
-      if(kUser.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ما تقدر تسوي كيك للأدمين")
-
-      let kickEmbed = new Discord.RichEmbed()
-      .setDescription("~Kick~")
-      .setColor("#e56b00")
-      .addField("Kicked User", `${kUser} with ID ${kUser.id}`)
-      .addField("Kicked By", `<@${message.author.id}> with the id ${message.author.id}`)
-      .addField("Kicked In", message.channel)
-      .addField("Time", message.createdAt)
-      .addField("Reason", kReason);
-
-      let kickChannel = message.guild.channels.find('name', 'log-kick-ban');
-      if(!kickChannel) return message.channel.send("");
-
-      message.guild.member(kUser).kick(kReason)
-      kickChannel.send(kickEmbed);
+            var Date15= new Discord.RichEmbed()
+            .setTitle("**「  Date - التاريخ 」 **")
+            .setColor('RANDOM')
+            .setTimestamp()
+            .setDescription( "「"+ Day + "-" + Month + "-" + Year + "」")
+             message.channel.sendEmbed(Date15);
     }
-    });
-
-
-
+});
 
 
 
