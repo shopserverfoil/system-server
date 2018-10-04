@@ -365,7 +365,7 @@ client.on('ready', function(){
 
     var ms = 40000 ;    
 
-    var setGame = ['!inv','!help'];    
+    var setGame = ['help'];    
 
     var i = -1;    
 
@@ -394,6 +394,57 @@ j = 1;
     
 
 });
+
+
+
+
+
+
+
+
+
+          
+
+client.on('guildMemberRemove', Sal => { //By Salto7#4595
+
+  var embed = new Discord.RichEmbed()
+
+  .setAuthor(Sal.user.username, Sal.user.avatarURL)
+
+  .setThumbnail(Sal.user.avatarURL)
+
+  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595') //هنا حط الصوره الي تبيها
+-icon.jpg') //هنا حط الصوره الي تبيها
+
+  .setTitle('لقد غادر العضو من السيرفر ')
+
+  .setDescription('**لاتيجي تاني**')
+
+  .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
+
+  .addField('``تاق العضو``', Sal.user.discriminator, true)
+
+  .addField('``تم الانشاء في``', Sal.user.createdAt, true)
+
+  .addField(' 👤 الان ',`**[ ${Sal.guild.memberCount} ]**`,true)
+
+  .setColor('RED')
+
+  .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
+
+  var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+
+  if (!channel) return;
+
+  channel.send({embed : embed});
+
+  });
+
+
+
+
+
+
 
 
 
