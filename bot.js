@@ -413,8 +413,8 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setThumbnail(Sal.user.avatarURL)
 
-  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595') //هنا حط الصوره الي تبيها
--icon.jpg') //هنا حط الصوره الي تبيها
+  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595')
+-icon.jpg')
 
   .setTitle('لقد غادر العضو من السيرفر ')
 
@@ -432,7 +432,7 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
 
-  var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+  var channel =Sal.guild.channels.find('name', 'welcome')
 
   if (!channel) return;
 
