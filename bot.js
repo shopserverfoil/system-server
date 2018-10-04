@@ -413,9 +413,7 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setThumbnail(Sal.user.avatarURL)
 
-  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595')
--icon.jpg')
-
+  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595-icon.jpg')
   .setTitle('لقد غادر العضو من السيرفر ')
 
   .setDescription('**لاتيجي تاني**')
