@@ -405,6 +405,11 @@ j = 1;
 
           
 
+
+
+
+            
+
 client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   var embed = new Discord.RichEmbed()
@@ -413,16 +418,17 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setThumbnail(Sal.user.avatarURL)
 
-  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595-icon.jpg')
-  .setTitle('لقد غادر العضو من السيرفر ')
+  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595') //هنا حط الصوره الي تبيها
 
-  .setDescription('**لاتيجي تاني**')
+  .setTitle('**لقد خرج العضو**')
 
-  .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
+  .setDescription('**لاتيجي تاني **')
 
-  .addField('``تاق العضو``', Sal.user.discriminator, true)
+  .addField('``ايدي العضو``:',"" +  [Sal.user.id, true])
 
-  .addField('``تم الانشاء في``', Sal.user.createdAt, true)
+  .addField('``تاق العضو``', [Sal.user.discriminator, true])
+
+  .addField('``تم الانشاء في``', [Sal.user.createdAt, true])
 
   .addField(' 👤 الان ',`**[ ${Sal.guild.memberCount} ]**`,true)
 
@@ -430,14 +436,13 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
 
-  var channel =Sal.guild.channels.find('name', 'welcome')
+  var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
 
   if (!channel) return;
 
   channel.send({embed : embed});
 
   });
-
 
 
 
