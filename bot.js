@@ -369,7 +369,7 @@ message.guild.members.get(usermentioned).send(embed)
 
 } else {
 
-message.channel.send(""+ message.mentions.members.first() +"**❌ أن العضو ليس بروم صوتي**").then(msg => msg.delete(4000));
+message.channel.send("**❌ أن العضو ليس بروم صوتي**").then(msg => msg.delete(4000));
 
 }
 
