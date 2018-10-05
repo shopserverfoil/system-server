@@ -137,11 +137,11 @@ client.on('message', message => {
 
         message.channel.send(`**هل أنت متأكد من أرسال رسالتك  :mailbox_with_mail: **`)
 
-        .setThumbnail(client.user.avatarURL)
+
 
         .setColor('GREEN')
 
-        .setTimestamp()
+        
 
         .setFooter(message.author.tag, message.author.avatarURL)
 
