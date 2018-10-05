@@ -21,6 +21,7 @@
     "simple-youtube-api": "^5.0.2",
     "youtube-info": "^1.2.0",
     "ytdl-core": "^0.21.1"
+    "fs": "^0.0.2",
   },
   "keywords": [
     "heroku",
