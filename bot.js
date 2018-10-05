@@ -124,10 +124,10 @@ client.on('message', message => {
         if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} `);
         
         let bcSure = new Discord.RichEmbed()
-        .addField(`**:mailbox_with_mail: هل انت متأكد انك تريد ارسال رسالتك** `)
+        .addField(`** هل انت متأكد انك تريد ارسال رسالتك  :mailbox_with_mail: ** `)
         .setThumbnail(client.user.avatarURL)
         .setColor('GREEN')
-        .setTimestamp()
+       
         .setFooter(message.author.tag, message.author.avatarURL)
         
         message.channel.send(bcSure).then(msg => {
