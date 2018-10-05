@@ -143,7 +143,7 @@ client.on('message', message => {
 
         
 
-        .setFooter(message.author.tag, message.author.avatarURL)
+        
 
         
 
