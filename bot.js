@@ -255,7 +255,7 @@ var embed = new Discord.RichEmbed()
 
  
 
-message.channel.send(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅${message.guild.voiceChannel.tag}**`).then(msg => msg.delete(5000));
+message.channel.send(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅${message.guild.voiceChannel.id}**`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
@@ -278,6 +278,46 @@ message.channel.send(""+ message.mentions.members.first() +"**❌ أن العض�
 message.react("")
 
  }}});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+client.on('message', function(message) {
+
+    if (message.content == "مسح") {
+
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+
+            message.channel.fetchMessages()
+
+               .then(function(list){
+
+                    message.channel.bulkDelete(list);
+
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+
+        }
+
+    }
+
+});
+
+
+
+
 
 
 
