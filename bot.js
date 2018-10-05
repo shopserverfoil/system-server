@@ -129,7 +129,7 @@ client.on('message', message => {
 
         if(message.author.bot) return;
 
-        if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} ;).then(msg => msg.delete(5000));`)
+        if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} ;`).then(msg => msg.delete(5000));
 
         
 
