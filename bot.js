@@ -139,7 +139,7 @@ client.on('message', message => {
 
 
 
-        .setColor('GREEN')
+        
 
         
 
