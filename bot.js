@@ -377,7 +377,7 @@ const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 
 const queue = new Map();
 
-const client = new Discord.Client();
+
 
  
 
