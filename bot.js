@@ -294,7 +294,7 @@ if(hours3 > 12) {
 
 const embed = new Discord.RichEmbed()
                 .setThumbnail("https://i.imgur.com/ib3n4Hq.png") 
-                .setTitle( "**『توقيت البلاد』**")
+                .setTitle( "『توقيت البلاد』")
                 .setColor('GREEN')
                 .setFooter(emoko.author.username, emoko.author.avatarURL)
                 .addField('**الامارات**',
@@ -420,21 +420,21 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595') //هنا حط الصوره الي تبيها
 
-  .setTitle('**لقد خرج العضو**')
+  .setTitle('لقد خرج العضو')
 
   .setDescription('**لاتيجي تاني **')
 
-  .addField('``ايدي العضو``:',"" +  [Sal.user.id, true])
+  .addField('**ايدي العضو**', +  [Sal.user.id])
 
-  .addField('``تاق العضو``', [Sal.user.discriminator, true])
+  .addField('**تاق العضو**', [Sal.user.discriminator])
 
-  .addField('``تم الانشاء في``', [Sal.user.createdAt, true])
+  .addField('**تاريخ الانضمام**', [Sal.user.createdAt])
 
-  .addField(' 👤 الان ',`**[ ${Sal.guild.memberCount} ]**`,true)
+  .addField('** 👤 الان **',`**[ ${Sal.guild.memberCount} ]**`)
 
   .setColor('RED')
 
-  .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
+  .setFooter(`**[ Sal.guild.name, Sal.guild.iconURL ]**`)
 
   var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
 
