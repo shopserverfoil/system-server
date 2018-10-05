@@ -113,6 +113,10 @@ client.on('message', function(msg) {
 
 
 
+
+
+
+
 client.on('message', message => {
 
         var prefix = ''; // هنا تقدر تغير البرفكس
@@ -131,7 +135,7 @@ client.on('message', message => {
 
         let bcSure = new Discord.RichEmbed()
 
-        .setTitle(`**:mailbox_with_mail: هل انت متأكد انك تريد ارسال رسالتك **`)
+        .setTitle(`**لاتقلق سترسل **`)
 
         .setThumbnail(client.user.avatarURL)
 
@@ -139,7 +143,7 @@ client.on('message', message => {
 
         .setTimestamp()
 
-
+        .setFooter(message.author.tag, message.author.avatarURL)
 
         
 
@@ -198,6 +202,10 @@ client.on('message', message => {
     }
 
 });
+
+
+
+
 
 
 
