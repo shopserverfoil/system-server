@@ -126,7 +126,7 @@ client.on('message', message => {
         let bcSure = new Discord.RichEmbed()
         message.channel.send(`** هل انت متأكد انك تريد ارسال رسالتك  :mailbox_with_mail: ** `)
        
-       .setColor("BLACK")
+      
        
         .setFooter(message.author.tag, message.author.avatarURL)
         
