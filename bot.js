@@ -157,11 +157,11 @@ client.on('message', message => {
 
            
 
-       let   yesEmoji = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
+       let yesEmoji = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
 
             let noEmoji = (reaction, user) => reaction.emoji.name === '❎' && user.id === message.author.id;
 
-            message.channel.send.then(msg => msg.delete(5000));
+            
 
             let sendBC = msg.createReactionCollector(yesEmoji);
 
