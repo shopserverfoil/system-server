@@ -275,7 +275,7 @@ message.channel.send(""+ message.mentions.members.first() +"**❌ أن العض�
 
 } else {
 
-message.react("❌")
+message.react("")
 
  }}});
 
