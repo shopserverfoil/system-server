@@ -343,7 +343,7 @@ if(message.content.startsWith(prefix + 'اسحب')) {
 
 if (message.member.voiceChannel != null) {
 
- if (message.mentions.members.first().voiceChannel != null) {
+ 
 
  var authorchannel = message.member.voiceChannelID;
 
