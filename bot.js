@@ -410,39 +410,66 @@ j = 1;
 
             
 
-client.on('guildMemberRemove', Sal => { //By Salto7#4595
+            
 
-  var embed = new Discord.RichEmbed()
+client.on('message', message => { 
 
-  .setAuthor(Sal.user.username, Sal.user.avatarURL)
+    var prefix ="id";
 
-  .setThumbnail(Sal.user.avatarURL)
+           if (message.content.startsWith(prefix + "id")) {
 
-  .setImage('https://tansia.files.wordpress.com/2017/05/wp-image-1187321640.png?w=1595') //هنا حط الصوره الي تبيها
+     var args = message.content.split(" ").slice(1);
 
-  .setTitle('لقد خرج العضو')
+     let user = message.mentions.users.first();
 
-  .setDescription('**لاتيجي تاني **')
+     var men = message.mentions.users.first();
 
-  .addField('**ايدي العضو**', +  [Sal.user.id])
+        var heg;
 
-  .addField('**تاق العضو**', [Sal.user.discriminator])
+        if(men) {
 
-  .addField('**تاريخ الانضمام**', [Sal.user.createdAt])
+            heg = men
 
-  .addField('** 👤 الان **',`**[ ${Sal.guild.memberCount} ]**`)
+        } else {
 
-  .setColor('RED')
+            heg = message.author
 
-  .setFooter([ Sal.guild.name, Sal.guild.iconURL ])
+        }
 
-  var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
+      var mentionned = message.mentions.members.first();
 
-  if (!channel) return;
+         var h;
 
-  channel.send({embed : embed});
+        if(mentionned) {
 
-  });
+            h = mentionned
+
+        } else {
+
+            h = message.member
+
+        }
+
+               moment.locale('ar-TN');
+
+      var id = new  Discord.RichEmbed()
+
+      .setAuthor(message.author.username, message.author.avatarURL) 
+
+    .setColor("#707070")
+
+    .addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true) 
+
+    .addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)               
+
+    .setFooter(`Morro Bot`, 'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')                                 
+
+    .setThumbnail(heg.avatarURL);
+
+    message.channel.send(id)
+
+}       });
+
 
 
 
