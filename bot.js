@@ -163,7 +163,7 @@ client.on('message', message => {
 
             
 
-            let (`sendBC = msg.createReactionCollector(yesEmoji)`;).then(msg => msg.delete(5000));
+            let (`sendBC = msg.createReactionCollector(yesEmoji)`).then(msg => msg.delete(5000));
 
             let dontSendBC = msg.createReactionCollector(noEmoji);
 
