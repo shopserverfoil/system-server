@@ -127,7 +127,7 @@ client.on('message', message => {
        .addField('**:mailbox_with_mail: هل انت متأكد انك تريد ارسال رسالتك **`)
         .setThumbnail(client.user.avatarURL)
         .setColor('GREEN')
-        .setTimestamp(ها)
+        .setTimestamp()
         .setFooter(message.author.tag, message.author.avatarURL)
         
         message.channel.send(bcSure).then(msg => {
