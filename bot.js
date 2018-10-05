@@ -183,7 +183,7 @@ client.on('message', message => {
 
                 })
 
-                message.channel.send(` **  لقد تم أرسال رسالتك إلي عضو ✅[ ${msg.guild.memberCount} ] **`).then(msg => msg.delete(5000));
+                message.channel.send(` **  لقد تم أرسال رسالتك إلي  [ ${msg.guild.memberCount} ] عضو في السيرفر ✅ **`).then(msg => msg.delete(5000));
 
                 msg.delete();
 
