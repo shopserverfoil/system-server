@@ -129,13 +129,13 @@ client.on('message', message => {
 
         if(message.author.bot) return;
 
-        if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} `);
+        if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} ;.then(msg => msg.delete(5000));`)
 
         
 
         let bcSure = new Discord.RichEmbed()
 
-        message.channel.send(`**هل أنت متأكد من أرسال رسالتك  :mailbox_with_mail: **`)
+        message.channel.send(`**هل أنت متأكد من أرسال رسالتك  :mailbox_with_mail: **`).then(msg => msg.delete(5000));
 
 
 
