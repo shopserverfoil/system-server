@@ -297,9 +297,9 @@ client.on('ready', () => {
 
     )
 
-  message.channel.send("**تم ارسال الرابط برسالة خاصة**").then(msg => msg.delete(3500));
+  message.channel.send("[📧 **تم أرسال الرابط برسالة خاصة** ]").then(msg => msg.delete(3500));
 
-message.author.send(`**عدد استخدمات الرابط : 5 : مدة الرابط [يوم]**`)
+message.author.send(`**عدد استخدمات الرابط : 5 : مدة الرابط [ يوم ]**`)
 
 
 
@@ -310,6 +310,83 @@ message.author.send(`**عدد استخدمات الرابط : 5 : مدة الر�
   
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+
+    var prefix = "";
+
+if(!message.channel.guild) return;
+
+if(message.content.startsWith(prefix + 'اسحب')) {
+
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+
+ if (message.mentions.users.size === 0) {
+
+ return message.channel.send("" +prefix+ "** يجب أن تمنشن العضو  ❌**").then(msg => msg.delete(4000));
+
+}
+
+if (message.member.voiceChannel != null) {
+
+ if (message.mentions.members.first().voiceChannel != null) {
+
+ var authorchannel = message.member.voiceChannelID;
+
+ var usermentioned = message.mentions.members.first().id;
+
+var embed = new Discord.RichEmbed()
+
+ .setTitle("Succes!")
+
+ 
+
+ 
+
+var embed = new Discord.RichEmbed()
+
+ 
+
+.setDescription(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(4000));
+
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+
+message.guild.members.get(usermentioned).send(embed)
+
+} else {
+
+message.channel.send(""+ message.mentions.members.first() +"**❌ أن العضو ليس بروم صوتي**").then(msg => msg.delete(4000));
+
+}
+
+} else {
+
+ message.channel.send("**أنت لست متواجد في روم صوتي لسحب العضو إليك ❌**").then(msg => msg.delete(4000));
+
+}
+
+} else {
+
+message.react("")
+
+ }}});
+
+
+
 
 
 
