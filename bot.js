@@ -122,11 +122,10 @@ client.on('message', message => {
         var args = message.content.split(' ').slice(1).join(' ');
         if(message.author.bot) return;
         if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} `);
-        message.channel.send(bcSure).then(msg => {
+       
         let bcSure = new Discord.RichEmbed()
         message.channel.send(`** هل انت متأكد انك تريد ارسال رسالتك ** :mailbox_with_mail:`).then(msg => msg.delete(5000));
-       msg.delete();
-    })
+       
    
       
      
