@@ -18,4 +18,64 @@ client.on('ready', () => {
 
 
 
+
+var ss = 0;
+
+client.on('voiceStateUpdate', (o,n) => {
+
+    if (o.voiceChannel && !n.voiceChannel) {
+
+        ss-=1
+
+        n.guild.channels.get("489800301021233163").edit({
+
+            name : "4 Ever Online : [" + ss+ "]"
+
+        })
+
+    };
+
+    if (n.voiceChannel && !o.voiceChannel) {
+
+        ss+=1
+
+        n.guild.channels.get("489800301021233163").edit({
+
+            name : "4 Ever Online : [" + ss+ "]"
+
+        })
+
+    }
+
+})
+
+client.on("ready", () => {
+
+    client.guilds.get("483960386693890058").members.forEach(m => {
+
+        if (m.voiceChannel) {
+
+            ss+=1
+
+        };
+
+        client.channels.get("489800301021233163").edit({
+
+            name : "4 Ever Online : [" + ss+ "]"
+
+        })
+
+    });
+
+});
+
+// جميع الحقوق محفوظة لدى :@┃HEART┃ ❦  4EVER#9512 
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
