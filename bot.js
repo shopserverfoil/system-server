@@ -383,7 +383,13 @@ message.channel.send("**❌ أن العضو ليس بروم صوتي**").then(ms
 
 message.react("")
 
- }}});
+    
+    
+    
+    
+}
+
+});
 
 
 
