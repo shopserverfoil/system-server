@@ -127,8 +127,7 @@ client.on('message', message => {
         message.channel.send(`** هل انت متأكد انك تريد ارسال رسالتك  :mailbox_with_mail: ** `)
        
       
-       
-        .setFooter(message.author.tag, message.author.avatarURL)
+     
         
         message.channel.send(bcSure).then(msg => {
             msg.react('✅').then(() => msg.react('❎'));
