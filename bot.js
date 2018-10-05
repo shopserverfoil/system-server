@@ -135,11 +135,11 @@ client.on('message', message => {
             message.delete();
             
             
-            message.channel.send let yesEmoji = (`reaction, user => reaction.emoji.name === '✅'  && user.id === message.author.id;`).then(msg => msg.delete(5000));
-            message.channel.send let noEmoji = (`reaction, user => reaction.emoji.name === '❎' && user.id === message.author.id;`).then(msg => msg.delete(5000));
+            message.channel.send let (`yesEmoji = reaction, user => reaction.emoji.name === '✅'  && user.id === message.author.id;`).then(msg => msg.delete(5000));
+            message.channel.send let (`noEmoji = reaction, user => reaction.emoji.name === '❎' && user.id === message.author.id;`).then(msg => msg.delete(5000));
            
-            let sendBC = msg.createReactionCollector(yesEmoji);
-            let dontSendBC = msg.createReactionCollector(noEmoji);
+            let sendBC = msg.createReactionCollector("yesEmoji");
+            let dontSendBC = msg.createReactionCollector("noEmoji");
             
             sendBC.on('collect', r => {
                 message.guild.members.forEach(member => {
