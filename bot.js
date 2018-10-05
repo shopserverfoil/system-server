@@ -434,7 +434,7 @@ client.on('guildMemberRemove', Sal => { //By Salto7#4595
 
   .setColor('RED')
 
-  .setFooter(`**[ Sal.guild.name, Sal.guild.iconURL ]**`)
+  .setFooter([ Sal.guild.name, Sal.guild.iconURL ])
 
   var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
 
