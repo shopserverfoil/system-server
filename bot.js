@@ -124,9 +124,9 @@ client.on('message', message => {
         if(!args) return message.channel.send(`**رسالة { كلامك :envelope: } ** ${prefix} `);
         
         let bcSure = new Discord.RichEmbed()
-        .addField(`** هل انت متأكد انك تريد ارسال رسالتك  :mailbox_with_mail: ** `)
-        
-        .setColor('GREEN')
+        .addField("** هل انت متأكد انك تريد ارسال رسالتك  :mailbox_with_mail: ** "`).then(msg => msg.delete(5000));
+        msg.delete():
+       .setColor("BLACK")
        
         .setFooter(message.author.tag, message.author.avatarURL)
         
