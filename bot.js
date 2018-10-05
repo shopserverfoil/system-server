@@ -135,7 +135,7 @@ client.on('message', message => {
 
         let bcSure = new Discord.RichEmbed()
 
-        .setTitle(`**لاتقلق سترسل **`)
+        message.channel.send(`**هل أنت متأكد من أرسال رسالتك  :mailbox_with_mail: **`)
 
         .setThumbnail(client.user.avatarURL)
 
@@ -155,7 +155,7 @@ client.on('message', message => {
 
             
 
-            
+           
 
             let yesEmoji = (reaction, user) => reaction.emoji.name === '✅'  && user.id === message.author.id;
 
@@ -183,7 +183,7 @@ client.on('message', message => {
 
                 })
 
-                message.channel.send(`:timer: **يتم الان الارسال الى اعضاء السيرفر**`).then(msg => msg.delete(5000));
+                message.channel.send(`عضو[ ${msg.guild.memberCount} ] ** لقد تم أرسال رسالتك إلي **`).then(msg => msg.delete(5000));
 
                 msg.delete();
 
