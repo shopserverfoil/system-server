@@ -404,6 +404,11 @@ message.react("")
 
 
 
+
+
+
+
+
 client.on('message', async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
@@ -412,7 +417,7 @@ client.on('message', async message => {
   let command = args[0];
 
   if(message.content.startsWith(prefix + "مسح")) {
-    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('"معندك رتبه"').then(msg => {
+    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('**انت لا تملك الخصائص الكافية.**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -432,7 +437,7 @@ client.on('message', async message => {
         }).then(m => {
           message.channel.bulkDelete(msg).then(() => {
             message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(2000);
+              msg.delete(3000);
             });
           });
         });
@@ -444,7 +449,7 @@ client.on('message', async message => {
           }).then(m => {
               message.channel.bulkDelete(m).then(() => {
                   message.channel.send(`${message.author},\n\`\`\`تم مسح الرسائل بنجاح\`\`\``).then(msg => {
-              msg.delete(2000);
+              msg.delete(3000);
                   });
               });
           });
@@ -486,12 +491,6 @@ client.on('message', async message => {
     }
   }
 });
-
-
-
-
-
-
 
 
 
