@@ -417,11 +417,11 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return message.reply('https://cdn.pg.sa/n4eSIakPew.png').then(msg => {
+    if(!mention) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+    setImage('http://https://cdn.pg.sa/n4eSIakPew.png')
     if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
