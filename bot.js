@@ -404,7 +404,6 @@ message.react("")
 
 
 
-
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
@@ -419,7 +418,7 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return message.reply('https://media.discordapp.net/attachments/498270956469354496/498271456304824331/n4eSIakPew.png').then(msg => {
+    if(!mention) return {files: ["https://i.imgur.com/Icf99Hd.png"]})
       msg.delete(3500);
       message.delete(3500);
     });
@@ -511,7 +510,6 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
   }
 });
-
 
 
 
