@@ -412,7 +412,7 @@ client.on('message', async message => {
   let command = args[0];
 
   if(message.content.startsWith(prefix + "مسح")) {
-    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('').then(msg => {
+    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('"معندك رتبه"').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
