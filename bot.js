@@ -421,7 +421,7 @@ client.on('message', async message => {
       msg.delete(3500);
       message.delete(3500);
     });
-    setImage('http://https://cdn.pg.sa/n4eSIakPew.png')
+    `.setImage`('http://https://cdn.pg.sa/n4eSIakPew.png')
     if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
