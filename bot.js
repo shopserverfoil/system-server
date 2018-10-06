@@ -570,7 +570,7 @@ client.on('message', async message => {
 
     },duration * 60000);
 
-  } else if(message.content.startsWith(prefix + "unmute")) {
+  } else if(message.content.startsWith(prefix + "تكلم")) {
 
     let mention = message.mentions.members.first();
 
