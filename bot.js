@@ -409,6 +409,7 @@ message.react("")
 
 
 
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
@@ -423,9 +424,10 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return message.channel.send({file : "https://cdn.discordapp.com/attachments/498157186552430624/498166660457299980/Screenshot_2053.png"}).then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
+       if(!mention) return message.channel.send({file : "https://cdn.discordapp.com/attachments/498157186552430624/498166660457299980/Screenshot_2053.png"}).then(msg => {
+    if(!mention) return message.reply('').then(msg => {
+      msg.delete(5000);
+      message.delete(5000);
     });
 
     if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
@@ -441,18 +443,18 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    
-  if(!duration) return message.channel.send({file : "https://cdn.discordapp.com/attachments/498157186552430624/498166660457299980/Screenshot_2053.png"}).then(msg => {
+    let duration = args[2];
+    if(!duration) return message.reply('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if((duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
+    if(isNaN(duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    let reason = message.content.split(" ").slice(1).join(" ");
+    let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = "غير محدد";
 
     let thisEmbed = new Discord.RichEmbed()
@@ -515,7 +517,6 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
   }
 });
-
 
 
 
