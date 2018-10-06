@@ -446,7 +446,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let reason = message.content.split(" ").slice(3).join(" ");
+    let reason = message.content.split(" ").slice().join(" ");
     if(!reason) reason = "غير محدد";
 
     let thisEmbed = new Discord.RichEmbed()
@@ -455,7 +455,7 @@ client.on('message', async message => {
     .setThumbnail(mention.user.avatarURL)
     .addField('# - السيرفر',message.guild.name,true)
     .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - السبب',reason)
+    .addField('# - لاتلعب معي تاني ',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
