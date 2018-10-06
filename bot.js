@@ -409,7 +409,8 @@ message.react("")
 
 
 
-client.on('message', async message => {
+
+   client.on('message', async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
 
@@ -417,7 +418,7 @@ client.on('message', async message => {
   let command = args[0];
 
   if(message.content.startsWith(prefix + "مسح")) {
-    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply('**انت لا تملك الخصائص الكافية.**').then(msg => {
+    if(!message.member.hasPermission("MANAGEP_MESSAGES")) return message.reply("**انت لا تملك الخصائص الكافية.**").then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -426,11 +427,6 @@ client.on('message', async message => {
       var stop = true;
       var msg = parseInt(100);
 
-      stop = false;
-      setTimeout(() => {
-        stop = true;
-      },3005);
-      setInterval(() => {
         if(stop === true) return;
         message.channel.fetchMessages({
           limit: msg
@@ -454,11 +450,7 @@ client.on('message', async message => {
               });
           });
       } else if(args[1] <= 200) {
-        stop = true;
-        setTimeout(() => {
-          stop = false;
-        },2001);
-        setInterval(() => {
+        
           if(stop === true) return;
           message.channel.fetchMessages({
             limit: msg
@@ -471,11 +463,7 @@ client.on('message', async message => {
           });
         },1000);
       } else if(args[1] <= 300) {
-        stop = true;
-        setTimeout(() => {
-          stop = false;
-        },2001);
-        setInterval(() => {
+       
           if(stop === true) return;
           message.channel.fetchMessages({
             limit: msg
@@ -490,7 +478,7 @@ client.on('message', async message => {
       }
     }
   }
-});
+});     
 
 
 
