@@ -446,7 +446,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let reason = message.content.split(" ").slice().join(" ");
+    let reason = (" ").slice().join(" ");
     if(!reason) reason = "غير محدد";
 
     let thisEmbed = new Discord.RichEmbed()
