@@ -404,6 +404,7 @@ message.react("")
 
 
 client.on('message', async message => {
+    
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
@@ -415,13 +416,13 @@ client.on('message', async message => {
       msg.delete(3500);
       message.delete(3500);
     });
-
-    let mention = message.mentions.members.first();
+var embed = new Discord.RichEmbed()
+    .setImage(' https://cdn.pg.sa/n4eSIakPew.png")();
     if(!mention) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    `.setImage`('http://https://cdn.pg.sa/n4eSIakPew.png')
+    
     if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
