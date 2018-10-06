@@ -403,375 +403,131 @@ message.react("")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let sw = JSON.parse(fs.readFileSync("./setWlc.json", "UTF8"))
-
- 
-
-    client.on('message', message => {
-
-const Canvas = require("canvas") // npm i canvas
-
-const fs = require("fs") // npm i fs
-
- 
-
-        let mothed = ['text', 'embed', 'image'];
-
-        let sets = message.content.split(" ").slice(1).join(" ")
-
-        let style = message.content.split(" ").slice(2).join(" ")
-
-        let stym = message.content.split(" ").slice(3).join(" ")
-
-        let msz = message.content.split(" ").slice(2).join(" ")
-
-        let ch = message.content.split(" ").slice(2).join(" ")
-
-        let r = message.content.split(" ").slice(4).join(" ")
-
- 
-
- 
-
-        if(message.content.startsWith(prefix + "setWlc")) {
-
-    if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-
-            if(!sw[message.guild.id]) sw[message.guild.id] = {
-
-                cha: "welcome",
-
-                msz: "Welcome Bro",
-
-                styler: "text"
-
-            };
-
- 
-
-            if(!sets) {
-
-                message.channel.send(`**Usage:
-
-            ${prefix}setWlc style <text, image, embed>
-
-            ${prefix}setWlc msg <message>
-
-            ${prefix}setWlc channal <channel name>**`)
-
-            }
-
- 
-
-            if(!mothed) {
-
-                message.channel.send(`**Usage: ${prefix}setWlc style <text, imgae, embed>**`)
-
-            }
-
- 
-
-            if(message.content === prefix + 'setWlc style image') {
-
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-
-                sw[message.guild.id].styler = 'image'
-
-                message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)
-
-            }
-
- 
-
-            if(message.content === prefix + 'setWlc style embed') {
-
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-
-                 sw[message.guild.id].styler = 'embed'
-
-                message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)            }
-
- 
-
-            if(message.content === prefix + 'setWlc style text') {
-
-                if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-
-                 sw[message.guild.id].styler = 'text'
-
-                message.channel.send(`**Your server welcome mothed has been changed to ${sw[message.guild.id].styler}**`)
-
-            }
-
- 
-
-        }
-
- 
-
-        if(message.content.startsWith(prefix + "setWlc msg")) {
-
-            if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("**You need `Manage Messages` permission**")
-
-            if(!msz) {
-
-                message.channel.send("Usage: <setWlc msg <message>")
-
-            } else {
-
-                message.channel.send(`**Your server welcome message has been changed to __${msz}__**`)
-
-                sw[message.guild.id].msk = msz
-
-            }
-
-        }
-
- 
-
-        if(message.content.startsWith(prefix + "setWlc channel")) {
-
-            if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**You need `Manage Channels` permission**")
-
-            if(!ch) {
-
-                message.channel.send("Usage: <setWlc channel <channel name>")
-
-            }
-
-            let chn = message.guild.channels.find("name", ch)
-
-            if(!chn) {
-
-                message.channel.send("**I can't find this channel**")
-
-            }
-
-            else {
-
-                 sw[message.guild.id].cha = chn.name
-
-                 message.channel.send(`**Your server welcome channel has been changed to __${chn.name}__**`)
-
-                 }
-
-        }
-
- 
-
-        fs.writeFile('./setWlc.json', JSON.stringify(sw), (err) => {
-
-if (err) console.error(err);
-
-})
-
-})
-
- 
-
- 
-
-client.on('guildMemberAdd', member => {
-
-    let channel = member.guild.channels.find("name", sw[member.guild.id].cha)
-
- 
-
-    if(sw[member.guild.id].styler === "text") {
-
-        channel.sendMessage(`<@${member.user.id}>, ${sw[member.guild.id].msk}`)
-
+client.on('message', async message => {
+  let args = message.content.split(" ");
+  if(message.content.startsWith(prefix + "اسكت")) {
+    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    let mention = message.mentions.members.first();
+    if(!mention) return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+    if(mention.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    let duration = args[2];
+    if(!duration) return message.reply('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    if(isNaN(duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    let reason = message.content.split(" ").slice(3).join(" ");
+    if(!reason) reason = "غير محدد";
+
+    let thisEmbed = new Discord.RichEmbed()
+    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setTitle('تم اغطائك ميوت بسيرفر')
+    .setThumbnail(mention.user.avatarURL)
+    .addField('# - السيرفر',message.guild.name,true)
+    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
+    .addField('# - السبب',reason)
+
+    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+    if(!role) try {
+      message.guild.createRole({
+        name: "Muted",
+        permissions: 0
+      }).then(r => {
+        message.guild.channels.forEach(c => {
+          c.overwritePermissions(r , {
+            SEND_MESSAGES: false,
+            READ_MESSAGES_HISTORY: false,
+            ADD_REACTIONS: false
+          });
+        });
+      });
+    } catch(e) {
+      console.log(e.stack);
     }
+    mention.addRole(role).then(() => {
+      mention.send(thisEmbed);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
+      mention.setMute(true);
+    });
+    setTimeout(() => {
+      if(duration === 0) return;
+      if(!mention.has.roles(role)) return;
+      mention.setMute(false);
+      mention.removeRole(role);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+    },duration * 60000);
+  } else if(message.content.startsWith(prefix + "تكلم")) {
+    let mention = message.mentions.members.first();
+    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
- 
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
-    if(sw[member.guild.id].styler === "embed") {
+    if(!mention) return message.reply('**منشن الشخص لفك الميوت عنه**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
- 
+      mention.removeRole(role);
+      mention.setMute(false);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+  }
+});
 
-        const embed = new Discord.RichEmbed()
 
-        .setTitle("Member joind.")
 
-        .setColor("GREEN")
 
-        .setThumbnail(member.user.avatarURL)
 
-        .setDescription(`**${sw[member.guild.id].msk}**`)
 
-        .addField("**Member name**", `[<@${member.user.id}>]`,true)
 
-        .addField("**Now we are**", `[${member.guild.memberCount}]`,true)
 
-        channel.sendMessage(`<@${member.user.id}>`)
 
-        channel.sendEmbed(embed)
 
-    }
 
- 
 
-    if(sw[member.guild.id].styler === "image") {
 
-        if (member.user.bot) return;
 
-const w = ['./image.png'];
 
-        let Image = Canvas.Image,
 
-            canvas = new Canvas(749, 198),
 
-            ctx = canvas.getContext('2d');
 
-        ctx.patternQuality = 'bilinear';
 
-        ctx.filter = 'bilinear';
-
-        ctx.antialias = 'subpixel';
-
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
-
-        ctx.shadowOffsetY = 2;
-
-        ctx.shadowBlur = 2;
-
-        ctx.stroke();
-
-        ctx.beginPath();
-
- 
-
-        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
-
-            if (err) return console.log(err);
-
-            let BG = Canvas.Image;
-
-            let ground = new Image;
-
-            ground.src = Background;
-
-            ctx.drawImage(ground, 0, 0, 749, 198);
-
- 
-
-})
-
- 
-
-                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
-
-                jimp.read(url, (err, ava) => {
-
-                    if (err) return console.log(err);
-
-                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
-
-                 if (err) return console.log(err);
-
- 
-
-ctx.font = '35px Aeland';
-
-                        ctx.fontSize = '40px';
-
-                        ctx.fillStyle = "#FFFFFF";
-
-                        ctx.textAlign = "center";
-
-                        ctx.fillText(" Welcome to " + member.guild.name , 440, 25);
-
- 
-
-                        //ur name
-
-                        ctx.font = '40px Impact';
-
-                        ctx.fontSize = '48px';
-
-                        ctx.fillStyle = "#FFFFFF";
-
-                        ctx.textAlign = "center";
-
-                        ctx.fillText(member.user.username, 420, 100);
-
- 
-
-                         ctx.font = '30px Impact';
-
-                        ctx.fontSize = '20px';
-
-                        ctx.fillStyle = "#FFFFFF";
-
-                        ctx.textAlign = "center";
-
-                        ctx.fillText(sw[member.guild.id].msk, 410, 170);
-
- 
-
- 
-
-                        //Avatar
-
-                        let Avatar = Canvas.Image;
-
-                              let ava = new Avatar;
-
-                              ava.src = buf;
-
-                              ctx.beginPath();
-
-                              ctx.arc(115, 100, 90, 0, Math.PI*2);
-
-                                 ctx.closePath();
-
-                                 ctx.clip();
-
-                                 ctx.drawImage(ava, 5, 5, 200, 200);
-
-                                 channel.sendMessage(`<@${member.user.id}>`)
-
-        channel.sendFile(canvas.toBuffer())
-
- 
-
- 
-
- 
-
-})
-
-})
-
- 
-
-    }
-
- 
-
-})
 
 
 
