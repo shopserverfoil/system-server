@@ -297,7 +297,7 @@ client.on('ready', () => {
 
     )
 
-  message.channel.send("[📧 **تم أرسال الرابط برسالة خاصة** ]").then(msg => msg.delete(3500));
+  message.channel.send("[ **تم أرسال الرابط برسالة خاصة** :mailbox_with_mail: ]").then(msg => msg.delete(3500));
 
 message.author.send(`**عدد استخدمات الرابط : 5 : مدة الرابط [ يوم ]**`)
 
@@ -361,7 +361,7 @@ var embed = new Discord.RichEmbed()
 
  
 
-.setDescription(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(5000));
+message.channel.send(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
