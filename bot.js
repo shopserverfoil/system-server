@@ -446,16 +446,16 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let reason = message.content.split(" ").slice(اسكت).join(" ");
+    let reason = message.content.split(" ").slice(1).join(" ");
     if(!reason) reason = "غير محدد";
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('تم اغطائك ميوت بسيرفر')
+    .setTitle('** [ 4EVER ] تم اعطائك ميوت بسيرفر **')
     .setThumbnail(mention.user.avatarURL)
     .addField('# - السيرفر',message.guild.name,true)
     .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - لاتلعب معي تاني ',reason)
+    .addField('# - لوتبي تشتكي روح للاونر ',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
