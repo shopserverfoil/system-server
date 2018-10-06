@@ -528,9 +528,13 @@ client.on('message', async message => {
 
 
 client.on('message', msg => {
+
     if (msg.content === 'اسكت') {
-      msg.reply('https://img.youtube.com/vi/3YeOTeF3W6Q/mqdefault.jpg');
+
+      msg.reply('./image.jpg');
+
     }
+
   });
 
 
