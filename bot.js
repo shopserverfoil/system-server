@@ -417,7 +417,7 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+    if(!mention) return message.reply('https://cdn.pg.sa/n4eSIakPew.png').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
