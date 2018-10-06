@@ -531,7 +531,7 @@ client.on('message', msg => {
 
     if (msg.content === 'اسكت') {
 
-      msg.reply('./image.jpg');
+      msg.reply('mqdefault.jpg');
 
     }
 
