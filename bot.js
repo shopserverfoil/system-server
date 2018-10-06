@@ -425,9 +425,7 @@ client.on('message', async message => {
 
     let mention = message.mentions.members.first();
     if(!mention) return message.reply('** يجب أن تمنشن العضو لاعطأة أسكات ❌**').then(msg => {
-        var embed = new Discord.RichEmbed()
-       .
-      .setImage('http://https://cdn.pg.sa/n4eSIakPew.png')
+      
         msg.delete(3500);
       message.delete(3500);
     });
@@ -525,6 +523,15 @@ client.on('message', async message => {
 
 
 
+
+
+
+
+client.on('message', msg => {
+    if (msg.content === 'اسكت') {
+      msg.reply('http://https://cdn.pg.sa/n4eSIakPew.png');
+    }
+  });
 
 
 
