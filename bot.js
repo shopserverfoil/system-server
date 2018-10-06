@@ -441,7 +441,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let duration = args[2];
+    
   if(!duration) return message.channel.send({file : "https://cdn.discordapp.com/attachments/498157186552430624/498166660457299980/Screenshot_2053.png"}).then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -452,7 +452,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let reason = message.content.split(" ").slice(3).join(" ");
+    let reason = message.content.split(" ").slice(1).join(" ");
     if(!reason) reason = "غير محدد";
 
     let thisEmbed = new Discord.RichEmbed()
