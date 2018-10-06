@@ -337,13 +337,13 @@ if(message.content.startsWith(prefix + 'اسحب')) {
 
  if (message.mentions.users.size === 0) {
 
- return message.channel.send("" +prefix+ "** يجب أن تمنشن العضو  ❌**").then(msg => msg.delete(4000));
+ return message.channel.send("" +prefix+ "** يجب أن تمنشن العضو  ❌**").then(msg => msg.delete(5000));
 
 }
 
 if (message.member.voiceChannel != null) {
 
- 
+ if (message.mentions.members.first().voiceChannel != null) {
 
  var authorchannel = message.member.voiceChannelID;
 
@@ -361,7 +361,7 @@ var embed = new Discord.RichEmbed()
 
  
 
-.setDescription(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(4000));
+.setDescription(`**<@${message.author.id}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
@@ -369,13 +369,13 @@ message.guild.members.get(usermentioned).send(embed)
 
 } else {
 
-message.channel.send("**❌ أن العضو ليس بروم صوتي**").then(msg => msg.delete(4000));
+message.channel.send("** أن العضو ليس بروم صوتي ❌**").then(msg => msg.delete(5000));
 
 }
 
 } else {
 
- message.channel.send("**أنت لست متواجد في روم صوتي لسحب العضو إليك ❌**").then(msg => msg.delete(4000));
+ message.channel.send("**أنت لست متواجد في روم صوتي لسحب العضو إليك ❌**").then(msg => msg.delete(5000));
 
 }
 
@@ -383,13 +383,7 @@ message.channel.send("**❌ أن العضو ليس بروم صوتي**").then(ms
 
 message.react("")
 
-    
-    
-    
-    
-}
-
-});
+ }}});
 
 
 
