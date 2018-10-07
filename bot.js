@@ -420,16 +420,17 @@ message.react("")
 
 
 
+
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
-       
-       if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -499,7 +500,7 @@ client.on('message', async message => {
     });
     setTimeout(() => {
       if(duration === 0) return;
-      if(!mention.has.roles(ADMIN)) return;
+      if(!mention.has.roles(role)) return;
       mention.setMute(false);
       mention.removeRole(role);
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
@@ -557,33 +558,24 @@ client.on('message', async message => {
 
 
 
-
-
-
-
-
-
-
-
-
-
 client.on('message', message => {
-
 if(message.content === 'اسكت') {
-
-    var embed = new Discord.RichEmbed()
-
-    .setColor('')
-
+if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `MUTE_MEMBERS` للقيام بهذا الامر**').then(msg => {
+ var embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
     .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
-
-      
-
     message.channel.sendEmbed(embed);
-
 }
-
  });
+
+ 
+
+
+
+
+
+
+
 
 
 
