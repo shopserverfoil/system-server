@@ -409,12 +409,12 @@ message.react("")
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('طيب').then(msg => {
+    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('طيب').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -492,12 +492,12 @@ client.on('message', async message => {
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
+    if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
