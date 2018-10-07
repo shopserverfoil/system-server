@@ -567,6 +567,37 @@ if(message.content === 'اسكت') {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', msg => {
+
+    if (msg.content === 'تكلم') {
+
+      msg.reply('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**');
+
+    }
+
+  });
+
+
+
+
+
+
  
 
 
