@@ -416,6 +416,10 @@ message.react("")
 
 
 
+
+
+
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
@@ -429,21 +433,21 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let message = message.channel.send('');
-    if(message) return message.reply('').then(msg => {
+    let mention = message.mentions.members.first();
+    if(!mention) return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(message.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(message.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(message.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+    if(mention.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -463,9 +467,9 @@ client.on('message', async message => {
     if(!reason) reason = "غير محدد";
 
     let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(message.mention.user.username, message.mention.user.avatarURL)
+    .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('تم اغطائك ميوت بسيرفر')
-    .setThumbnail(message.mention.user.avatarURL)
+    .setThumbnail(mention.user.avatarURL)
     .addField('# - السيرفر',message.guild.name,true)
     .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
     .addField('# - السبب',reason)
@@ -487,17 +491,17 @@ client.on('message', async message => {
     } catch(e) {
       console.log(e.stack);
     }
-    message.mention.addRole(role).then(() => {
-      message.mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${message.mention.user.username} muted in the server ! :zipper_mouth:  **  `);
-      message.mention.setMute(true);
+    mention.addRole(role).then(() => {
+      mention.send(thisEmbed);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
+      mention.setMute(true);
     });
     setTimeout(() => {
       if(duration === 0) return;
       if(!mention.has.roles(role)) return;
-      message.mention.setMute(false);
-      message.mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${message.mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+      mention.setMute(false);
+      mention.removeRole(role);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
     },duration * 60000);
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
