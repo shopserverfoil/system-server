@@ -409,12 +409,12 @@ message.react("")
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('طيب').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('طيب').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
