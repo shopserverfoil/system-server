@@ -406,6 +406,13 @@ message.react("")
 
 
 
+
+
+
+
+
+
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
@@ -414,7 +421,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -512,8 +519,6 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
   }
 });
-
-
 
 
 
