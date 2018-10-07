@@ -420,13 +420,13 @@ client.on('message', async message => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+    
     if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-  
+     let mention = message.mentions.members.first();
     message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
