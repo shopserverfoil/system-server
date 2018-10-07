@@ -545,7 +545,16 @@ client.on('message', async message => {
 
 
 
+client.on('message',async message => {
+if(message.content === 'اسكت') {
+  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MUTE_MEMBERS`' );
+ var embed = new Discord.RichEmbed() 
+    .setColor('RANDOM')
+    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png') 
+    message.channel.sendEmbed(embed);
 
+}
+ });
 
 
 
