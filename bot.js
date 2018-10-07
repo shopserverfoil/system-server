@@ -582,7 +582,17 @@ if(message.content === 'اسكت') {
 
 
 
+client.on('message', Del => {// BY   HIARET 🔥
+if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MUTE_MEMBERS`' );
+    
+    
+if(Del.content === 'تكلم') {
 
+  Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
+
+}
+
+});
 
 
 
