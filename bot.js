@@ -502,7 +502,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
+    message.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص** ').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
