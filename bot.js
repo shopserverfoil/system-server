@@ -418,8 +418,8 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let mention = ();
-    if(!mention) return message.reply('').then(msg => {
+    
+   message.channel.send ('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
