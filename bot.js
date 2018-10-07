@@ -532,9 +532,9 @@ if(message.content === 'اسكت') {
 
     var embed = new Discord.RichEmbed()
 
-    .setColor('RANDOM')
+    .setColor('')
 
-    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
+    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => msg.delete(6500));
 
     message.channel.sendEmbed(embed);
 
