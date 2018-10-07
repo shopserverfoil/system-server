@@ -436,7 +436,7 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return message.reply('منشن العضو لاعطائه ميوت ❌').then(msg => {
+    if(!mention) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
