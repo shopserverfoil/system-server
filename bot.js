@@ -484,10 +484,7 @@ client.on('message', async message => {
       mention.setMute(true);
     });
     setTimeout(() => {
-      if(duration === 0) return;
-      message.channel.send('')
-      mention.setMute(false);
-      mention.removeRole(role);
+      
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
     },duration * 60000);
   } else if(message.content.startsWith(prefix + "تكلم")) {
