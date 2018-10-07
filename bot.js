@@ -558,15 +558,7 @@ client.on('message', async message => {
 
 
 
-client.on('message', message => {
-if(message.content === 'اسكت') {
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `MUTE_MEMBERS` للقيام بهذا الامر**').then(msg => {
- var embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
-    message.channel.sendEmbed(embed);
-}
- });
+
 
  
 
