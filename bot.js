@@ -436,7 +436,7 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+    if(!mention) return message.reply('منشن العضو لاعطائه ميوت ❌').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -547,7 +547,7 @@ client.on('message', async message => {
 
 client.on('message',async message => {
 if(message.content === 'اسكت') {
-  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MUTE_MEMBERS`' );
+  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('' );
  var embed = new Discord.RichEmbed() 
     .setColor('RANDOM')
     .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png') 
