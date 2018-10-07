@@ -479,6 +479,7 @@ client.on('message', async message => {
       console.log(e.stack);
     }
     mention.addRole(role).then(() => {
+
       mention.send(thisEmbed);
       message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
       mention.setMute(true);
@@ -489,6 +490,7 @@ client.on('message', async message => {
     },duration * 60000);
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
+    message.channel.send('هلا')
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
       msg.delete(3500);
@@ -583,7 +585,8 @@ client.on('message', Del => {// BY   HIARET 🔥
 
     
 if(Del.content === 'تكلم') {
- if(!Del.member.hasPermission('MUTE_MEMBERS')) return
+ if(!Del.member.hasPermission('MUTE_MEMBERS')) return   Del.channel.send('');
+    
   Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
 
 }
