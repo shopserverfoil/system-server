@@ -427,31 +427,31 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    message.channel.send('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+    message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.id === message.author.id) return message.reply('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+    if(mention.id === message.author.id) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
     let duration = args[2];
-    if(!duration) return message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+    if(!duration) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(isNaN(duration)) return message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
+    if(isNaN(duration)) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -499,17 +499,20 @@ client.on('message', async message => {
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
+
       msg.delete(3500);
+
       message.delete(3500);
+   
     });
 
-    message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
+    message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
