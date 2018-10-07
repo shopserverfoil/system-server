@@ -432,11 +432,11 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('').then(msg => {
+    if(mention.highestRole.position >= message.guild.member(message.author).Role.positon) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('').then(msg => {
+    if(mention.highestRole.positon >= message.guild.member(client.user).Role.positon) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
