@@ -489,7 +489,7 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
     },duration * 60000);
   } else if(message.content.startsWith(prefix + "تكلم")) {
-    let mention = message.mentions.members.first();
+    
     message.channel.send('هلا')
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('').then(msg => {
