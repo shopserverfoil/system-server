@@ -404,6 +404,7 @@ message.react("")
 
 
 
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
@@ -418,7 +419,7 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return {files: ["https://i.imgur.com/Icf99Hd.png"]})
+    if(!mention) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -487,7 +488,7 @@ client.on('message', async message => {
       mention.removeRole(role);
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
     },duration * 60000);
-  } else if(message.content.startsWith(prefix + "تكلم")) {
+  } else if(message.content.startsWith(prefix + "unmute")) {
     let mention = message.mentions.members.first();
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
@@ -514,7 +515,6 @@ client.on('message', async message => {
 
 
 
- 
 
 
 
@@ -526,6 +526,21 @@ client.on('message', async message => {
 
 
 
+client.on('message', message => {
+
+if(message.content === 'اسكت') {
+
+    var embed = new Discord.RichEmbed()
+
+    .setColor('RANDOM')
+
+    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
+
+    message.channel.sendEmbed(embed);
+
+}
+
+ });
 
 
 
