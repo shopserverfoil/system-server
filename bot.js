@@ -418,7 +418,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    let mention = message.mentions.members.first();
+    let mention = ();
     if(!mention) return message.reply('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
