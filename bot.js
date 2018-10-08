@@ -431,6 +431,15 @@ client.on('message', async message => {
       msg.delete(3500);
       message.delete(3500);
     });
+      
+      
+       if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لايمكنك أعطاء ميوت لأحد أدارة السيرفر ❌**').then(msg => {
+
+      msg.delete(3500);
+
+      message.delete(3500);
+           
+           
 
     if(isNaN(duration)) message.channel.send('').then(msg => {
       msg.delete(3500);
@@ -443,12 +452,11 @@ client.on('message', async message => {
 let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('لقد تم اعطائك ميوت')
+     .setColor('BLACK')
+    .addField('**# - السيرفر**',message.guild.name)
+    .addField('**# - تم اعطائك ميوت بواسطة**',message.author)
+    .addField('**# - السبب**',reason)
      
-      .setColor('BLACK')
-    
-    .addField('# - السيرفر',message.guild.name)
-    .addField('# - تم اعطائك ميوت بواسطة',message.author)
-    .addField('# - السبب',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
@@ -468,14 +476,17 @@ let thisEmbed = new Discord.RichEmbed()
       console.log(e.stack);
     }
     mention.addRole(role).then(() => {
+
       mention.send(thisEmbed);
+
       message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
+
       mention.setMute(true);
     });
     setTimeout(() => {
       if(duration === 0) return;
       if(!mention.has.roles(role)) return;
-      mention.setMute(false);
+      mention.setMute(thisEmbed);
       mention.removeRole(role);
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
     },duration * 60000);
