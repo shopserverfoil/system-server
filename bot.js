@@ -470,7 +470,7 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
       mention.setMute(true);
     });
-    .setTimeout('') {
+    setTimeout(() => {
       if(duration === 0) return;
       if(!mention.has.roles(role)) return;
       mention.setMute(false);
