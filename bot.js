@@ -443,7 +443,6 @@ client.on('message', async message => {
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .addField('**تم أعطائك ميوت **')
-    
     .addField('**السيرفر**', [ message.guild.name ])
     .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
     .addField('**السبب**',reason)
