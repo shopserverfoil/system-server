@@ -433,11 +433,14 @@ client.on('message', async message => {
     });
       
       
-       if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لايمكنك أعطاء ميوت لأحد أدارة السيرفر ❌**').then(msg => {
+      
+      if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) message.channel.send('**لايمكنك أعطاء ميوت لأحد أدارة السيرفر ❌**').then(msg => {
 
       msg.delete(3500);
 
       message.delete(3500);
+
+    });
            
            
 
@@ -449,13 +452,21 @@ client.on('message', async message => {
     let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = "``ممنوع السب _ ممنوع نشر الروابط``"
 
-let thisEmbed = new Discord.RichEmbed()
+           
+           let thisEmbed = new Discord.RichEmbed()
+
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('لقد تم اعطائك ميوت')
-     .setColor('BLACK')
-    .addField('**# - السيرفر**',message.guild.name)
-    .addField('**# - تم اعطائك ميوت بواسطة**',message.author)
-    .addField('**# - السبب**',reason)
+
+    .setTitle('لقد تم أعطائك ميوت')
+
+    .setColor('BLACK')
+
+    .addField('# - السيرفر',message.guild.name,true)
+
+    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
+
+    .addField('# - السبب',reason)
+
      
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
