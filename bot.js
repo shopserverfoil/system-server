@@ -440,11 +440,11 @@ client.on('message', async message => {
     let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = "``ممنوع السب _ ممنوع نشر الروابط``"
 
-    
+  let thisEmbed = new Discord.RichEmbed()   
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .addField('**تم أعطائك ميوت **')
-    
-    .addField('**السيرفر**', [ message.guild.name ])
+    .setcolor('BLACK')
+    .addField ('**السيرفر**', [ message.guild.name ])
     .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
     .addField('**السبب**',reason)
 
