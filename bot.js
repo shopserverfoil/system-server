@@ -419,11 +419,8 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) message.channel.send('**لايمكنك أعطاء ميوت لاحد أدارة السيرفر ❌**').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) message.channel.send('').then(msg => {
+  
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
