@@ -466,7 +466,7 @@ client.on('message', async message => {
       console.log(e.stack);
     }
     mention.addRole(role).then(() => {
-      mention.send(thisEmbed);
+      mention.send();
       message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
       mention.setMute(true);
     });
