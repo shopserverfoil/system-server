@@ -299,7 +299,8 @@ client.on('ready', () => {
 
   message.channel.send("[ **تم أرسال الرابط برسالة خاصة** :mailbox_with_mail: ]").then(msg => msg.delete(3500));
 
-message.author.send(`**عدد استخدمات الرابط : 5 : مدة الرابط [ يوم ]**`)
+
+  message.author.send(`**عدد استخدمات الرابط : 5 : مدة الرابط [ يوم ]**`)
 
 
 
@@ -562,7 +563,7 @@ client.on('message', async message => {
 
       
 
-      message.delete(3500);
+      
     
     }
      });
