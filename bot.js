@@ -443,7 +443,8 @@ client.on('message', async message => {
 let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('لقد تم اعطائك ميوت')
-     .setThumbnail(mention.user.avatarURL)
+     .setThumbnail
+      .setColor('BLACK')
     
     .addField('# - السيرفر',message.guild.name)
     .addField('# - تم اعطائك ميوت بواسطة',message.author)
