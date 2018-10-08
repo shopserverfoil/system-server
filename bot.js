@@ -420,10 +420,7 @@ client.on('message', async message => {
     });
 
   
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+   
     if(mention.id === message.author.id) message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
