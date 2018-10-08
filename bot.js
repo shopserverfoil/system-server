@@ -551,12 +551,13 @@ if(message.content === 'اسكت') {
 
  var embed = new Discord.RichEmbed() 
 
-    
+ 
+    .setColor('')
 
     .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
 
   
-
+message.channel.sendEmbed(embed);
     
 
 }
