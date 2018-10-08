@@ -585,18 +585,11 @@ client.on('message',async message => {
 
 
 
+client.on('message', msg => {
 
-client.on('message') , server => {// BY    HIARET 🔥
-    if(server.conten === 'هاي') {
-if(!server.member.haspermission('MUTE_MEMBERS')) return  server.channel.send('')
-       
-        
-  server.channel.send('**🌹 هلا يقلبي**')
-        
-        
- )
- 
- });
+  if (msg.content === 'السلام عليكم') {
+
+    msg.reply('**🌹 وعليكم السلام منور**');
 
 
 
