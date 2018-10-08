@@ -438,11 +438,11 @@ client.on('message', async message => {
     });
 
     let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = message.channel.send("**ممنوع السب _ ممنوع نشر الروابط**");
+    if(!reason) reason = "``ممنوع السب _ ممنوع نشر الروابط``"
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    message.channel.send('**تم أعطائك ميوت **')
+    .addField('**تم أعطائك ميوت **')
     .setThumbnail(mention.user.avatarURL)
     .addField('**السيرفر**', [ message.guild.name ])
     .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
@@ -470,7 +470,7 @@ client.on('message', async message => {
       message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
       mention.setMute(true);
     });
-    setTimeout(() => {
+    .setTimeout('') {
       if(duration === 0) return;
       if(!mention.has.roles(role)) return;
       mention.setMute(false);
