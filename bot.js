@@ -558,9 +558,9 @@ client.on('message', async message => {
       if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('' );
      var embed = new Discord.RichEmbed() 
         .setColor('')
-        .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => {
+        .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
 
-      msg.delete(3500);
+      
 
       message.delete(3500);
     
