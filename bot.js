@@ -558,8 +558,11 @@ client.on('message', async message => {
       if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('' );
      var embed = new Discord.RichEmbed() 
         .setColor('')
-        .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => {msg.delete(5000)});      
-        message.channel.sendEmbed(embed);
+        .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => {
+
+      msg.delete(3500);
+
+      message.delete(3500);
     
     }
      });
@@ -597,7 +600,11 @@ client.on('message', Del => {// BY   HIARET 🔥
 if(Del.content === 'تكلم') {
  if(!Del.member.hasPermission('MUTE_MEMBERS')) return   Del.channel.send('');
     
-  Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
+  Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**').then(msg => {
+
+      msg.delete(3500);
+
+      message.delete(3500);
 
 }
 
