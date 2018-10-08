@@ -547,7 +547,7 @@ client.on('message',async message => {
 
 if(message.content === 'اسكت') {
 
-  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MUTE_MEMBERS`' );
+  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('');
 
  var embed = new Discord.RichEmbed() 
 
@@ -557,7 +557,7 @@ if(message.content === 'اسكت') {
 
   
 
-    message.channel.sendEmbed(embed);
+    
 
 }
 
@@ -568,24 +568,6 @@ if(message.content === 'اسكت') {
 
 
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-client.on('message', msg => {
-
-  if (msg.content === 'السلام عليكم') {
-
-    msg.reply('**🌹 وعليكم السلام منور**');
 
 
 
