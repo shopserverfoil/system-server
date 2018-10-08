@@ -555,10 +555,11 @@ client.on('message', async message => {
 
 client.on('message',async message => {
 if(message.content === 'اسكت') {
-  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('' );
+  if(!message.member.hasPermission('MUTE_MEMBERS')) return 
  var embed = new Discord.RichEmbed() 
-    .setColor('')
-    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')  
+ .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
   
     message.channel.sendEmbed(embed);
 
