@@ -443,9 +443,9 @@ client.on('message', async message => {
 let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('لقد تم اعطائك ميوت')
-    
-    .addField('# - السيرفر',message.guild.name,true)
-    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
+    .setcolor('BLACK')
+    .addField('# - السيرفر',message.guild.name)
+    .addField('# - تم اعطائك ميوت بواسطة',message.author)
     .addField('# - السبب',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
