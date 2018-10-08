@@ -491,7 +491,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
