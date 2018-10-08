@@ -483,7 +483,7 @@ client.on('message', async message => {
 
       mention.send(thisEmbed);
 
-      message.channel.send(`**:white_check_mark: ${mention.user.username} muted in the server ! :zipper_mouth:  **  `);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted! ! :zipper_mouth:  **  `);
 
       mention.setMute(true);
     });
@@ -492,7 +492,7 @@ client.on('message', async message => {
       if(!mention.has.roles(role)) return;
       mention.setMute(thisEmbed);
       mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} Unmuted ! :neutral_face:  **  `);
     },duration * 60000);
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
@@ -586,7 +586,15 @@ client.on('message',async message => {
 
 
 
-
+client.on('message') , server => {// BY    HIARET 🔥
+    if(server.conten === 'هاي') {
+if(!server.member.haspermission('MUTE_MEMBERS')) return  server.channel.send('')
+        server.channel.send('هلا يقلبي')
+        
+        
+ )
+ 
+ });
 
 
 
