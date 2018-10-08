@@ -496,7 +496,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(!mention) return message.reply('**منشن الشخص لفك الميوت عنه**').then(msg => {
+    message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
