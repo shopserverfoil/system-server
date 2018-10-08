@@ -442,10 +442,10 @@ client.on('message', async message => {
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('**تم أعطائك ميوت بسيرفر**')
+    message.channel.send('**تم أعطائك ميوت بسيرفر**')
     .setThumbnail(mention.user.avatarURL)
-    .addField('**السيرفر**', [ message.guild.name,true ])
-    .addField('**تم أعطائك ميوت بواسطة**',[ message.author,true ])
+    .addField('**السيرفر**', **[ message.guild.name ])
+    .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
     .addField('**السبب**',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
