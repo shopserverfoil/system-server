@@ -589,7 +589,9 @@ client.on('message',async message => {
 client.on('message') , server => {// BY    HIARET 🔥
     if(server.conten === 'هاي') {
 if(!server.member.haspermission('MUTE_MEMBERS')) return  server.channel.send('')
-        server.channel.send('هلا يقلبي')
+       
+        
+  server.channel.send('**🌹 هلا يقلبي**')
         
         
  )
