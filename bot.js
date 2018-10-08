@@ -548,14 +548,23 @@ client.on('message', async message => {
 
 
 client.on('message',async message => {
+
     if(message.content === 'اسكت') {
+
       if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('' );
-     var embed = new Discord.RichEmbed() 
-        .setColor('')
+
+   var embed = new Discord.RichEmbed() 
+
+        
+
         .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => {msg.delete(5000)};
-        message.channel.sendEmbed(embed);
+
+        
+
     
+
     }
+
      });
 
 
