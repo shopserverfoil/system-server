@@ -438,11 +438,11 @@ client.on('message', async message => {
     });
 
     let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = "**ممنوع السب _ ممنوع نشر الروابط**";
+    if(!reason) reason = message.channel.send("**ممنوع السب _ ممنوع نشر الروابط**");
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    message.channel.send('**تم أعطائك ميوت بسيرفر**')
+    message.channel.send('**تم أعطائك ميوت **')
     .setThumbnail(mention.user.avatarURL)
     .addField('**السيرفر**', **[ message.guild.name ])
     .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
