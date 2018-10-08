@@ -444,7 +444,7 @@ let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('لقد تم اعطائك ميوت')
      .setThumbnail(mention.user.avatarURL)
-    .setcolor('BLACK')
+    
     .addField('# - السيرفر',message.guild.name)
     .addField('# - تم اعطائك ميوت بواسطة',message.author)
     .addField('# - السبب',reason)
