@@ -598,11 +598,9 @@ client.on('message', Del => {// BY   HIARET 🔥
 if(Del.content === 'تكلم') {
  if(!Del.member.hasPermission('MUTE_MEMBERS')) return   Del.channel.send('');
     
-  Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**').then(msg => {
+  Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
 
-      msg.delete(3500);
-
-      Del.delete(3500);
+      
 
 }
 
