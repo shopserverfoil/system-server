@@ -433,14 +433,6 @@ client.on('message', async message => {
     });
       
       
-      
-      if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) message.channel.send('**لايمكنك أعطاء ميوت لأحد أدارة السيرفر ❌**').then(msg => {
-
-      msg.delete(3500);
-
-      message.delete(3500);
-
-    });
            
            
 
