@@ -444,7 +444,7 @@ client.on('message', async message => {
     .setAuthor(mention.user.username, mention.user.avatarURL)
     message.channel.send('**تم أعطائك ميوت **')
     .setThumbnail(mention.user.avatarURL)
-    .addField('**السيرفر**', **[ message.guild.name ])
+    .addField('**السيرفر**', [ message.guild.name ])
     .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
     .addField('**السبب**',reason)
 
