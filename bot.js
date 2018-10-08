@@ -440,13 +440,13 @@ client.on('message', async message => {
     let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = "``ممنوع السب _ ممنوع نشر الروابط``"
 
-  let thisEmbed = new Discord.RichEmbed()   
+let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .addField('**تم أعطائك ميوت **')
-    .setcolor('BLACK')
-    .addField ('**السيرفر**', [ message.guild.name ])
-    .addField('**تم أعطائك ميوت بواسطة**',[ message.author ])
-    .addField('**السبب**',reason)
+    .setTitle('تم اغطائك ميوت بسيرفر')
+    .setThumbnail(mention.user.avatarURL)
+    .addField('# - السيرفر',message.guild.name,true)
+    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
+    .addField('# - السبب',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
