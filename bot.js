@@ -557,11 +557,7 @@ client.on('message',async message => {
 
         .setColor('')
 
-        .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png').then(msg => {
-
-      msg.delete(3500);
-
-      message.delete(3500);
+        .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
 
         message.channel.sendEmbed(embed);
 
