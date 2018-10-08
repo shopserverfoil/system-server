@@ -602,7 +602,7 @@ if(Del.content === 'تكلم') {
 
       msg.delete(3500);
 
-      message.delete(3500);
+      Del.delete(3500);
 
 }
 
