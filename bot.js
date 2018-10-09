@@ -505,7 +505,6 @@ client.on('message', async message => {
     });
     setTimeout(() => {
       if(duration === 0) return;
-      if(!message.channel.send)) return;
       mention.setMute(false);
       mention.removeRole(role);
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted! **  `);
