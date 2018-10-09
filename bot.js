@@ -124,7 +124,9 @@ client.on('message', message => {
     var command = message.content.split(" ")[0];
 
     if(command == prefix + 'رسالة') { // الكوماند !bc
-
+ if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
         var args = message.content.split(' ').slice(1).join(' ');
 
         if(message.author.bot) return;
