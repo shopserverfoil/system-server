@@ -633,7 +633,7 @@ if(Del.content === 'تكلم') {
   Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
 
       
-
+message.channel..then(message => {message.delete(7000)})
 
 }
 
