@@ -441,7 +441,7 @@ client.on('message', async message => {
     });
 
     let mention = message.mentions.members.first();
-    if(!mention)  return message.reply('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+    if(!mention)  message.channel.send('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -505,7 +505,7 @@ client.on('message', async message => {
     });
     setTimeout(() => {
       if(duration === 0) return;
-      if(!mention.has.roles(role)) return;
+      if(!message.channel.send)) return;
       mention.setMute(false);
       mention.removeRole(role);
       message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted! **  `);
