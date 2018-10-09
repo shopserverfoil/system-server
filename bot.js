@@ -415,71 +415,124 @@ message.react("")
 
 
 
-client.on('message', m3a4x => {
-  if (m3a4x.content.startsWith('اسكت')) {
-if (!m3a4x.member.hasPermission("MUTE_MEMBERS")) return m3a4x.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
-let men = m3a4x.mentions.users.first()
-let mas = m3a4x.author
-if(!men) return m3a4x.channel.send('`منشن الشخص الذي تريد ان تعطيه ميوت كتابي` ');
-m3a4x.guild.channels.forEach(c => {
-c.overwritePermissions(men.id, {
-          SEND_MESSAGES: false
-})
-    })
-const embed = new Discord.RichEmbed()
-.setColor("#36393e")
-.setDescription(`**
- <@${men.id}>
-لقد تم اعطائك ميوت كتابي
-بواسطة : <@${m3a4x.author.id}> **`)
-.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
-          
-client.users.get(men.id).sendEmbed(embed)
-const Embed11 = new Discord.RichEmbed()
-.setColor("#36393e")
-.setAuthor(m3a4x.guild.name, m3a4x.guild.iconURL)
-.setDescription(`          <@${men.id}>
-لقد تم اعطائه الميوت الكتابي بنجاح
-بواسطة : <@${m3a4x.author.id}> `)
-.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452090205793681419/fd684707fc14f41663f15ecebf089f06.png")
-m3a4x.channel.sendEmbed(Embed11).then(m3a4x => {m3a4x.delete(20000)})
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', async message => {
+  let args = message.content.split(" ");
+  if(message.content.startsWith(prefix + "اسكت")) {
+    if(!message.member.hasPermission("MUTE_MEMBER")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    let mention = message.mentions.members.first();
+    if(!mention) message.channel.send('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+    if(mention.id === message.author.id) message.channel.send('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    let duration = args[2];
+    if(!duration) message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    if(isNaN(duration))  message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+
+    let reason = message.content.split(" ").slice(3).join(" ");
+    if(!reason) reason = "غير محدد";
+
+    let thisEmbed = new Discord.RichEmbed()
+    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setTitle('تم اغطائك ميوت بسيرفر')
+    .setThumbnail(mention.user.avatarURL)
+    .addField('# - السيرفر',message.guild.name,true)
+    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
+    .addField('# - السبب',reason)
+
+    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+    if(!role) try {
+      message.guild.createRole({
+        name: "Muted",
+        permissions: 0
+      }).then(r => {
+        message.guild.channels.forEach(c => {
+          c.overwritePermissions(r , {
+            SEND_MESSAGES: false,
+            READ_MESSAGES_HISTORY: false,
+            ADD_REACTIONS: false
+          });
+        });
+      });
+    } catch(e) {
+      console.log(e.stack);
     }
-})
+    mention.addRole(role).then(() => {
+      mention.send(thisEmbed);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted ! :zipper_mouth:  **  `);
+      mention.setMute(true);
+    });
+    setTimeout(() => {
+      if(duration === 0) return;
+      if(!mention.has.roles(role)) return;
+      mention.setMute(false);
+      mention.removeRole(role);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted! **  `);
+    },duration * 60000);
+  } else if(message.content.startsWith(prefix + "تكلم")) {
+    let mention = message.mentions.members.first();
+    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
-client.on('message', m3a4x => {
-  if (m3a4x.content.startsWith('تكلم')) {
-if (!m3a4x.member.hasPermission("MUTE_MEMBERS")) return m3a4x.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
- let men = m3a4x.mentions.users.first()
- let mas = m3a4x.author
- if(!men) return m3a4x.channel.send('`منشن الشخص الذي تريد فك الميوت عنه `');
- m3a4x.guild.channels.forEach(c => {
- c.overwritePermissions(men.id, {
-         SEND_MESSAGES: true
-         })
-    })
-const embed = new Discord.RichEmbed()
-.setColor("#36393e")
-.setDescription(`**
- <@${men.id}>
-تم فك الميوت الكتابي 
-بواسطة : <@${m3a4x.author.id}> **`)
-.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
-          
-client.users.get(men.id).sendEmbed(embed)
-const Embed11 = new Discord.RichEmbed()
-.setColor("#36393e")
-.setAuthor(m3a4x.guild.name, m3a4x.guild.iconURL)
-.setDescription(`          <@${men.id}>
-تم فك الميوت الكتابي 
-بواسطة : <@${m3a4x.author.id}>
-`)
-.setThumbnail("https://cdn.discordapp.com/attachments/408952032112803850/452093541003296788/start-button-hi.png")
-m3a4x.channel.sendEmbed(Embed11).then(m3a4x => {m3a4x.delete(20000)})
-    }
-})
+    if(!mention) message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
-
+      mention.removeRole(role);
+      mention.setMute(false);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+  }
+});
 
 
 
