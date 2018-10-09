@@ -125,7 +125,7 @@ client.on('message', message => {
 
     if(command == prefix + 'رسالة') { // الكوماند !bc
 
-   if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**')
+   if(!message.member.hasPermission("MUTE_MEMBERS")) message.channel.send('')
       
         var args = message.content.split(' ').slice(1).join(' ');
 
