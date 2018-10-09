@@ -591,14 +591,15 @@ if(message.content === 'اسكت') {
 
  var embed = new Discord.RichEmbed() 
 
- 
     .setColor('')
+
+    .setDescription('')
 
     .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
 
   
-message.channel.sendEmbed(embed);
-    
+
+message.channel.sendEmbed(embed).then(message => {message.delete(7000)})
 
 }
 
@@ -632,6 +633,7 @@ if(Del.content === 'تكلم') {
   Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
 
       
+Del.channel.sendEmbed(embed).then(message => {message.delete(7000)})
 
 }
 
