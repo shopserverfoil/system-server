@@ -568,7 +568,7 @@ client.on('message', message => {
   message.channel.send('**وعليكم السلام منور 🌹**')
 
                 
- message.channel..then(message => {message.delete(7000)})               
+ message.channel.send.then(message => {message.delete(7000)})               
                 
 }
 
@@ -636,7 +636,7 @@ if(Del.content === 'تكلم') {
   Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
 
       
-Del.channel..then(message => {message.delete(7000)})
+Del.channel.send.then(message => {message.delete(7000)})
 
 }
 
