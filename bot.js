@@ -89,7 +89,7 @@ client.on('message', function(msg) {
     let embed = new Discord.RichEmbed()
     .setColor('BLUE')
     .setThumbnail(msg.guild.iconURL)
-    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ ${msg.guild.name} ]**`,true)
+    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ __${msg.guild.name}__ ]**`,true)
     .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${"EGYPT"} ]**`,true)
     .addField(':military_medal:** الرتب :**',`**[ ${msg.guild.roles.size} ]**`,true)
     .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ ${msg.guild.memberCount} ]**`,true)
@@ -448,11 +448,11 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.hasPermission.position >= message.guild.member(message.author).hasPermission.positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.hasPermission.positon >= message.guild.member(client.user).hasPermission.positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
