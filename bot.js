@@ -477,7 +477,7 @@ client.on('message', async message => {
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('**__تم آعطائك ميوت__**')
+    .setTitle('**تم آعطائك ميوت**')
     .addField('**__السيرفر__**',[ message.guild.name ])
     .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
@@ -529,7 +529,22 @@ client.on('message', async message => {
 
       mention.removeRole(role);
       mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted!  **  `);
+   
+     message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted!  **  `);
+      
+     let reason = message.content.split(" ").slice(3).join(" ");
+    if(!reason) reason = " [ ** __صعبت علينا يالغالي__** ] ";
+
+    let thisEmbed = new Discord.RichEmbed()
+    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setTitle('**تم فك عنك الميوت**')
+    .addField('**__السيرفر__**',[ message.guild.name ])
+    .addField('**__تم فك آلميوت بواسطة__**', [ message.author ])
+    .addField('**__آلسبب__**',reason) 
+      
+      
+      
+      
   }
 });
 
