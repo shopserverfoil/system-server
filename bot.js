@@ -517,7 +517,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**:information_source: لقد تم فك الميوت عنه مسبقا او لم يتم آعطائه**")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**:information_source:  ${mention.user.username} تم فك الميوت عنه مسبقاً! **")
  
   await toMute.removeRole(role)
   message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
