@@ -467,7 +467,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(isNaN(duration)) return message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
+    if(isNaN(duration))  message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
