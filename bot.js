@@ -415,30 +415,30 @@ message.react("")
 
 
 
-
-
-
-
-
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith("اسكت")){
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('MUTE_MEMBERSما عندك برمشن').then(msg => {
+  if(message.content.startsWith(prefix + "اسكت")) {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
  
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('ما عندي برمشن Mute_Members').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
  
     let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send(`يجب منشن الشخص`).then(msg => {
+    if(!mention) return  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.hasPermission("ADMINSTRATOR")) return message.channel.send(`لا يمكن آعطاء ميوت لآحد آدارة السيرفر`);
+   
+   
+    if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`لا يمكن آعطاء ميوت لآحد آدارة السيرفر`);
+ 
+    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`تم اعطائه ميوت من قبل`);
+ 
        
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
       msg.delete(3500);
@@ -527,6 +527,8 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   }
  
 });
+
+
 
 
 
