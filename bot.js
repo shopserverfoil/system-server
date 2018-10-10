@@ -432,42 +432,42 @@ message.react("")
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
-    if(!message.member.hasPermission("MUTE_MEMBER")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBER")) return message.channel.send('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
     let mention = message.mentions.members.first();
-    if(!mention)  message.channel.send('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+    if(!mention) return  message.channel.send('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.id === message.author.id) message.channel.send('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+    if(mention.id === message.author.id) return message.channel.send('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
     let duration = args[2];
-    if(!duration) message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+    if(!duration) return message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(isNaN(duration))  message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
+    if(isNaN(duration)) return message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -508,30 +508,29 @@ client.on('message', async message => {
     setTimeout(() => {
       if(duration === 0) return;
       mention.setMute(false);
-      mention.removeRole(role);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted! **  `);
+      mention.removeRole(role)
     },duration * 60000);
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.reply('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!mention) message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
+    if(!mention) return message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
       mention.removeRole(role);
       mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted in the server ! :neutral_face:  **  `);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted ! :neutral_face:  **  `);
   }
 });
 
