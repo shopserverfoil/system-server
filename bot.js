@@ -90,14 +90,14 @@ client.on('message', function(msg) {
     .setColor('BLUE')
     .setThumbnail(msg.guild.iconURL)
     .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ __${msg.guild.name}__ ]**`,true)
-    .addField(':earth_africa: ** موقع السيرفر :**',`**[ ${"EGYPT"} ]**`,true)
-    .addField(':military_medal:** الرتب :**',`**[ ${msg.guild.roles.size} ]**`,true)
-    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ ${msg.guild.memberCount} ]**`,true)
-    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ ${msg.guild.members.filter(m=>m.presence.status == 'online').size} ]**`,true)
-    .addField(':pencil:** الرومات الكتابية :**',`**[ ${msg.guild.channels.filter(m => m.type === 'text').size} ]**`,true)
-    .addField(':loud_sound:** رومات الصوت :**',`**[ ${msg.guild.channels.filter(m => m.type === 'voice').size} ]**`,true)
-    .addField(':crown:** صاحب السيرفر :**',`**[ ${msg.guild.owner} ]**`,true)
-    .addField(':id:** ايدي السيرفر :**',`**[ ${msg.guild.id} ]**`,true)
+    .addField(':earth_africa: ** موقع السيرفر :**',`**[ __${"EGYPT"}__ ]**`,true)
+    .addField(':military_medal:** الرتب :**',`**[ __${msg.guild.roles.size}__ ]**`,true)
+    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ __${msg.guild.memberCount}__ ]**`,true)
+    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ ]**`,true)
+    .addField(':pencil:** الرومات الكتابية :**',`**[ __${msg.guild.channels.filter(m => m.type === 'text').size}__ ]**`,true)
+    .addField(':loud_sound:** رومات الصوت :**',`**[ __${msg.guild.channels.filter(m => m.type === 'voice').size}__ ]**`,true)
+    .addField(':crown:** صاحب السيرفر :**',`**[ __${msg.guild.owner}__ ]**`,true)
+    .addField(':id:** ايدي السيرفر :**',`**[ __${msg.guild.id}__ ]**`,true)
     .addField(':date:** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
     msg.channel.send({embed:embed});
   }
@@ -432,27 +432,27 @@ message.react("")
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
-    if(!message.member.hasPermission("MUTE_MEMBER")) return message.channel.send('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBER")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
     let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send('**منشن عضو لأسكاته ( لأعطائة ميوت ) كتابي**').then(msg => {
+    if(!mention) return  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(mention.hasPermission.position >= message.guild.member(message.author).hasPermission.positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.hasPermission.position >= message.guild.member(message.author).positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.hasPermission.positon >= message.guild.member(client.user).hasPermission.positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.hasPermission.positon >= message.guild.member(client.user).positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
