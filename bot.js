@@ -422,7 +422,7 @@ message.react("")
 
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "اسكت")) {
+  if(message.content.startsWith("اسكت")){
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('MUTE_MEMBERSما عندك برمشن').then(msg => {
       msg.delete(3500);
       message.delete(3500);
