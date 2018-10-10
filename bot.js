@@ -435,9 +435,9 @@ client.on('message', async message => {
     });
    
    
-    if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`لا يمكن آعطاء ميوت لآحد آدارة السيرفر`);
+    if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء ميوت لآحد آدارة السيرفر ❌**`);
  
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`تم اعطائه ميوت من قبل`);
+    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! **`);
  
        
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
@@ -509,15 +509,15 @@ let command = message.content.split(" ")[0];
      command = command.slice(prefix.length);
     let args = message.content.split(" ").slice(1);
 if(command === `تكلم`) {2
-  if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
-if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**ما عندي برمشن**").then(msg => msg.delete(6000))
+  if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("").then(msg => msg.delete(6000))
  
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");
+  if(!toMute) return message.channel.sendMessage("");
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**:information_source: لقد تم فك الميوت عنه مسبقا او لم يتم اعطاءه**")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**:information_source: لقد تم فك الميوت عنه مسبقا او لم يتم آعطائه**")
  
   await toMute.removeRole(role)
   message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
