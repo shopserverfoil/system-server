@@ -448,11 +448,11 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(mention.hasPermission.position >= message.guild.member(message.author).positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.hasPermission.positon >= message.guild.member(client.user).positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
