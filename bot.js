@@ -462,7 +462,7 @@ client.on('message', async message => {
     });
 
     let duration = args[2];
-    if(!duration)  message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+    if(!duration)  message.channel.send('**__لا يمكنك آعطاء ميوت لآحد ادارة السيرفر__ ❌**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
@@ -473,7 +473,7 @@ client.on('message', async message => {
     });
 
     let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = "غير محدد";
+    if(!reason) reason = "لاتسب | بدون سبام |";
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
