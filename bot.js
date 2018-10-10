@@ -420,34 +420,26 @@ message.react("")
 
 
 
-
-
-
-
-
-
-
-
-
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
-    if(!message.member.hasPermission("MUTE_MEMBER")) return message.channel.send('').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('MUTE_MEMBERSما عندك برمشن').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
+ 
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('ما عندي برمشن Mute_Members').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+ 
     let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send('').then(msg => {
+    if(!mention) return  message.channel.send(`يجب منشن الشخص`).then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+    if(mention.hasPermission("ADMINSTRATOR")) return message.channel.send(`لا يمكن آعطاء ميوت لآحد آدارة السيرفر`);
+       
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -460,28 +452,28 @@ client.on('message', async message => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+ 
     let duration = args[2];
     if(!duration)  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+ 
     if(isNaN(duration))  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-
+ 
     let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
-
+ 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
     .setTitle('**تم آعطائك ميوت**')
     .addField('**__السيرفر__**',[ message.guild.name ])
     .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
-
+ 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
       message.guild.createRole({
@@ -509,35 +501,40 @@ client.on('message', async message => {
       mention.setMute(false);
       mention.removeRole(role)
     },duration * 60000);
-  } else if(message.content.startsWith(prefix + "تكلم")) {
-    let mention = message.mentions.members.first();
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-    if(!mention) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-      mention.removeRole(role);
-      mention.setMute(false);
-   
-     message.channel.send(`**:white_check_mark: ${mention.user.username}  Unmuted!  **  `);
-      
-     
-      
-      
-      
   }
 });
+client.on('message', async message => {
+    let mention = message.mentions.members.first();
+let command = message.content.split(" ")[0];
+     command = command.slice(prefix.length);
+    let args = message.content.split(" ").slice(1);
+if(command === `تكلم`) {2
+  if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لفك عن الشخص ميوت**:x: ").then(m => m.delete(5000));
+if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**ما عندي برمشن**").then(msg => msg.delete(6000))
+ 
+  let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if(!toMute) return message.channel.sendMessage("**عليك المنشن أولاّ**:x: ");
+ 
+  let role = message.guild.roles.find (r => r.name === "Muted");
+ 
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**:information_source: لقد تم فك الميوت عنه مسبقا او لم يتم اعطاءه**")
+ 
+  await toMute.removeRole(role)
+  message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
+ 
+  return;
+ 
+  }
+ 
+});
+
+
+
+
+
+
+
+
 
 
 
