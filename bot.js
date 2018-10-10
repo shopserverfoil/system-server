@@ -502,7 +502,7 @@ client.on('message', async message => {
     }
     mention.addRole(role).then(() => {
       mention.send(thisEmbed);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted ! :zipper_mouth:  **  `);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} Muted! :zipper_mouth:  **  `);
       mention.setMute(true);
     });
     setTimeout(() => {
@@ -530,7 +530,7 @@ client.on('message', async message => {
 
       mention.removeRole(role);
       mention.setMute(false);
-      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted ! :neutral_face:  **  `);
+      message.channel.send(`**:white_check_mark: ${mention.user.username} unmuted!  **  `);
   }
 });
 
