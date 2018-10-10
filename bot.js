@@ -579,9 +579,11 @@ client.on('message', async message => {
 
 client.on('message', message => {
 
-if (message.content === 'السلام عليكم') {
+if (message.content === 'تكلم') {
+if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('');
 
-message.channel.send('**__وعليكم السلام منور :rose:__**').then(message => {message.delete(7000)})
+    
+message.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**').then(message => {message.delete(7000)})
 
 }
 
@@ -615,7 +617,7 @@ if(message.content === 'اسكت') {
 
   
 
-message.channel.sendEmbed(embed).then(message => {message.delete(7000)})
+message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 }
 
@@ -640,20 +642,7 @@ message.channel.sendEmbed(embed).then(message => {message.delete(7000)})
 
 
 
-client.on('message', Del => {// BY   HIARET 🔥
 
-    
-if(Del.content === 'تكلم') {
- if(!Del.member.hasPermission('MUTE_MEMBERS')) return   Del.channel.send('');
-    
-  Del.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**')
-
-      
-
-
-}
-
-});
 
 
 
