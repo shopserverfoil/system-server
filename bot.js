@@ -448,40 +448,39 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-    if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('**لا يمكنك اعطاء لميوت شخص رتبته اعلى منك**').then(msg => {
+    if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('**لا يمكنني اعطاء ميوت لشخص رتبته اعلى مني**').then(msg => {
+    if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
-    if(mention.id === message.author.id) return message.channel.send('**لا يمكنك اعطاء ميوت  لنفسك**').then(msg => {
+    if(mention.id === message.author.id) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
     let duration = args[2];
-    if(!duration)  message.channel.send('**__لا يمكنك آعطاء ميوت لآحد ادارة السيرفر__ ❌**').then(msg => {
+    if(!duration)  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(isNaN(duration))  message.channel.send('**حدد وقت زمني صحيح**').then(msg => {
+    if(isNaN(duration))  message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
     let reason = message.content.split(" ").slice(3).join(" ");
-    if(!reason) reason = "لاتسب | بدون سبام |";
+    if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
 
     let thisEmbed = new Discord.RichEmbed()
     .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('تم اغطائك ميوت بسيرفر')
-    .setThumbnail(mention.user.avatarURL)
-    .addField('# - السيرفر',message.guild.name,true)
-    .addField('# - تم اعطائك ميوت بواسطة',message.author,true)
-    .addField('# - السبب',reason)
+    .setTitle('**__تم آعطائك ميوت__**')
+    .addField('**__السيرفر__**',[ message.guild.name ])
+    .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
+    .addField('**__آلسبب__**',reason)
 
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
@@ -513,17 +512,17 @@ client.on('message', async message => {
   } else if(message.content.startsWith(prefix + "تكلم")) {
     let mention = message.mentions.members.first();
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
-    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('**أنت لا تملك الخصائص اللازمة . يجب توفر خاصية `Manage Roles`**').then(msg => {
+    if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('**أنا لا املك الخصائص الكافية . يلزم خصائص `Manage Roles` للقيام بهذا الامر**').then(msg => {
+    if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
 
-    if(!mention) return message.channel.send('**منشن الشخص لفك الميوت عنه**').then(msg => {
+    if(!mention) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
