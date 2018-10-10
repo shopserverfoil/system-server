@@ -340,7 +340,7 @@ if(message.content.startsWith(prefix + 'اسحب')) {
 
  if (message.mentions.users.size === 0) {
 
- return message.channel.send("" +prefix+ "** يجب أن تمنشن العضو  ❌**").then(msg => msg.delete(5000));
+ return message.channel.send("" +prefix+ "** :x:  لم يتم العثور على العضو المطلوب **").then(msg => msg.delete(5000));
 
 }
 
@@ -372,13 +372,13 @@ message.guild.members.get(usermentioned).send(embed)
 
 } else {
 
-message.channel.send("** أن العضو ليس بروم صوتي ❌**").then(msg => msg.delete(5000));
+message.channel.send("** :x:  العضو يجب أن يكون متواجد بروم صوتي **").then(msg => msg.delete(5000));
 
 }
 
 } else {
 
- message.channel.send("**أنت لست متواجد في روم صوتي لسحب العضو إليك ❌**").then(msg => msg.delete(5000));
+ message.channel.send("** :x:  You must be in voice channel !**").then(msg => msg.delete(5000));
 
 }
 
