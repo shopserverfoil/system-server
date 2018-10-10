@@ -462,7 +462,7 @@ client.on('message', async message => {
     });
 
     let duration = args[2];
-    if(!duration) return message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
+    if(!duration)  message.channel.send('**حدد وقت زمني لفك الميوت عن الشخص**').then(msg => {
       msg.delete(3500);
       message.delete(3500);
     });
