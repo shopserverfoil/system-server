@@ -579,15 +579,13 @@ client.on('message', async message => {
 
 client.on('message', message => {
 
-            if (message.content === 'السلام عليكم') {
-  message.channel.send('**وعليكم السلام منور 🌹**')
+if (message.content === 'السلام عليكم') {
 
-                
-            
-                
+message.channel.send('**__وعليكم السلام منور :rose:__**').then(message => {message.delete(7000)})
+
 }
 
- });              
+ });    
 
 
 
