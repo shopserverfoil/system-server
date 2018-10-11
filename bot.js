@@ -752,7 +752,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-       let reason = message.content.split(" ").slice(3).join(" ");
+        let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
  
     let thisEmbed = new Discord.RichEmbed()
@@ -804,67 +804,6 @@ client.on('message', async message => {
 
 
 
-
-
-
-
-client.on('message', message => {
-
-             
-
-            if(message.content === '$help') {
-
-     let embed = new Discord.RichEmbed()
-
-.setThumbnail(message.author.avatarURL)
-
-.setTitle('     **─════════════ ⦁{✯الاوامر العامة✯}⦁ ════════════─** ' ,' **   ** ')
-
-.addField('     **→ معلومات حسابك ←** ' ,' **$id** ')
-
-.addField('     **→ لمعرفة سرعة الانترنت ←**  ' ,' **$ping** ')
-
-.addField('     **→ للحصول علي رابط البوت ←**  ' ,' **$invite** ')
-
-.addField('     **→ معلومات البوت ←** ' , '**$bot-info**') 
-
-.addField('     **→ لمعلومات الروم←** ' , '**$ch**') 
-
-.addField('     **→الافتار ←** ' ,' ** $avatar**')
-
-.addField('     **→ تاريخ اليوم←** ' , '**$date**')
-
-.addField('     **→ معلومات السيرفر ← ** ' ,' **  $server-info  ** ')
-
-.addField('     **→ لمعرفة حالة الاعضاء ← ** ' ,' **  $members  ** ')
-
-.addField('     **→ صأنع البوت ← ** ' ,' **  $bot-owner ** ')
-
-.setTitle('     **─════════════ ⦁{✯الالعاب✯}⦁ ════════════─** ' ,' **   ** ')
-
-.addField('     **→ انجازات ماين كرافت ←  ** ' ,' **  $angaz ** ')
-
-.addField('     ** → كتابة كلام مثل كلايد بوت ←  ** ' ,' **  $s ** ')
-
-.addField('     ** → الزواج (مزحة) من الشخص ←  ** ' ,' **  $marry ** ')
-
-.setTitle('     **─════════════ ⦁{✯اوامر الادارة✯}⦁ ════════════─** ' ,' **   ** ')
-
-.addField('     ** → اععطاء العضو باند ←  ** ' ,' **  $ban ** ')
-
-.addField('     ** → طرد العضو من السيرفر ←  ** ' ,' **  $kick ** ')
-
-.addField('     ** → مسح الشات ←  ** ' ,' **  $clear ** ')
-
-.addField('     ** → مسح كل شي بالسيرفر ←  ** ' ,' **  $sd ** ')
-
-.setColor('BLACK')
-
-  message.channel.sendEmbed(embed);
-
-    }
-
-});
 
 
 
