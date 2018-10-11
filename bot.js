@@ -860,7 +860,7 @@ client.on('ready', () => {
     client.user.setStatus("")
 });
 client.on('ready', () => {
-     client.user.setActivity("Welcome To 4Ever",{type: 'Plyaing'});
+     client.user.setActivity("",{type: ''});
  
 });
 client.on('message', async msg => {
