@@ -734,16 +734,7 @@ client.on('message', async message => {
          if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكنك اعطاء باند لآحد آدارة السيرفر ❌**`);
         
         
-        if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-        
-        
-      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
+       
         
         
        if(mention.id === message.author.id) return message.channel.send('').then(msg => {
