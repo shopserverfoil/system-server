@@ -666,7 +666,7 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 client.on('message',async message => {
 
-if(message.content === 'بان') {
+if(message.content === 'باند') {
 
   if(!message.member.hasPermission('BAN_MEMBERS')) return      message.channel.send('');
 
@@ -753,7 +753,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-       let reason = message.content.split(" ").slice().join(" ");
+       let reason = message.content.split(" ").slice(1).join(" ");
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
  
     let thisEmbed = new Discord.RichEmbed()
