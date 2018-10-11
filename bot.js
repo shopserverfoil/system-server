@@ -810,9 +810,9 @@ client.on('message', async message => {
 
 client.on('message', message => {
 
-              var prefix = "$" ;
+             
 
-            if (message.content.startsWith(prefix + "help")) {
+            if(message.content === '$help') {
 
      let embed = new Discord.RichEmbed()
 
@@ -820,45 +820,45 @@ client.on('message', message => {
 
 .setTitle('     **─════════════ ⦁{✯الاوامر العامة✯}⦁ ════════════─** ' ,' **   ** ')
 
-.setTitle('     **→ معلومات حسابك ←** ' ,' **$id** ')
+.addField('     **→ معلومات حسابك ←** ' ,' **$id** ')
 
-.setTitle('     **→ لمعرفة سرعة الانترنت ←**  ' ,' **$ping** ')
+.addField('     **→ لمعرفة سرعة الانترنت ←**  ' ,' **$ping** ')
 
-.setTitle('     **→ للحصول علي رابط البوت ←**  ' ,' **$invite** ')
+.addField('     **→ للحصول علي رابط البوت ←**  ' ,' **$invite** ')
 
-.setTitle('     **→ معلومات البوت ←** ' , '**$bot-info**') 
+.addField('     **→ معلومات البوت ←** ' , '**$bot-info**') 
 
-.setTitle('     **→ لمعلومات الروم←** ' , '**$ch**') 
+.addField('     **→ لمعلومات الروم←** ' , '**$ch**') 
 
-.setTitle('     **→الافتار ←** ' ,' ** $avatar**')
+.addField('     **→الافتار ←** ' ,' ** $avatar**')
 
-.setTitle('     **→ تاريخ اليوم←** ' , '**$date**')
+.addField('     **→ تاريخ اليوم←** ' , '**$date**')
 
-.setTitle('     **→ معلومات السيرفر ← ** ' ,' **  $server-info  ** ')
+.addField('     **→ معلومات السيرفر ← ** ' ,' **  $server-info  ** ')
 
-.setTitle('     **→ لمعرفة حالة الاعضاء ← ** ' ,' **  $members  ** ')
+.addField('     **→ لمعرفة حالة الاعضاء ← ** ' ,' **  $members  ** ')
 
-.setTitle('     **→ صأنع البوت ← ** ' ,' **  $bot-owner ** ')
+.addField('     **→ صأنع البوت ← ** ' ,' **  $bot-owner ** ')
 
 .setTitle('     **─════════════ ⦁{✯الالعاب✯}⦁ ════════════─** ' ,' **   ** ')
 
-.setTitle('     **→ انجازات ماين كرافت ←  ** ' ,' **  $angaz ** ')
+.addField('     **→ انجازات ماين كرافت ←  ** ' ,' **  $angaz ** ')
 
-.setTitle('     ** → كتابة كلام مثل كلايد بوت ←  ** ' ,' **  $s ** ')
+.addField('     ** → كتابة كلام مثل كلايد بوت ←  ** ' ,' **  $s ** ')
 
-.setTitle('     ** → الزواج (مزحة) من الشخص ←  ** ' ,' **  $marry ** ')
+.addField('     ** → الزواج (مزحة) من الشخص ←  ** ' ,' **  $marry ** ')
 
 .setTitle('     **─════════════ ⦁{✯اوامر الادارة✯}⦁ ════════════─** ' ,' **   ** ')
 
-.setTitle('     ** → اععطاء العضو باند ←  ** ' ,' **  $ban ** ')
+.addField('     ** → اععطاء العضو باند ←  ** ' ,' **  $ban ** ')
 
-.setTitle('     ** → طرد العضو من السيرفر ←  ** ' ,' **  $kick ** ')
+.addField('     ** → طرد العضو من السيرفر ←  ** ' ,' **  $kick ** ')
 
-.setTitle('     ** → مسح الشات ←  ** ' ,' **  $clear ** ')
+.addField('     ** → مسح الشات ←  ** ' ,' **  $clear ** ')
 
-.setTitle('     ** → مسح كل شي بالسيرفر ←  ** ' ,' **  $sd ** ')
+.addField('     ** → مسح كل شي بالسيرفر ←  ** ' ,' **  $sd ** ')
 
-.setColor('RANDOM')
+.setColor('BLACK')
 
   message.channel.sendEmbed(embed);
 
