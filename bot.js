@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const fs = require('fs')
 const client = new Discord.Client();
 
-const prefix = '';
+const prefix = '#';
 
 client.on('ready', () => {
 
@@ -863,7 +863,6 @@ client.on('ready', () => {
      client.user.setActivity("you",{type: 'WATCHING'});
  
 });
-const prefix = "#"
 client.on('message', async msg => {
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(prefix)) return undefined;
