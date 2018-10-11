@@ -647,57 +647,6 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
-client.on('message', async message => {
-    let args = message.content.split(" ");
-    let command = args[0];
-
-    if(command === prefix + 'بان') {
-      if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply('').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-
-      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply('').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-
-      let mention = message.mentions.members.first();
-      if(!mention) return message.reply('').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-      
-      if(mention.id === message.author.id) return message.reply('').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
-
-       let duration = args[2];
-       if(!duration) return message.channel.send('').then(msg => {
-         msg.delete(3500);
-         message.delete(3500);
-       });
-       if(isNaN(duration)) return message.channel.send('').then(msg => {
-         msg.delete(3500);
-         message.delete(3500);
-       });
-
-       let reason = message.content.split(" ").slice().join(" ");
-       
-
-       
-       message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
-       setTimeout(() => {
-         if(duration === 0) return;
-         message.guild.unban(mention);
-       },duration * 60000);
-     });
-   }
-});
-
-
-
 
 
 
