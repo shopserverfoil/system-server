@@ -737,10 +737,9 @@ client.on('message', async message => {
        
         
         
-       if(mention.id === message.author.id) return message.channel.send('').then(msg => {
+       if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
       msg.delete(3500);
-      message.delete(3500)
-      });
+      message.delete(3500);
 
        let duration = args[2];
     if(!duration)  message.channel.send('').then(msg => {
@@ -753,7 +752,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-       let reason = message.content.split(" ").slice(1).join(" ");
+       let reason = message.content.split(" ").slice(3).join(" ");
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
  
     let thisEmbed = new Discord.RichEmbed()
@@ -787,6 +786,85 @@ client.on('message', async message => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+
+              var prefix = "$" ;
+
+            if (message.content.startsWith(prefix + "help")) {
+
+     let embed = new Discord.RichEmbed()
+
+.setThumbnail(message.author.avatarURL)
+
+.addField('     **─════════════ ⦁{✯الاوامر العامة✯}⦁ ════════════─** ' ,' **   ** ')
+
+.addField('     **→ معلومات حسابك ←** ' ,' **$id** ')
+
+.addField('     **→ لمعرفة سرعة الانترنت ←**  ' ,' **$ping** ')
+
+.addField('     **→ للحصول علي رابط البوت ←**  ' ,' **$invite** ')
+
+.addField('     **→ معلومات البوت ←** ' , '**$bot-info**') 
+
+.addField('     **→ لمعلومات الروم←** ' , '**$ch**') 
+
+.addField('     **→الافتار ←** ' ,' ** $avatar**')
+
+.addField('     **→ تاريخ اليوم←** ' , '**$date**')
+
+.addField('     **→ معلومات السيرفر ← ** ' ,' **  $server-info  ** ')
+
+.addField('     **→ لمعرفة حالة الاعضاء ← ** ' ,' **  $members  ** ')
+
+.addField('     **→ صأنع البوت ← ** ' ,' **  $bot-owner ** ')
+
+.addField('     **─════════════ ⦁{✯الالعاب✯}⦁ ════════════─** ' ,' **   ** ')
+
+.addField('     **→ انجازات ماين كرافت ←  ** ' ,' **  $angaz ** ')
+
+.addField('     ** → كتابة كلام مثل كلايد بوت ←  ** ' ,' **  $s ** ')
+
+.addField('     ** → الزواج (مزحة) من الشخص ←  ** ' ,' **  $marry ** ')
+
+.addField('     **─════════════ ⦁{✯اوامر الادارة✯}⦁ ════════════─** ' ,' **   ** ')
+
+.addField('     ** → اععطاء العضو باند ←  ** ' ,' **  $ban ** ')
+
+.addField('     ** → طرد العضو من السيرفر ←  ** ' ,' **  $kick ** ')
+
+.addField('     ** → مسح الشات ←  ** ' ,' **  $clear ** ')
+
+.addField('     ** → مسح كل شي بالسيرفر ←  ** ' ,' **  $sd ** ')
+
+.setColor('RANDOM')
+
+  message.channel.sendEmbed(embed);
+
+    }
+
+});
 
 
 
