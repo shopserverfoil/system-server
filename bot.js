@@ -745,10 +745,13 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 client.on('message', message => {
-              
+             
      if (message.content.startsWith("رابط")) {
-     let embed = new Discord.RichEmbed()
+   
+         let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
+         
+         message.channel.createInvite({
 .setTitle('     **─════════════ ⦁{✯الاوامر العامة✯}⦁ ════════════─** ' ,' **   ** ')
 .addField('     **→ معلومات حسابك ←** ' ,' **$id** ')
 .addField('     **→ لمعرفة سرعة الانترنت ←**  ' ,' **$ping** ')
