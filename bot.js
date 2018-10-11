@@ -717,66 +717,102 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
+client.on('message', async message => {
+  let args = message.content.split(" ");
+  if(message.content.startsWith(prefix + "باند")) {
+      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
 
+      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
 
+      let mention = message.mentions.members.first();
+    if(!mention) return  message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+      
+     if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء ميوت لآحد آدارة السيرفر ❌**`);
+     
+      
+      if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+      
+      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+      
+      
+      if(mention.id === message.author.id) return message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
+       let duration = args[2];
+    if(!duration)  message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+      
+       if(isNaN(duration))  message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-client.on('message', message => {
-             
-     if (message.content.startsWith("رابط")) {
-   
-         let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-         
-         message.channel.createInvite({
-.setTitle('     **─════════════ ⦁{✯الاوامر العامة✯}⦁ ════════════─** ' ,' **   ** ')
-.addField('     **→ معلومات حسابك ←** ' ,' **$id** ')
-.addField('     **→ لمعرفة سرعة الانترنت ←**  ' ,' **$ping** ')
-.addField('     **→ للحصول علي رابط البوت ←**  ' ,' **$invite** ')
-.addField('     **→ معلومات البوت ←** ' , '**$bot-info**') 
-.addField('     **→ لمعلومات الروم←** ' , '**$ch**') 
-.addField('     **→الافتار ←** ' ,' ** $avatar**')
-.addField('     **→ تاريخ اليوم←** ' , '**$date**')
-.addField('     **→ معلومات السيرفر ← ** ' ,' **  $server-info  ** ')
-.addField('     **→ لمعرفة حالة الاعضاء ← ** ' ,' **  $members  ** ')
-.addField('     **→ صأنع البوت ← ** ' ,' **  $bot-owner ** ')
-.setTitle('     **─════════════ ⦁{✯الالعاب✯}⦁ ════════════─** ' ,' **   ** ')
-.addField('     **→ انجازات ماين كرافت ←  ** ' ,' **  $angaz ** ')
-.addField('     ** → كتابة كلام مثل كلايد بوت ←  ** ' ,' **  $s ** ')
-.addField('     ** → الزواج (مزحة) من الشخص ←  ** ' ,' **  $marry ** ')
-.setTitle('     **─════════════ ⦁{✯اوامر الادارة✯}⦁ ════════════─** ' ,' **   ** ')
-.addField('     ** → اععطاء العضو باند ←  ** ' ,' **  $ban ** ')
-.addField('     ** → طرد العضو من السيرفر ←  ** ' ,' **  $kick ** ')
-.addField('     ** → مسح الشات ←  ** ' ,' **  $clear ** ')
-.addField('     ** → مسح كل شي بالسيرفر ←  ** ' ,' **  $sd ** ')
-
-.setColor('RANDOM')
-  message.channel.sendEmbed(embed);
-    }
+       let reason = message.content.split(" ").slice(3).join(" ");
+    if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
+ 
+    let thisEmbed = new Discord.RichEmbed()
+    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setTitle('**تم آعطائك باند**')
+    .addField('**__السيرفر__**',[ message.guild.name ])
+    .addField('**__تم آعطائك باند بواسطة__**', [ message.author ])
+    .addField('**__آلسبب__**',reason)
+       mention.send(thisEmbed).then(() => {
+       mention.ban({
+         reason: reason,
+       });
+       message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
+       setTimeout(() => {
+         if(duration === 0) return;
+         message.guild.unban(mention);
+       },duration * 60000);
+     });
+   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
