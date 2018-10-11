@@ -713,7 +713,7 @@ client.on('message', async message => {
     let args = message.content.split(" ");
     let command = args[0];
 
-    if(command === prefix + 'باند') {
+    if(message.content.startsWith(prefix + "باند")) {
       if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('انت لا تملك الصلاحيات اللازمة').then(msg => {
         msg.delete(3500);
         message.delete(3500);
