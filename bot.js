@@ -415,6 +415,8 @@ message.react("")
 
 
 
+
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "اسكت")) {
@@ -437,7 +439,7 @@ client.on('message', async message => {
    
     if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء ميوت لآحد آدارة السيرفر ❌**`);
  
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! **`);
+    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted!** `);
  
        
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
@@ -464,7 +466,15 @@ client.on('message', async message => {
       message.delete(3500);
     });
  
-    
+    let reason = message.content.split(" ").slice(3).join(" ");
+    if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
+ 
+    let thisEmbed = new Discord.RichEmbed()
+    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setTitle('**تم آعطائك ميوت**')
+    .addField('**__السيرفر__**',[ message.guild.name ])
+    .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
+    .addField('**__آلسبب__**',reason)
  
     let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
@@ -519,13 +529,6 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   }
  
 });
-
-
-
-
-
-
-
 
 
 
