@@ -656,6 +656,147 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
+Save New Duplicate & Edit Just Text Twitter
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+client.on('message', async message => {
+    let args = message.content.split(" ");
+    let command = args[0];
+
+    if(command === prefix + 'بان') {
+      if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply('انت لا تملك الصلاحيات اللازمة').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+
+      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply('انا لا املك الصلاحيات اللازمة. يحب توفر صلاحيات `Ban Members , Embed Links`').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+
+      let mention = message.mentions.members.first();
+      if(!mention) return message.reply('**منشن عضو لطرده**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+      if(mention.highestRole.position >= message.guild.member(message.author).highestRole.positon) return message.reply('**لا يمكنك طرد شخص رتبته اعلى منك**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+      if(mention.highestRole.positon >= message.guild.member(client.user).highestRole.positon) return message.reply('**لا يمكنني طرد شخص رتبته اعلى مني**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+      if(mention.id === message.author.id) return message.reply('**لا يمكنك طرد  نفسك**').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+
+       let duration = args[2];
+       if(!duration) return message.reply('**حدد وقت زمني لفك البان عن الشخص**').then(msg => {
+         msg.delete(3500);
+         message.delete(3500);
+       });
+       if(isNaN(duration)) return message.reply('**حدد وقت زمني صحيح**').then(msg => {
+         msg.delete(3500);
+         message.delete(3500);
+       });
+
+       let reason = message.content.split(" ").slice(3).join(" ");
+       if(!reason) reason = 'غير محدد';
+
+       let thisEmbed = new Discord.RichEmbed()
+       .setAuthor(mention.user.username , mention.user.avatarURL)
+       .setTitle('لقد تبندت من سيرفر')
+       .setThumbnail(mention.avatarURL)
+       .addField('# - السيرفر:',message.guild.name,true)
+       .addField('# - تم طردك بواسطة',message.author,true)
+       .addField('# - السبب',reason)
+       .setFooter(message.author.tag,message.author.avatarURL);
+       mention.send(thisEmbed).then(() => {
+       mention.ban({
+         reason: reason,
+       });
+       message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
+       setTimeout(() => {
+         if(duration === 0) return;
+         message.guild.unban(mention);
+       },duration * 60000);
+     });
+   }
+});
+
+
+
+
+
+
+
+
 
 
 
