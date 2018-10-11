@@ -664,28 +664,6 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
-client.on('message',async message => {
-
-if(message.content === 'باند') {
-
-  if(!message.member.hasPermission('BAN_MEMBERS')) return      message.channel.send('');
-
- var embed = new Discord.RichEmbed() 
-
-    .setColor('')
-
-    .setDescription('')
-
-    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
-
-  
-
-message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
-
-}
-
- });
-
 
 
 
