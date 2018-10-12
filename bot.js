@@ -821,6 +821,14 @@ client.on('message', async message => {
 
 
 
+
+
+
+
+
+
+
+
 client.on('message', message => {
  
     var prefix = "";
@@ -857,7 +865,7 @@ var embed = new Discord.RichEmbed()
  
   let mentions = message.mentions.members.first();
  
-message.channel.send(`**✅ @${mentions.user.username} moved to ${message.member.voiceChannel.name}**`).then(msg => msg.delete(5000));
+message.channel.send(`**✅ @${mentions.user.username} moved to ${`message.member.voiceChannel.name`}**`).then(msg => msg.delete(5000));
  
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
  
@@ -880,17 +888,6 @@ message.channel.send("** ❌  العضو يجب أن يكون متواجد بر�
 message.react("")
  
  }}});
-
-
-
-
-
-
-
-
-
-
-
 
 
 
