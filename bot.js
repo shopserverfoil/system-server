@@ -1231,19 +1231,21 @@ function play(guild, song) {
 
 client.on('message', message => {
 
-    if (message.content.startsWith("الرابط")) {
+    if (message.content.startsWith("رابط")) {
 
         message.channel.createInvite({ thing: true, maxUses: 5, maxAge: 86400 }).then(invite => {
 
             message.author.send(`**Link duration: day\n\nNumber of uses of the Link: 5**\n\n${invite.url}` )
 
-            message.channel.send("**[ The link has been sent to your user :link: ]**").then(msg => msg.delete(3500)); 
+            message.channel.send(`**[ The link has been sent to your user :link: <@${message.author.id}> ]**`).then(msg => msg.delete(3500)); 
 
         });
 
     };
 
 });
+
+ 
 
 
 
