@@ -350,9 +350,9 @@ var embed = new Discord.RichEmbed()
 
 var embed = new Discord.RichEmbed()
 
- 
+  let mention = message.mentions.members.first();
 
-message.channel.send(`**:white_check_mark: ${message.author.tag} moved to ${message.member.voiceChannel.name}**`).then(msg => msg.delete(5000));
+message.channel.send(`**:white_check_mark: ${mention.author.tag} moved to ${message.member.voiceChannel.name}**`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
