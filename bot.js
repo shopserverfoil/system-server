@@ -352,7 +352,7 @@ var embed = new Discord.RichEmbed()
 
   let mentions = message.mentions.members.first();
 
-message.channel.send(`**✅ @${mentions.user} moved to  `+"`${message.member.voiceChannel.name}`"+**`).then(msg => msg.delete(5000));
+message.channel.send(`**✅ @${mentions.user} moved to  **`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
@@ -870,7 +870,65 @@ client.on('message', async message => {
 
 
 
+client.on('message', message => {
 
+    var prefix = "";
+
+if(!message.channel.guild) return;
+
+if(message.content.startsWith(prefix + 'السحب')) {
+
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+
+ if (message.mentions.users.size === 0) {
+
+ return message.channel.send("" +prefix+ "** ❌  لم يتم العثور على العضو المطلوب **").then(msg => msg.delete(5000));
+
+}
+
+if (message.member.voiceChannel != null) {
+
+ if (message.mentions.members.first().voiceChannel != null) {
+
+ var authorchannel = message.member.voiceChannelID;
+
+ var usermentioned = message.mentions.members.first().id;
+
+var embed = new Discord.RichEmbed()
+
+ .setTitle("Success!")
+
+ 
+
+ 
+
+var embed = new Discord.RichEmbed()
+
+  let mentions = message.mentions.members.first();
+
+message.channel.send(`✅ ${mentions.user} **moved to** \`${message.member.voiceChannel.name}\``).then(msg => msg.delete(5000));
+
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+
+message.guild.members.get(usermentioned).send(embed)
+
+} else {
+
+message.channel.send("** ❌  العضو يجب أن يكون متواجد بروم صوتي **").then(msg => msg.delete(5000));
+
+}
+
+} else {
+
+ message.channel.send("** ❌  You must be in voice channel !**").then(msg => msg.delete(5000));
+
+}
+
+} else {
+
+message.react("")
+
+ }}});
 
 
 
