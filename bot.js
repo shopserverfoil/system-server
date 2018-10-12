@@ -350,7 +350,7 @@ var embed = new Discord.RichEmbed()
 
 var embed = new Discord.RichEmbed()
 
-  let mentions = message.mention.members.first();
+  let mentions = message.mentions.members.first();
 
 message.channel.send(`**:white_check_mark: ${mentions.user.username} moved to ${message.member.voiceChannel.name}**`).then(msg => msg.delete(5000));
 
