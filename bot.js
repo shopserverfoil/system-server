@@ -352,7 +352,7 @@ var embed = new Discord.RichEmbed()
 
  
 
-message.channel.send(`**:white_check_mark: ${mentions.user.id>} moved to ${message.member.voiceChannel.name}**`).then(msg => msg.delete(5000));
+message.channel.send(`**:white_check_mark: {mentions.user.id>} moved to ${message.member.voiceChannel.name}**`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
@@ -676,7 +676,29 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
+client.on('message', message => { 
 
+    var args = message.content.split(" ")
+
+    if(message.channel.type !== "text") return undefined;
+    
+    if(message.content.toLowerCase().startsWith('السحب')) { 
+        var mentions = message.mentions.members.first()
+        var authorChannel = message.author.voiceChannel.id
+        if (message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("لـيس معك الصلاحيات الكافية") 
+        if (!args[1]) return message.channel.send("مـنشن الشخص المراد سحبه")
+        if (!mentions.user.voiceChannel) return message.channel.send("هـذا الشخص غير موجود بروم صوتي")
+        if (!message.member.voiceChannel) return message.channel.send("انت لـست بأي روم صوتي")
+        else {
+            try {
+                await mentions.user.setVoiceChannel(authorChannel)
+                await message.channel.send(`تـم سحب [ ${mentions.user.username} ] الى <#${authorChannel}>`)
+            } catch (e) {
+                console.log(e.stack)
+            }
+        }
+        }
+    });
 
 
 
