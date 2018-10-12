@@ -352,7 +352,7 @@ var embed = new Discord.RichEmbed()
 
  
 
-message.channel.send(`**<@${message.member.user.id}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(5000));
+message.channel.send(`**<@${message.member.voiceChannel.name}> لقد تم سحب العضو إليك ✅**`).then(msg => msg.delete(5000));
 
  message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
 
