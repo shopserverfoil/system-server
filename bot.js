@@ -299,10 +299,14 @@ client.on('ready', () => {
 
     )
 
-  message.channel.send("[ **تم أرسال الرابط برسالة خاصة** :mailbox_with_mail: ]").then(msg => msg.delete(3500));
+  message.channel.send("**[ The link has been sent to your user  :link: ]**").then(msg => msg.delete(3500));
 
 
-  message.author.send(`**عدد استخدمات الرابط : 5 : مدة الرابط [ يوم ]**`)
+  message.author.send(`**Link duration: day
+
+Number of uses of the Link: 5**`
+
+)
 
 
 
