@@ -671,12 +671,7 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
-
-
-
-
-
-client.on('message', message => { 
+client.on('message', async message => { 
 
     var args = message.content.split(" ")
 
@@ -699,6 +694,11 @@ client.on('message', message => {
         }
         }
     });
+
+
+
+
+
 
 
 
