@@ -286,7 +286,7 @@ client.on('message', message => {
 
             message.author.send(`**Link duration: day\n\n\nNumber of uses of the Link: 5**\n\n\n${invite.url}` )
 
-            message.channel.send(`**[ The link has been sent to your user :link:] <@${message.author.id}> **`).then(msg => msg.delete(3500)); 
+            message.channel.send(`**[ The link has been sent to your user :link: ] <@${message.author.id}> **`).then(msg => msg.delete(3500)); 
 
         });
 
