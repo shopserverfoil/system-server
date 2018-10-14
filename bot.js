@@ -6,7 +6,7 @@ const prefix = '';
 
 client.on('ready', () => {
 
-    console.log(`Logged in as [server 4EVER]`);
+    console.log(`Logged in as [Netork Tokyo]`);
 
 });
 
@@ -27,9 +27,9 @@ client.on('voiceStateUpdate', (o,n) => {
 
         ss-=1
 
-        n.guild.channels.get("489800301021233163").edit({
+        n.guild.channels.get("501125690675036193").edit({
 
-            name : "4 Ever Online : [" + ss+ "]"
+            name : "Tokyo Online : [" + ss+ "]"
 
         })
 
@@ -39,9 +39,9 @@ client.on('voiceStateUpdate', (o,n) => {
 
         ss+=1
 
-        n.guild.channels.get("489800301021233163").edit({
+        n.guild.channels.get("501125690675036193").edit({
 
-            name : "4 Ever Online : [" + ss+ "]"
+            name : "Tokyo Online : [" + ss+ "]"
 
         })
 
@@ -51,7 +51,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
 client.on("ready", () => {
 
-    client.guilds.get("483960386693890058").members.forEach(m => {
+    client.guilds.get("501096188792143883").members.forEach(m => {
 
         if (m.voiceChannel) {
 
@@ -59,9 +59,9 @@ client.on("ready", () => {
 
         };
 
-        client.channels.get("489800301021233163").edit({
+        client.channels.get("501125690675036193").edit({
 
-            name : "4 Ever Online : [" + ss+ "]"
+            name : "Tokoy Online : [" + ss+ "]"
 
         })
 
@@ -835,7 +835,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "4 EVER")
+        guild = client.guilds.find("name", "Tokyo Network")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -855,7 +855,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "4 EVER")
+        guild = client.guilds.find("name", "Tokyo Network")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
