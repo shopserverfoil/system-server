@@ -941,7 +941,7 @@ client.on('message', message => {
             let embed = new Discord.RichEmbed()
                 .setColor("BLACK")
                 .setAuthor("هل تريد أضافة روم كتابي او صوتي ؟")
-                .setDescription("**Text:** 📋\n**Voice:** 🔊");
+                .setDescription("**Text:** 📋\n\n**Voice:** 🔊");
  
                 message.channel.sendEmbed(embed) .then(m => {
                     m.react('🔊')
@@ -963,7 +963,7 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`Successfully created ${args} channel. [ ${channel} ]`);
+                            message.channel.send(`تم عمل روم بأسم  ${args} ✅ [ ${channel} ]`);
                            
                     });
                 })
