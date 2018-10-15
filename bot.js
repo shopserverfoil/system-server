@@ -963,7 +963,9 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`);
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`).then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
                            
                     });
                 })
@@ -974,7 +976,9 @@ client.on('message', message => {
                         m.delete()
                                 .then(channel.setTopic(`A text channel created by, ${message.author.tag}`));
                                
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`);
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`).then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
                            
                     })
                 })
@@ -994,7 +998,9 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
                     x.delete(5000);
                 })
         } else {
-            message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`);
+            message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`).then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
  
         };
 }
