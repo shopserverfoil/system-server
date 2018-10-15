@@ -939,8 +939,8 @@ client.on('message', message => {
         return;
     }
             let embed = new Discord.RichEmbed()
-                .setColor("RANDOM")
-                .setAuthor("What type of channels do you want to create?")
+                .setColor("BLACK")
+                .setAuthor("هل تريد أضافة روم كتابي او صوتي ؟")
                 .setDescription("**Text:** 📋\n**Voice:** 🔊");
  
                 message.channel.sendEmbed(embed) .then(m => {
@@ -990,7 +990,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
     var channel = message.guild.channels.find("name", args);
         if(channel) {
             channel.delete();
-                message.channel.send('Successfully deleted channel.').then((x) => {
+                message.channel.send('تم مسح الروم بنجاح ✅').then((x) => {
                     x.delete(5000);
                 })
         } else {
