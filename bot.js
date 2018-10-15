@@ -1045,7 +1045,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
             
 client.on('message' , message => {
     let user = message.mentions.users.first()|| client.users.get(message.content.split(' ')[1])
-    if(message.content.startsWith(prefix + 'فك الباند')) {
+    if(message.content.startsWith(prefix + 'unband')) {
         if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send(``);
         if(!user) return  message.channel.send(`Do this ${prefix} <@ID user> \n or \n ${prefix}unban ID user`);
         message.guild.unban(user);
