@@ -908,7 +908,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 
-var client = new Discord.Client();
+
 
 client.on("message", async msg => {
 
@@ -918,7 +918,7 @@ client.on("message", async msg => {
 
     var args = msg.content.split(" ")
 
-    var prefix = ""
+    
 
     if (msg.content.toLowerCase().startsWith(prefix + "مسح")) {
 
