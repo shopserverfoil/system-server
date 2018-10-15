@@ -931,7 +931,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + 'أضافة روم')) {
+    if(message.content.startsWith(prefix + 'أضافة')) {
         if(!message.member.hasPermission('MANAGE_CHANNELS')) return;
        
     let args = message.content.split(' ').slice(1).join(' ');
@@ -980,7 +980,7 @@ client.on('message', message => {
                 })
                 })
 }
-if(message.content.startsWith(prefix + 'مسح روم')) {
+if(message.content.startsWith(prefix + 'مسح')) {
 if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
         let args = message.content.split(' ').slice(1).join(' ');
         if(!args) {
