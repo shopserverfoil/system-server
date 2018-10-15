@@ -980,7 +980,7 @@ client.on('message', message => {
                 })
                 })
 }
-if(message.content.startsWith(prefix + 'مسح')) {
+if(message.content.startsWith(prefix + 'ازالة')) {
 if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
         let args = message.content.split(' ').slice(1).join(' ');
         if(!args) {
