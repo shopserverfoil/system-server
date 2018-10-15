@@ -963,7 +963,7 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`تم عمل روم بأسم  ${args} الروم [ ${channel} ]`);
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`);
                            
                     });
                 })
@@ -990,7 +990,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
     var channel = message.guild.channels.find("name", args);
         if(channel) {
             channel.delete();
-                message.channel.send('تم مسح الروم بنجاح ✅').then((x) => {
+                message.channel.send('**تم مسح الروم بنجاح ✅**').then((x) => {
                     x.delete(5000);
                 })
         } else {
