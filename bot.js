@@ -863,7 +863,7 @@ client.on("guildMemberAdd", (member) => {
                 if (dat[Inv] < Invite.uses) {
                     console.log(3);
                     console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
- channel.send(`** Invited by :  ${Invite.inviter}  **`)            
+ channel.send(`** Invited By :  ${Invite.inviter}  **`)            
  }
             dat[Inv] = Invite.uses;
         })
@@ -909,53 +909,6 @@ client.on("guildMemberAdd", (member) => {
 
 
 
-
-client.on("message", async msg => {
-
-    if (msg.channel.type !== "text") return undefined;
-
-    if (msg.auhtor.bot) return undefined;
-
-    var args = msg.content.split(" ")
-
-    
-
-    if (msg.content.toLowerCase().startsWith(prefix + "مسح")) {
-
-    if(!msg.guild.members.get(msg.author.id).hasPermission("BAN_MEMBERS")) return msg.channel.send("You lack permissions.")
-
-    if(!msg.guild.members.get(client.user.id).hasPermission("BAN_MEMBERS")) return msg.channel.send("I lack permissions.")
-
-    if (!args[1]) return msg.channel.send("DiscordAPI Err : Missing args.")
-
-    var count = parseInt(args[1]);
-
-    var fetched = msg.channel.fetchMessages({limit : count})
-
-    if (isNaN(count)) return msg.channel.send("DiscordAPI Err : Only numbers are allowed.")
-
-    if (count < 0) return msg.channel.send("DiscordAPI Err : Unvalid numbers.")
-
-    if (count == 0) return msg.channel.send("DiscordAPI Err : 0 messages ???")
-
-    if (count > 100) return msg.channel.send(`DiscordAPI Err : cannot delete ${args[1]} message..`)
-
-    if (fetched.length == 0) return msg.channel.send(`DiscordAPI Err : ${msg.channel.name} is empty..`)
-
-    else {
-    try {
-        fetched.then(async msgs => {
-          await msg.channel.bulkDelete(msgs)
-          await msg.channel.send(`Bulked ${msgs.size-=1} message.`).then(msg => {
-            msg.delete(4000)
-          })
-        })
-    } catch (e) {
-      console.log(e.stack)
-    }
-    }
-  }
-})
 
 
 
@@ -1096,29 +1049,7 @@ client.on("message", async message => {
 
 
 
-var colors = new Array(100);
 
-client.on("message", (message) => {
-    var command = message.content.split(" ")[0].slice(prefix.length);
-    switch(command) {
-        case "create-colors" :
-        if (!message.channel.type == "text") return;
-        if (!message.member.hasPermission("MANAGE_ROLES")) return
-        for(var x = 0;x<colors.length;x++){
-            message.guild.createRole({name : x, color : colors[x]});
-        };
-    };
-})
-function sin_to_hex(i, phase) {
-    var sin = Math.sin(Math.PI / size * 2 * i + phase);
-    var int = Math.floor(sin * 127) + 128;
-    var hex = int.toString(16);
-  
-    return hex.length === 1 ? '0'+hex : hex;
-};
-for(var x=0;x<colors.length;x++) {
-    
-};
 
 
 
