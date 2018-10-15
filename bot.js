@@ -931,7 +931,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + 'أضافة').then(message => {message.delete(3000)}) {
+    if(message.content.startsWith(prefix + 'أضافة')) {
         if(!message.member.hasPermission('MANAGE_CHANNELS')) return;
        
     let args = message.content.split(' ').slice(1).join(' ');
