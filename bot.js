@@ -1095,8 +1095,7 @@ client.on("message", async message => {
 
 
 
-const client = new d.Client();
-var prefix ="!"//:3 غيره بكيفك
+
 var colors = new Array(100);
 
 client.on("message", (message) => {
