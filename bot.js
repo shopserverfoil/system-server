@@ -835,7 +835,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Tokyo")
+        guild = client.guilds.find("name", "Angels")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -855,7 +855,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Tokyo")
+        guild = client.guilds.find("name", "Angels")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -930,7 +930,75 @@ client.on("guildMemberAdd", (member) => {
 
 
 
-
+client.on('message', message => {
+    if(message.content.startsWith(prefix + 'أضافة روم')) {
+        if(!message.member.hasPermission('MANAGE_CHANNELS')) return;
+       
+    let args = message.content.split(' ').slice(1).join(' ');
+    if(!args) {
+        return;
+    }
+            let embed = new Discord.RichEmbed()
+                .setColor("RANDOM")
+                .setAuthor("What type of channels do you want to create?")
+                .setDescription("**Text:** 📋\n**Voice:** 🔊");
+ 
+                message.channel.sendEmbed(embed) .then(m => {
+                    m.react('🔊')
+                    m.react('📋')
+ 
+ 
+ 
+                        let ChatFilter = (reaction, user) => reaction.emoji.name === '📋' && user.id === message.author.id;
+                        let VoiceFilter = (reaction, user) => reaction.emoji.name === '🔊' && user.id === message.author.id;
+ 
+ 
+                        let Chat = m.createReactionCollector(ChatFilter, { time: 10000 });
+                        let Voice = m.createReactionCollector(VoiceFilter, { time: 10000 });
+                       
+ 
+ 
+ 
+                Voice.on('collect', r => {
+                    message.guild.createChannel(args, "voice") .then(channel => {
+                        channel.setPosition(1);
+                        m.delete();
+                            message.channel.send(`Successfully created ${args} channel. [ ${channel} ]`);
+                           
+                    });
+                })
+ 
+                Chat.on('collect', r => {
+                    message.guild.createChannel(args, 'text') .then(channel => {
+                        channel.setPosition(1);
+                        m.delete()
+                                .then(channel.setTopic(`A text channel created by, ${message.author.tag}`));
+                               
+                            message.channel.send(`Successfully created ${args} channel. [ <#${channel.id}> ]`);
+                           
+                    })
+                })
+                })
+}
+if(message.content.startsWith(prefix + 'مسح روم')) {
+if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
+        let args = message.content.split(' ').slice(1).join(' ');
+        if(!args) {
+            return;
+        }
+       
+    var channel = message.guild.channels.find("name", args);
+        if(channel) {
+            channel.delete();
+                message.channel.send('Successfully deleted channel.').then((x) => {
+                    x.delete(5000);
+                })
+        } else {
+            message.channel.send(`Couldn't find channel [ ${args} ]`);
+ 
+        };
+}
+});
 
 
 
