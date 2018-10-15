@@ -723,7 +723,9 @@ client.on('message', async message => {
       message.delete(3500);
     });
       
-     if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء باند لآحد آدارة السيرفر ❌**`);
+     if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء باند لآحد آدارة السيرفر ❌**`).then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
      
       
       if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
@@ -963,9 +965,8 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`).then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`).then(message => {message.delete(10000)})
+      
                            
                     });
                 })
@@ -976,9 +977,8 @@ client.on('message', message => {
                         m.delete()
                                 .then(channel.setTopic(`A text channel created by, ${message.author.tag}`));
                                
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`).then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`).then(message => {message.delete(10000)})
+      
                            
                     })
                 })
@@ -1001,6 +1001,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
             message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`).then(msg => {
       msg.delete(3500);
       message.delete(3500);
+      
  
         };
 }
