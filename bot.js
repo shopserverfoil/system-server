@@ -1117,10 +1117,7 @@ function sin_to_hex(i, phase) {
     return hex.length === 1 ? '0'+hex : hex;
 };
 for(var x=0;x<colors.length;x++) {
-    let r   = sin_to_hex(i, 0 * Math.PI * 2/3);
-    let b  = sin_to_hex(i, 1 * Math.PI * 2/3);
-    let g = sin_to_hex(i, 2 * Math.PI * 2/3);
-    colors[x] = '#'+ r + g + b;
+    
 };
 
 
