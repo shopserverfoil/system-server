@@ -963,7 +963,7 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`تم عمل روم بأسم  ${args} channel. [ ${channel} ]`);
+                            message.channel.send(`تم عمل روم بأسم  ${args} الروم [ ${channel} ]`);
                            
                     });
                 })
