@@ -992,8 +992,7 @@ client.on("guildMemberAdd", (member) => {
     }
     });
 
-كود الكيك
-المصدر من الفا كودز 
+ 
 
 
 
