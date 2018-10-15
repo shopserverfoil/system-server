@@ -974,7 +974,7 @@ client.on('message', message => {
                         m.delete()
                                 .then(channel.setTopic(`A text channel created by, ${message.author.tag}`));
                                
-                            message.channel.send(`تم عمل روم بأسم  ${args} \`منشن الروم  [ <#${channel.id}> ]\``);
+                            message.channel.send(`تم عمل روم بأسم  ${args} \`منشن الروم\`  [ <#${channel.id}> ]`);
                            
                     })
                 })
