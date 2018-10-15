@@ -29,7 +29,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Tokyo Online : [" + ss+ "]"
+            name : "Angels Online : [" + ss+ "]"
 
         })
 
@@ -41,7 +41,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Tokyo Online : [" + ss+ "]"
+            name : "Angels Online : [" + ss+ "]"
 
         })
 
@@ -61,7 +61,7 @@ client.on("ready", () => {
 
         client.channels.get("501125690675036193").edit({
 
-            name : "Tokoy Online : [" + ss+ "]"
+            name : "Angels Online : [" + ss+ "]"
 
         })
 
