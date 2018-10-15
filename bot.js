@@ -931,7 +931,7 @@ client.on("guildMemberAdd", (member) => {
 
 
 client.on('message', message => {
-    if(message.content.startsWith(prefix + 'أضافة')) {
+    if(message.content.startsWith(prefix + 'أضافة').then(message => {message.delete(3000)}) {
         if(!message.member.hasPermission('MANAGE_CHANNELS')) return;
        
     let args = message.content.split(' ').slice(1).join(' ');
@@ -963,7 +963,7 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`);      
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`).then(message => {message.delete(4500)})
                            
                     });
                 })
@@ -974,7 +974,7 @@ client.on('message', message => {
                         m.delete()
                                 .then(channel.setTopic(`A text channel created by, ${message.author.tag}`));
                                
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`);
+                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`).then(message => {message.delete(4500)})
       
                            
                     })
@@ -995,7 +995,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
                     x.delete(5000);
                 })
         } else {
-            message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`).then(message => {message.delete(2500)})
+            message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`).then(message => {message.delete(3000)})
       
  
         };
