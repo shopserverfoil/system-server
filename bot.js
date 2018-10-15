@@ -963,7 +963,7 @@ client.on('message', message => {
                     message.guild.createChannel(args, "voice") .then(channel => {
                         channel.setPosition(1);
                         m.delete();
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`).then(message => {message.delete(4500)})
+                            message.channel.send(`**تم عمل روم صوتي بأسم [ \`${args}\` ] منشن الروم  [ ${channel} ] ✅**`).then(message => {message.delete(4500)})
                            
                     });
                 })
@@ -974,7 +974,7 @@ client.on('message', message => {
                         m.delete()
                                 .then(channel.setTopic(`A text channel created by, ${message.author.tag}`));
                                
-                            message.channel.send(`**تم عمل روم بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`).then(message => {message.delete(4500)})
+                            message.channel.send(`**تم عمل روم كتابي بأسم [ \`${args}\` ] منشن الروم [ <#${channel.id}> ]  ✅**`).then(message => {message.delete(4500)})
       
                            
                     })
