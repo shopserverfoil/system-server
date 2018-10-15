@@ -260,7 +260,7 @@ client.on('message', msg => {
 
 client.on('ready', () => {
 
-    client.channels.get("501109014780706826").join();
+    client.channels.get("501188858755678233").join();
 
     });
 
