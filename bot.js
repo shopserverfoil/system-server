@@ -995,7 +995,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
                     x.delete(5000);
                 })
         } else {
-            message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`);
+            message.channel.send(`**لايوجد روم بآسم [ \`${args}\` ] ❌**`).then(message => {message.delete(2500)})
       
  
         };
