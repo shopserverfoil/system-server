@@ -557,7 +557,7 @@ if (message.content === 'تكلم') {
 if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('');
 
     
-message.channel.send('**:information_source:  ``#unmute @Dramex`` يجب تحديد شخص**').then(message => {message.delete(7000)})
+message.channel.send('**:information_source:  ``unmute @Dramex`` يجب تحديد شخص**').then(message => {message.delete(7000)})
 
 }
 
@@ -659,7 +659,17 @@ message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
 
 
 
+client.on('message', message => {
 
+if (message.content === 'كيك') {
+if(!message.member.hasPermission('KICK_MEMBERS')) return      message.channel.send('');
+
+    
+message.channel.send('**:information_source: ``kick @Dramex`` يجب تحديد شخص **').then(message => {message.delete(7000)})
+
+}
+
+ });    
 
 
 
