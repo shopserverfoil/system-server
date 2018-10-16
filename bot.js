@@ -763,7 +763,7 @@ client.on('message', async message => {
       message.delete(3500);
     });
 
-       let reason = message.content.split(" ").slice(3).join(" ");
+       let reason = message.content.split(" ").slice().join(" ");
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
  
     let thisEmbed = new Discord.RichEmbed()
