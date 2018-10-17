@@ -1096,6 +1096,10 @@ member.send('ولكم')
 
 
 
+
+
+
+
 client.on('message', async message => {
   let args = message.content.split(" ");
   if(message.content.startsWith(prefix + "الباند")) {
@@ -1152,23 +1156,11 @@ client.on('message', async message => {
     .addField('**__تم آعطائك باند بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
        mention.send(thisEmbed).then(() => {
-       mention.ban({
-         reason: reason,
-       });
+        message.guild.member(mention).ban(7, mention);
        message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
  
      })
     })
-
-
-
-
-
-
-
-
-
-
 
 
 
