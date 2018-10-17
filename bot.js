@@ -29,7 +29,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Angels Online : [" + ss+ "]"
+            name : "Pharaohs Online : [" + ss+ "]"
 
         })
 
@@ -41,7 +41,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Angels Online : [" + ss+ "]"
+            name : "Pharaohs Online : [" + ss+ "]"
 
         })
 
@@ -61,7 +61,7 @@ client.on("ready", () => {
 
         client.channels.get("501125690675036193").edit({
 
-            name : "Angels Online : [" + ss+ "]"
+            name : "Pharaohs Online : [" + ss+ "]"
 
         })
 
@@ -845,7 +845,7 @@ function forEachObject(obj, func) {
 client.on("ready", () => {
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Angels")
+        guild = client.guilds.find("name", "!...")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -854,7 +854,7 @@ client.on("ready", () => {
     })
 })
 client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'angels');
+    let channel = member.guild.channels.find('name', 'Pharaohs');
     if (!channel) {
         console.log("!channel fails");
         return;
@@ -865,7 +865,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Angels")
+        guild = client.guilds.find("name", "!...")
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -1062,7 +1062,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 
 client.on('guildMemberAdd', member => {
-member.send('ولكم')
+member.send('**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [user] :crown: \n :bust_in_silhouette:آنت العضو رقم ${msg.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ انضمامك للسيرفر [ ${Year} - ${Month} - ${Dat}  ] == [ ${hours} : ${minutes} : ${Seconds} ${suffix} ] :checkered_flag: **')
 });
 
 
