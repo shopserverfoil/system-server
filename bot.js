@@ -1062,7 +1062,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 
 client.on('guildMemberAdd', member => {
-    let mentions = member.mentions.members.first();
+  
 member.send('**:rose: ولكم نورت السيرفر**')
 });
 
