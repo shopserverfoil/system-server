@@ -1063,7 +1063,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 client.on('guildMemberAdd', member => {
     let mentions = member.mentions.members.first();
-member.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [ ${mentions.user} ] :crown: \n :bust_in_silhouette:آنت العضو رقم ${member.guild.memberCount}:bust_in_silhouette: **`)
+member.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [${mentions.user.username}] :crown: \n :bust_in_silhouette:آنت العضو رقم ${member.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ انضمامك للسيرفر  :checkered_flag: **`)
 });
 
 
