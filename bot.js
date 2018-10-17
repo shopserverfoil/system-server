@@ -1104,71 +1104,68 @@ member.send('ولكم')
 
 
 
-
-client.on('message', async message => {
+client.on('message',  message => {
   let args = message.content.split(" ");
+  const mention = message.mentions.members.first();
   if(message.content.startsWith(prefix + "الباند")) {
-      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('').then(message => {
+      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('You Dont Have Permissions').then(message => {
         message.delete(3500);
         message.delete(3500);
       });
- 
-      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('').then(message => {
+
+      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('The Bo').then(message => {
         message.delete(3500);
         message.delete(3500);
       });
- 
-      let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send('').then(message => {
+
+    if(!mention) return  message.channel.send('Mention Someone').then(message => {
       message.delete(3500);
       message.delete(3500);
     });
-     
+      
      if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء باند لآحد آدارة السيرفر ❌**`);
      
-     
-      if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(message => {
+      
+      if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('.').then(message => {
       message.delete(3500);
       message.delete(3500);
     });
-     
-      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('').then(message => {
+      
+      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('.').then(message => {
       message.delete(3500);
       message.delete(3500);
     });
-     
-     
-      if(mention.id === message.author.id) return message.channel.send('').then(message => {
+      
+      
+      if(mention.id === message.author.id) return message.channel.send('You Cant Banned YourSelf').then(message => {
       message.delete(3500);
       message.delete(3500);
     });
- 
+
       message.delete(3500);
       message.delete(3500);
     }
-     
+      
       message.delete(3500);
       message.delete(3500);
- 
- 
-       let reason = message.content.split(" ").slice().join(" ");
+
+            let reason = message.content.split(" ").slice().join(" ");
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
  
     let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(message.user.username, message.user.avatarURL)
-    .setTitle('**تم آعطائك باند**')
-    .addField('**__السيرفر__**',[ message.guild.name ])
-    .addField('**__تم آعطائك باند بواسطة__**', [ message.author ])
-    .addField('**__آلسبب__**',reason)
-       message.send(thisEmbed).then(() => {
-        message.guild.member.ban(7, message);
-       message.channel.send(`**:white_check_mark: ${message.user.username} banned from the server ! :airplane: **  `)
- 
+    .setTitle('**You Are Has Been Banned !**')
+    .addField('**Server**',`${message.guild.name}`)
+    .addField('**Banned By**', `${message.author.tag}`)
+    .addField('**Reason**', `${reason}`)
+    .addField('**Time & Date**', `${message.createdAt}`)
+       mention.send(thisEmbed).then(() => {
+        mention.ban()
+       message.channel.send(`**:white_check_mark: ${mention} banned from the server ! :airplane: **  `)
+
      })
     })
 
-
-
+    
 
 
 
