@@ -1061,9 +1061,9 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', message => {
   
-member.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [<@${member.author.id}>] :crown: \n :bust_in_silhouette:آنت العضو رقم [ ${member.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ عمل السيرفر :checkered_flag: **`)
+message.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو  [ <@${message.author.tag}> ] :crown: \n :bust_in_silhouette:آنت العضو رقم [ ${member.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ عمل السيرفر :checkered_flag: **`)
 });
 
 
