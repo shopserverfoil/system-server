@@ -6,7 +6,7 @@ const prefix = '';
 
 client.on('ready', () => {
 
-    console.log(`Logged in as [ Tokyo]`);
+    console.log(`Logged in as [ Pharaohs]`);
 
 });
 
@@ -1062,7 +1062,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 
 client.on('guildMemberAdd', member => {
-member.send('**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [user] :crown: \n :bust_in_silhouette:آنت العضو رقم ${msg.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ انضمامك للسيرفر [ ${Year} - ${Month} - ${Dat}  ] == [ ${hours} : ${minutes} : ${Seconds} ${suffix} ] :checkered_flag: **')
+member.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [user] :crown: \n :bust_in_silhouette:آنت العضو رقم ${member.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ عمل السيرفر  msg.guild.createdAt.toLocaleString :checkered_flag: **`)
 });
 
 
@@ -1077,13 +1077,6 @@ member.send('**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم 
 
 
  
-
-
-
-
-
-
-
 
 
 
