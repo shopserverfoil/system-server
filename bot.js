@@ -1104,68 +1104,8 @@ member.send('ولكم')
 
 
 
-client.on('message',  message => {
-  let args = message.content.split(" ");
-  const mention = message.mentions.members.first();
-  if(message.content.startsWith(prefix + "الباند")) {
-      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('You Dont Have Permissions').then(message => {
-        message.delete(3500);
-        message.delete(3500);
-      });
 
-      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('The Bo').then(message => {
-        message.delete(3500);
-        message.delete(3500);
-      });
 
-    if(!mention) return  message.channel.send('Mention Someone').then(message => {
-      message.delete(3500);
-      message.delete(3500);
-    });
-      
-     if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء باند لآحد آدارة السيرفر ❌**`);
-     
-      
-      if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('.').then(message => {
-      message.delete(3500);
-      message.delete(3500);
-    });
-      
-      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('.').then(message => {
-      message.delete(3500);
-      message.delete(3500);
-    });
-      
-      
-      if(mention.id === message.author.id) return message.channel.send('You Cant Banned YourSelf').then(message => {
-      message.delete(3500);
-      message.delete(3500);
-    });
-
-      message.delete(3500);
-      message.delete(3500);
-    }
-      
-      message.delete(3500);
-      message.delete(3500);
-
-            let reason = message.content.split(" ").slice().join(" ");
-    if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
- 
-    let thisEmbed = new Discord.RichEmbed()
-    .setTitle('**You Are Has Been Banned !**')
-    .addField('**Server**',`${message.guild.name}`)
-    .addField('**Banned By**', `${message.author.tag}`)
-    .addField('**Reason**', `${reason}`)
-    .addField('**Time & Date**', `${message.createdAt}`)
-       mention.send(thisEmbed).then(() => {
-        mention.ban()
-       message.channel.send(`**:white_check_mark: ${mention} banned from the server ! :airplane: **  `)
-
-     })
-    })
-
-    
 
 
 
