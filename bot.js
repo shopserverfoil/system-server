@@ -1062,7 +1062,8 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 
 client.on('guildMemberAdd', member => {
-member.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [user] :crown: \n :bust_in_silhouette:آنت العضو رقم ${member.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ عمل السيرفر  msg.guild.createdAt.toLocaleString :checkered_flag: **`)
+    let mentions = message.mentions.members.first();
+member.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [ ${mentions.user} ] :crown: \n :bust_in_silhouette:آنت العضو رقم ${member.guild.memberCount}:bust_in_silhouette: \n :checkered_flag: تاريخ عمل السيرفر  ${member.guild.createdAt.toLocaleString} :checkered_flag: **`)
 });
 
 
