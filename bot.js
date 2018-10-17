@@ -1063,7 +1063,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 client.on('guildMemberAdd', message => {
   
-message.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [ <@${message.author.id}> ] :crown: \n :bust_in_silhouette:آنت العضو رقم [ ${message.guild.memberCount} ]:bust_in_silhouette: \n :checkered_flag: تاريخ انضمامك للسيرفر  :checkered_flag: **`)
+message.send(`**:rose: ولكم نورت السيرفر :rose: \n :crown: آسم العضو [ <@${message.author.user.tag}> ] :crown: \n :bust_in_silhouette:آنت العضو رقم [ ${message.guild.memberCount} ]:bust_in_silhouette: \n :checkered_flag: تاريخ انضمامك للسيرفر  :checkered_flag: **`)
 });
 
 
