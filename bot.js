@@ -1155,14 +1155,14 @@ client.on('message', async message => {
     if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
  
     let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setAuthor(message.user.username, message.user.avatarURL)
     .setTitle('**تم آعطائك باند**')
     .addField('**__السيرفر__**',[ message.guild.name ])
     .addField('**__تم آعطائك باند بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
-       mention.send(thisEmbed).then(() => {
-        message.guild.member.ban(7, mention);
-       message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
+       message.send(thisEmbed).then(() => {
+        message.guild.member.ban(7, message);
+       message.channel.send(`**:white_check_mark: ${message.user.username} banned from the server ! :airplane: **  `)
  
      })
     })
