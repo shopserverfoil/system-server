@@ -1096,6 +1096,96 @@ member.send('ولكم')
 
 
 
+client.on('message', async message => {
+  let args = message.content.split(" ");
+  if(message.content.startsWith(prefix + "الباند")) {
+      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+ 
+      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('').then(msg => {
+        msg.delete(3500);
+        message.delete(3500);
+      });
+ 
+      let mention = message.mentions.members.first();
+    if(!mention) return  message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+     
+     if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء باند لآحد آدارة السيرفر ❌**`);
+     
+     
+      if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+     
+      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+     
+     
+      if(mention.id === message.author.id) return message.channel.send('').then(msg => {
+      msg.delete(3500);
+      message.delete(3500);
+    });
+ 
+      msg.delete(3500);
+      message.delete(3500);
+    }
+     
+      msg.delete(3500);
+      message.delete(3500);
+ 
+ 
+       let reason = message.content.split(" ").slice().join(" ");
+    if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
+ 
+    let thisEmbed = new Discord.RichEmbed()
+    .setAuthor(mention.user.username, mention.user.avatarURL)
+    .setTitle('**تم آعطائك باند**')
+    .addField('**__السيرفر__**',[ message.guild.name ])
+    .addField('**__تم آعطائك باند بواسطة__**', [ message.author ])
+    .addField('**__آلسبب__**',reason)
+       mention.send(thisEmbed).then(() => {
+       mention.ban({
+         reason: reason,
+       });
+       message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
+ 
+     })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
