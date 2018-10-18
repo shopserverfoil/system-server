@@ -29,7 +29,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Pharaohs Online : [" + ss+ "]"
+            name : "Voice Online : [" + ss+ "]"
 
         })
 
@@ -41,7 +41,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Pharaohs Online : [" + ss+ "]"
+            name : "Voice Online : [" + ss+ "]"
 
         })
 
@@ -61,7 +61,7 @@ client.on("ready", () => {
 
         client.channels.get("501125690675036193").edit({
 
-            name : "Pharaohs Online : [" + ss+ "]"
+            name : "Voice Online : [" + ss+ "]"
 
         })
 
@@ -1110,16 +1110,6 @@ client.on('guildMemberAdd', message =>
 
 
 
-client.on('message', message => {
-if (message.content.startsWith(prefix + "ban")) {
-    var mention = message.mentions.members.first();
-    if(!mention) return message.channel.send("يجب منشن العضو");
-
-    mention.unban("By: " + message.author.tag);
-    
-    message.channel.send("تم أعطاء باند الى : " + mention.tag);
-};
-});
 
 
 
