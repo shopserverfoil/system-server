@@ -1128,8 +1128,8 @@ client.on('message', message => {
   message.guild.member(user).ban(7, user);
  
   const banembed = new Discord.RichEmbed()
-  let mention = message.mentions.members.first();
-  message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
+  
+  message.channel.send(`**:white_check_mark: ${message.user} banned from the server ! :airplane: **  `)
   
   })
 }
