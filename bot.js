@@ -1129,7 +1129,10 @@ client.on('message', message => {
  
   const banembed = new Discord.RichEmbed()
   
-  message.channel.send(`**:white_check_mark: ${message.user} banned from the server ! :airplane: **  `)
+   let mention = message.mentions.members.first();
+      
+  message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
+  embed : banembed
   
   })
 }
