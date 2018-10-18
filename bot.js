@@ -1170,7 +1170,7 @@ client.on('message', message => {
  let mention = message.mentions.members.first();
 
   message.channel.send(`**✅ ${mention.user.username} banned from the server ! ✈ **`);
-message.channel.send({
+message.channel.send(){
     embed : banembed
 
   })
