@@ -1111,6 +1111,17 @@ client.on('guildMemberAdd', message =>
 
 
 
+client.on('message', message => {
+if (message.content.startsWith(prefix + "ban")) {
+    var mention = message.mentions.members.first();
+    if(!mention) return message.channel.send("يجب منشن العضو");
+
+    mention.unban("By: " + message.author.tag);
+    
+    message.channel.send("تم أعطاء باند الى : " + mention.tag);
+};
+});
+
 
 
 
