@@ -425,10 +425,9 @@ client.on('message', async message => {
       message.delete(3500);
     });
    
- if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء ميوت لآحد آدارة السيرفر ❌**`);   
- 
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! ** `);
- 
+if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء ميوت لآحد آدارة السيرفر ❌**`);
+      
+      if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source: ${mention.user.username} Already muted!** `);
        
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
       msg.delete(3500);
