@@ -1114,7 +1114,6 @@ client.on('guildMemberAdd', message =>
 
 
 
-var prefix = "-"
 
 client.on('message', message => {
 
