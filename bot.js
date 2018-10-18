@@ -1062,7 +1062,7 @@ if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
 
 
 client.on('guildMemberAdd', message =>
-          { message.send(`**🌹 ولكم نورت السيرفر 🌹 \n 👑 آسم العضو [ ${message.user} ] 👑 \n 👤آنت العضو رقم [ ${message.guild.memberCount} ]👤 \n 🏁 تم عمل السيرفر بتاريخ 🏁 [ 2018-10-14 ] **`)});
+          { message.send(`**🌹 ولكم نورت السيرفر 🌹 \n 👑 آسم العضو [ ${message.user} ] 👑 \n 👤آنت العضو رقم [ ${message.guild.memberCount} ]👤 \n 🏁 تم عمل السيرفر بتاريخ 🏁 [ 14-10-2018 ] **`)});
 
 
 
