@@ -428,7 +428,7 @@ client.on('message', async message => {
    
     if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted!**`);
  
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.sendMessage(`**:information_source:  ${mention.user.username} Already muted!** `);
+    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**لايمكنك آعطاء ميوت لآحد آدارة السيرفر ❌** `);
  
        
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
@@ -1135,13 +1135,13 @@ client.on('message', message => {
 
   if (command == "باند") {
 
-               if(!message.channel.guild) return message.reply('** This command only for servers**');
+               if(!message.channel.guild) return message.channel.send('');
 
          
 
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
+  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.channel.send("");
 
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send("");
 
   let user = message.mentions.users.first();
 
@@ -1153,11 +1153,11 @@ client.on('message', message => {
 
   if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
 
-  if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
+  if (message.mentions.users.size < 1) return message.channel.send("");
 
   if (!message.guild.member(user)
 
-  .bannable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
+  .bannable) return message.channel("**لايمكنك آعطاء باند لآحد آدارة السيرفر ❌**");
 
  
 
