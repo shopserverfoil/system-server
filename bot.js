@@ -628,8 +628,7 @@ if(message.content === 'باند') {
 
     .setDescription('')
 
-    .setImage('https://cdn.discordapp.com/attachments/495582423430463498/498283222011084810/n4eSIakPew.png')
-
+    .setImage('https://cdn.pg.sa/fjxlms81nk.png')
   
 
 message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
