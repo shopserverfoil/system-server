@@ -1133,7 +1133,7 @@ client.on('message', message => {
 
  
 
-  if (command == "ban") {
+  if (command == "باند") {
 
                if(!message.channel.guild) return message.reply('** This command only for servers**');
 
@@ -1170,7 +1170,7 @@ client.on('message', message => {
  let mention = message.mentions.members.first();
 
   message.channel.send(`**✅ ${mention.user.username} banned from the server ! ✈ **`);
-message.channel.send(){
+setTimeout(() => {
     embed : banembed
 
   })
