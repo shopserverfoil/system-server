@@ -1176,30 +1176,44 @@ setTimeout(() => {
 
 
 
-client.on('message', message => {
+
+
+
+  client.on('message', message => {
+
     if (message.content.startsWith(prefix + 'مسح')) {
+
       if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(``).catch(console.error);
+
   message.delete()
+
   if(!message.channel.guild) return;
+
   let args = message.content.split(" ").slice(1);
+
   
+
   const messagecount = parseInt(args.join(' '));
+
   
+
   message.channel.fetchMessages({
+
   
+
   limit: messagecount
+
   
+
   }).then(messages => message.channel.bulkDelete(messages));
-  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحها: ${args}\`\`\``)
 
-}}).then(msg => {msg.delete(3000)});
+  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحها: ${args}\`\`\``).then(msg => {msg.delete(3000)});
+
   };
+
   
+
   });
-
-
-
-  
 
 
 
