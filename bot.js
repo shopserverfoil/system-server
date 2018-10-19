@@ -29,7 +29,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Voice Online : [" + ss+ "]"
+            name : "Voice Online : [ " + ss+ " ]"
 
         })
 
@@ -41,7 +41,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         n.guild.channels.get("501125690675036193").edit({
 
-            name : "Voice Online : [" + ss+ "]"
+            name : "Voice Online : [ " + ss+ " ]"
 
         })
 
@@ -61,7 +61,7 @@ client.on("ready", () => {
 
         client.channels.get("501125690675036193").edit({
 
-            name : "Voice Online : [" + ss+ "]"
+            name : "Voice Online : [ " + ss+ " ]"
 
         })
 
@@ -125,7 +125,7 @@ client.on('message', message => {
 
     if(command == prefix + 'رسالة') { // الكوماند !bc
 
-   if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('')
+   if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('')
       
         var args = message.content.split(' ').slice(1).join(' ');
 
@@ -431,7 +431,7 @@ client.on('message', async message => {
     });
    
    
-    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌**`);
+    if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌**`);
  
     if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! **`);
  
@@ -470,7 +470,7 @@ client.on('message', async message => {
     .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
  
-    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
+    let role = message.guild.roles.find('name', 'Voice') || message.guild.roles.get(r => r.name === 'Voice');
     if(!role) try {
       message.guild.createRole({
         name: "Muted",
@@ -511,7 +511,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage("");
  
-  let role = message.guild.roles.find (r => r.name === "Muted");
+  let role = message.guild.roles.find (r => r.name === "Voice");
  
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:  ${mention.user.username} تم فك الميوت عنه مسبقاً! **`)
  
@@ -729,76 +729,8 @@ message.channel.send('**:information_source: ``kick @Dramex`` يجب تحديد 
 
 
 
-client.on('message', async message => {
-  let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "الباند")) {
-      if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send('').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
 
-      if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.channel.send('').then(msg => {
-        msg.delete(3500);
-        message.delete(3500);
-      });
 
-      let mention = message.mentions.members.first();
-    if(!mention) return  message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-      
-     if(mention.hasPermission('BAN_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء باند لآحد آدارة السيرفر ❌**`);
-     
-      
-      if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-      
-      if(mention.positon >= message.guild.member(client.user).positon) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-      
-      
-      if(mention.id === message.author.id) return message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-       let duration = args[2];
-    if(!duration)  message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-      
-       if(isNaN(duration))  message.channel.send('').then(msg => {
-      msg.delete(3500);
-      message.delete(3500);
-    });
-
-       let reason = message.content.split(" ").slice().join(" ");
-    if(!reason) reason = " [ ** __لاتسب | بدون سبام__** ] ";
- 
-    let thisEmbed = new Discord.RichEmbed()
-    .setAuthor(mention.user.username, mention.user.avatarURL)
-    .setTitle('**تم آعطائك باند**')
-    .addField('**__السيرفر__**',[ message.guild.name ])
-    .addField('**__تم آعطائك باند بواسطة__**', [ message.author ])
-    .addField('**__آلسبب__**',reason)
-       mention.send(thisEmbed).then(() => {
-       mention.ban({
-         reason: reason,
-       });
-       message.channel.send(`**:white_check_mark: ${mention.user.username} banned from the server ! :airplane: **  `)
-       setTimeout(() => {
-         if(duration === 0) return;
-         message.guild.unban(mention);
-       },duration * 60000);
-     });
-   }
-});
 
 
 
@@ -1265,12 +1197,12 @@ client.on('message', msg => {
     if(msg.member.hasPermission("MANAGE_MESSAGES")) {
     if (textxt == "") {
         msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
+    msg.channel.send("").then(m => m.delete(3000));
 } else {
     msg.delete().then
     msg.delete().then
     msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
+        msg.channel.send("```php\nعدد الرسائل التي تم مسحها : " + textxt + "\n```").then(m => m.delete(2000));
         }    
     }
 }
