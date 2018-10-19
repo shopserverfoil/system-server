@@ -406,7 +406,10 @@ message.channel.send("** ❌  العضو يجب أن يكون متواجد بر�
 
 
 
- 
+
+
+
+
 
 client.on('message', async message => {
   let args = message.content.split(" ");
@@ -428,9 +431,9 @@ client.on('message', async message => {
     });
    
    
-    if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكن آعطاء ميوت لآحد آدارة السيرفر ❌**`);
+    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌`);
  
-    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted!**`);
+    if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! **`);
  
        
     if(mention.position >= message.guild.member(message.author).positon) return message.channel.send('').then(msg => {
@@ -520,6 +523,20 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   }
  
 });
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
 
 
 
