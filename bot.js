@@ -470,7 +470,7 @@ client.on('message', async message => {
     .addField('**__تم آعطائك ميوت بواسطة__**', [ message.author ])
     .addField('**__آلسبب__**',reason)
  
-    let role = message.guild.roles.find('name', 'Voice') || message.guild.roles.get(r => r.name === 'Voice');
+    let role = message.guild.roles.find('name', 'Muted') || message.guild.roles.get(r => r.name === 'Muted');
     if(!role) try {
       message.guild.createRole({
         name: "Muted",
@@ -511,7 +511,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   if(!toMute) return message.channel.sendMessage("");
  
-  let role = message.guild.roles.find (r => r.name === "Voice");
+  let role = message.guild.roles.find (r => r.name === "Muted");
  
   if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:  ${mention.user.username} تم فك الميوت عنه مسبقاً! **`)
  
