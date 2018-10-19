@@ -1182,7 +1182,7 @@ client.on('message', message => {
   message.channel.sendMessage('**``عـدد الرسـائل التي تـم مسحهآ . ${args}``**')
     
     }
-    }}).then(msg => {msg.delete(3000)});
+    }})
   };
   
   });
