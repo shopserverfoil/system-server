@@ -1182,31 +1182,30 @@ setTimeout(() => {
 
 
 
-
-
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
- 
-    if(command === "مسح") {
-        const emoji = client.emojis.find("name", "wastebasket")
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها : " + textxt + "\n```").then(m => m.delete(2000));
-        }    
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'مسح')) {
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(``).catch(console.error);
+  message.delete()
+  if(!message.channel.guild) return;
+  let args = message.content.split(" ").slice(1);
+  
+  const messagecount = parseInt(args.join(' '));
+  
+  message.channel.fetchMessages({
+  
+  limit: messagecount
+  
+  }).then(messages => message.channel.bulkDelete(messages));
+  message.channel.sendMessage("", {embed: {
+    title: "``تم مسح الرسائل``",
+    
+    
     }
-}
-});
+    }}).then(msg => {msg.delete(3000)});
+  };
+  
+  });
+
 
 
 
@@ -1231,7 +1230,7 @@ client.on('message', msg => {
 
 client.on('guildMemberAdd', member=> {
 
-    member.addRole(member.guild.roles.find("name"," Pharaoh - The - BEST- 4 Ever 💘"));
+    member.addRole(member.guild.roles.find("name","Pharaoh - The - BEST- 4 Ever 💘"));
 
     });
 
