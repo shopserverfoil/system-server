@@ -938,7 +938,7 @@ client.on('message', message => {
                 })
                 })
 }
-if(message.content.startsWith(prefix + 'ازالة')) {
+if(message.content.startsWith(prefix + 'إزالة')) {
 if(!message.member.hasPermission("MANAGE_CHANNELS")) return;
         let args = message.content.split(' ').slice(1).join(' ');
         if(!args) {
@@ -1207,7 +1207,7 @@ setTimeout(() => {
 
   }).then(messages => message.channel.bulkDelete(messages));
 
-  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحها :100 ${args}\`\`\``).then(msg => {msg.delete(3000)});
+  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحها :  ${args}\`\`\``).then(msg => {msg.delete(3000)});
 
   };
 
