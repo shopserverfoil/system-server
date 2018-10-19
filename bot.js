@@ -1235,4 +1235,35 @@ setTimeout(() => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+if (message.content.startsWith(prefix + 'مسح')) {
+ let args = message.content.split(" ").slice(1)
+    let messagecount = parseInt(args);
+    if (args > 100) return message.channel.send("").then(messages => messages.delete(5000))
+    if (!messagecount) return message.channel.send("").then(messages => messages.delete(5000))
+    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.send(`\`${args}\` : __عدد الرسائل التي تم مسحها __ `).then(messages => messages.delete(5000));
+  }
+  });
+
+
+
 client.login(process.env.BOT_TOKEN);
