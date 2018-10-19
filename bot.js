@@ -1156,7 +1156,7 @@ client.on('message', message => {
 
   if (!message.guild.member(user)
 
-  .bannable) return message.channel("**لايمكنك آعطاء باند لآحد آدارة السيرفر ❌**");
+  .bannable) return message.channel.send("**لا يمكنك آعطاء باند لآحد آدارة السيرفر ❌**");
 
  
 
