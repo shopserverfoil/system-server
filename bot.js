@@ -1158,9 +1158,16 @@ setTimeout(() => {
 
 
 
+
+
+
+
+
+
+
 client.on('message', message => {
     if (message.content.startsWith(prefix + 'مسح')) {
-      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.message.channel.send(``).catch(console.error);
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(``).catch(console.error);
   message.delete()
   if(!message.channel.guild) return;
   let args = message.content.split(" ").slice(1);
@@ -1172,25 +1179,13 @@ client.on('message', message => {
   limit: messagecount
   
   }).then(messages => message.channel.bulkDelete(messages));
-  message.channel.sendMessage("",  {
-    title: "``عـدد الرسـائل التي تـم مسحهآ . ${args}``",
-    color: 0x06DF00,
-    footer: {
+  message.channel.sendMessage('**``عـدد الرسـائل التي تـم مسحهآ . ${args}``**')
     
     }
     }}).then(msg => {msg.delete(3000)});
   };
   
   });
-
-
-
-
-
-
-
-
-
 
 
 
