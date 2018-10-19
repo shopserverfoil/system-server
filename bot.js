@@ -1169,29 +1169,42 @@ setTimeout(() => {
 
 
 
-client.on('message', message => {
+
+  
+  client.on('message', message => {
+
     if (message.content.startsWith(prefix + 'مسح')) {
-      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`لـيس لديك آلبرمشن المحدد .`).catch(console.error);
+
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(``).catch(console.error);
+
   message.delete()
+
   if(!message.channel.guild) return;
+
   let args = message.content.split(" ").slice(1);
+
   
+
   const messagecount = parseInt(args.join(' '));
+
   
+
   message.channel.fetchMessages({
+
   
+
   limit: messagecount
+
   
+
   }).then(messages => message.channel.bulkDelete(messages));
-  message.channel.sendMessage("", {embed: {
-    title: "``عدد الرسائل التي تم مسحهآ {$args}``",
-    color: 0x06DF00,
-    footer: {
-    
-    }
-    }}).then(msg => {msg.delete(3000)});
+
+  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحهآ : ${args}\`\`\``).then(msg => {msg.delete(3000)});
+
   };
+
   
+
   });
 
 
