@@ -1207,7 +1207,7 @@ setTimeout(() => {
 
   }).then(messages => message.channel.bulkDelete(messages));
 
-  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحها: ${args}\`\`\``).then(msg => {msg.delete(3000)});
+  message.channel.sendMessage(`\`\`\`عدد الرسائل التي تم مسحها :100 ${args}\`\`\``).then(msg => {msg.delete(3000)});
 
   };
 
