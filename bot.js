@@ -431,7 +431,7 @@ client.on('message', async message => {
     });
    
    
-    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌`);
+    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌**`);
  
     if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! **`);
  
@@ -513,7 +513,7 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
  
   let role = message.guild.roles.find (r => r.name === "Muted");
  
-  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage("**:information_source:  ${mention.user.username} تم فك الميوت عنه مسبقاً! **")
+  if(!role || !toMute.roles.has(role.id)) return message.channel.sendMessage(`**:information_source:  ${mention.user.username} تم فك الميوت عنه مسبقاً! **`)
  
   await toMute.removeRole(role)
   message.channel.sendMessage(`**:white_check_mark: ${mention.user.username}  Unmuted! **`);
