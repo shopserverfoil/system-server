@@ -431,7 +431,7 @@ client.on('message', async message => {
     });
    
    
-    if(mention.hasPermission('MUTE_MEMBERS')) return message.channel.send(`**لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌**`);
+    if(mention.hasPermission('ADMINISTRATOR')) return message.channel.send(`**لا يمكنك آعطاء ميوت لآحد آدارة السيرفر ❌**`);
  
     if(message.guild.member(mention).roles.find('name', 'Muted')) return message.channel.send(`**:information_source:  ${mention.user.username} Already muted! **`);
  
