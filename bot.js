@@ -1174,8 +1174,9 @@ setTimeout(() => {
 
 
 
+
 client.on('message', message => {
-    if (message.content.startsWith(prefix + 'مسح')) {
+    if (message.content.startsWith(prefix + 'purge')) {
       if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`لـيس لديك آلبرمشن المحدد .`).catch(console.error);
   message.delete()
   if(!message.channel.guild) return;
@@ -1189,8 +1190,8 @@ client.on('message', message => {
   
   }).then(messages => message.channel.bulkDelete(messages));
   message.channel.sendMessage("", {embed: {
-    title: "``حـط الرسالة الي تبيها هنا  ``",
-    color: 8c0909,
+    title: "``عدد الرسائل التي تم مسحها : ``",
+    color: 0x06DF00,
     footer: {
     
     }
@@ -1198,8 +1199,6 @@ client.on('message', message => {
   };
   
   });
-
-
 
 
 
