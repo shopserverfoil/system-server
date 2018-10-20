@@ -1433,7 +1433,6 @@ client.on('message', msg => {
 
 
 const { Util } = require("discord.js");
-const Discord = require('discord.js');
 const fs = require('fs');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
@@ -1589,10 +1588,10 @@ client.on('message', async message => {
   let prefix = prefixes[message.guild.id].prefixes;
   
   if(message.content.startsWith(prefix) && client.user.presence.status === "invisible"){
-	  if(message.author.id !== '377271843502948354')return;
+	  if(message.author.id !== '503159455043813388')return;
   }
 
-  if (message.content == "NP1"){
+  if (message.content == "Nb"){
 	  message.delete(10000);
 	  message.channel.send('The prefix for this server is: ``'+ prefix +'``').then(msg => {msg.delete(15000)});
   }
