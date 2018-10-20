@@ -1447,7 +1447,6 @@ const lvlmsg = require("./jsons/lvlmsg.json");
 const cookies = require("./jsons/cookies.json");
 const lvls = require("./jsons/guildlvl.json");
 
-const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 
