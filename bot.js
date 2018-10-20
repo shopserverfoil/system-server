@@ -119,7 +119,7 @@ client.on('message', function(msg) {
 
 client.on('message', message => {
 
-        var prefix = ''; // هنا تقدر تغير البرفكس
+        
 
     var command = message.content.split(" ")[0];
 
