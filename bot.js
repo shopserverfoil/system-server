@@ -1433,7 +1433,6 @@ client.on('message', msg => {
 
 
 const { Util } = require("discord.js");
-const fs = require('fs');
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const { promisify } = require("util");
