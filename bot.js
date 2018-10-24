@@ -1276,6 +1276,7 @@ client.on('message', msg => {
 
 
 
+const Canvas = require("canvas");
 
 
 
@@ -1283,7 +1284,7 @@ client.on('guildMemberAdd', member => {
      const welcomer =  member.guild.channels.find('name', 'pharaohs');
 
 const w = ['./w1.png'];
-         let  = Canvas.Image
+         let Image = Canvas.Image.
             canvas = new Canvas(400, 239),
             ctx = canvas.getContext('2d');
         fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
