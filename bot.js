@@ -1276,7 +1276,7 @@ client.on('message', msg => {
 
 
 
-const Canvas = require("canvas");
+const Canvas = require('canvas');
 
 
 
