@@ -1329,10 +1329,7 @@ var RAW2 = ["ًں“™__60%__  **|**  ًں“ک__40%__","ًں“™__63%__  **|
 client.on('message', message => {
     if(!message.guild) return;
     if (message.author.bot) return;
-      let id = message.author.id,prefix="!";
-      if (ti[id] && (new Date).getTime() - ti[id] < 20*1000) {
-          let r = (new Date).getTime() - ti[id];
-          r = 20*1000 - r;
+      
       message.channel.send(` **Please wait ${pretty(r, {verbose:true})}**`).then(m => m.delete(5000));
       return;
       }
