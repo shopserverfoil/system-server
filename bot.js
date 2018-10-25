@@ -27,9 +27,9 @@ client.on('voiceStateUpdate', (o,n) => {
 
         ss-=1
 
-        n.guild.channels.get("489800301021233163").edit({
+        n.guild.channels.get("490731293349249044").edit({
 
-            name : "4 Ever Online : [" + ss+ "]"
+            name : "FOIL Online : [" + ss+ "]"
 
         })
 
@@ -39,7 +39,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
         ss+=1
 
-        n.guild.channels.get("489800301021233163").edit({
+        n.guild.channels.get("490731293349249044").edit({
 
             name : "FOIL : [" + ss+ "]"
 
@@ -51,7 +51,7 @@ client.on('voiceStateUpdate', (o,n) => {
 
 client.on("ready", () => {
 
-    client.guilds.get("483960386693890058").members.forEach(m => {
+    client.guilds.get("490731293349249044").members.forEach(m => {
 
         if (m.voiceChannel) {
 
@@ -59,7 +59,7 @@ client.on("ready", () => {
 
         };
 
-        client.channels.get("489800301021233163").edit({
+        client.channels.get("481675666803392522").edit({
 
             name : "FOIL : [" + ss+ "]"
 
@@ -82,26 +82,6 @@ client.on("ready", () => {
 
 
 
-
-client.on('message', function(msg) {
-  if(msg.content.startsWith ('معلومات السيرفر')) {
-    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
-    let embed = new Discord.RichEmbed()
-    .setColor('BLUE')
-    .setThumbnail(msg.guild.iconURL)
-    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ __${msg.guild.name}__ ]**`,true)
-    .addField(':earth_africa: ** موقع السيرفر :**',`**[ __${"EGYPT"}__ ]**`,true)
-    .addField(':military_medal:** الرتب :**',`**[ __${msg.guild.roles.size}__ ]**`,true)
-    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ __${msg.guild.memberCount}__ ]**`,true)
-    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ ]**`,true)
-    .addField(':pencil:** الرومات الكتابية :**',`**[ __${msg.guild.channels.filter(m => m.type === 'text').size}__ ]**`,true)
-    .addField(':loud_sound:** رومات الصوت :**',`**[ __${msg.guild.channels.filter(m => m.type === 'voice').size}__ ]**`,true)
-    .addField(':crown:** صاحب السيرفر :**',`**[ __${msg.guild.owner}__ ]**`,true)
-    .addField(':id:** ايدي السيرفر :**',`**[ __${msg.guild.id}__ ]**`,true)
-    .addField(':date:** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
-    msg.channel.send({embed:embed});
-  }
-});
 
  
 
