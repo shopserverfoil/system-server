@@ -20,55 +20,6 @@ client.on('ready', () => {
 
 
 var ss = 0;
-
-client.on('voiceStateUpdate', (o,n) => {
-
-    if (o.voiceChannel && !n.voiceChannel) {
-
-        ss-=1
-
-        n.guild.channels.get("490731293349249044").edit({
-
-            name : "FOIL Online : [" + ss+ "]"
-
-        })
-
-    };
-
-    if (n.voiceChannel && !o.voiceChannel) {
-
-        ss+=1
-
-        n.guild.channels.get("490731293349249044").edit({
-
-            name : "FOIL : [" + ss+ "]"
-
-        })
-
-    }
-
-})
-
-client.on("ready", () => {
-
-    client.guilds.get("490731293349249044").members.forEach(m => {
-
-        if (m.voiceChannel) {
-
-            ss+=1
-
-        };
-
-        client.channels.get("481675666803392522").edit({
-
-            name : "FOIL : [" + ss+ "]"
-
-        })
-
-    });
-
-});
-
 // جميع الحقوق محفوظة لدى :@┃@FOIL#4996 
 
 
