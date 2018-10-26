@@ -1511,7 +1511,7 @@ client.on('message', ( message ) => {
 
   if (message.attachments.size <= 0) {
     message.delete();
-    message.channel.send(`${message.author}**هذا الروم مخصص للصور فقط**`)
+    message.channel.send(`${message.author} ** هذا الروم مخصص للصور فقط**`)
     .then(msg => {
       setTimeout(() => {
         msg.delete();
@@ -1525,7 +1525,7 @@ client.on('message', ( message ) => {
     console.log(filename);
     if(!types.some( type => filename.endsWith(type) )) {
       message.delete();
-      message.channel.send(`${message.author}**هذا الروم مخصص للصور فقط**`)
+      message.channel.send(`${message.author} ** هذا الروم مخصص للصور فقط**`)
       .then(msg => {
         setTimeout(() => {
           msg.delete();
