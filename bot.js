@@ -1474,4 +1474,73 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', ( message ) => {
+  if(message.author.bot) return;
+
+  if(message.channel.id !== '501330592231718912') return;
+
+  let types = [
+    'jpg',
+    'jpeg',
+    'png',
+    'gif',
+    'mp4',
+    'avi',
+    'mkv',
+    'mpeg'
+  ]
+
+  if (message.attachments.size <= 0) {
+    message.delete();
+    message.channel.send(`${message.author}, هذا الروم مخصص للصور فقط 😠`)
+    .then(msg => {
+      setTimeout(() => {
+        msg.delete();
+      }, 5000)
+  })
+  return;
+}
+
+  if(message.attachments.size >= 1) {
+    let filename = message.attachments.first().filename
+    console.log(filename);
+    if(!types.some( type => filename.endsWith(type) )) {
+      message.delete();
+      message.channel.send(`${message.author}, هذا الروم مخصص للصور فقط 😠`)
+      .then(msg => {
+        setTimeout(() => {
+          msg.delete();
+        }, 5000)
+      })
+    }
+  }
+
+})
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
