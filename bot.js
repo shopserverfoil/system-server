@@ -1511,7 +1511,7 @@ client.on('message', ( message ) => {
 
   if (message.attachments.size <= 0) {
     message.delete();
-    message.channel.send(``)
+    message.channel.send(`${message.author} ** هذا الروم مخصص للصور فقط**`)
     .then(msg => {
       setTimeout(() => {
         msg.delete();
