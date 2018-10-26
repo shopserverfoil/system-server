@@ -67,3 +67,7 @@
   "homepage": "https://github.com/synicalsyntax/discord.js-heroku#readme"
 
 }
+
+
+
+"moment": "^2.22.2",
