@@ -6,7 +6,7 @@ const prefix = '';
 
 client.on('ready', () => {
 
-    console.log(`Logged in as [ Pharaohs]`);
+    console.log(`Logged in as [ !                Vida]`);
 
 });
 
@@ -19,57 +19,10 @@ client.on('ready', () => {
 
 
 
-var ss = 0;
 
-client.on('voiceStateUpdate', (o,n) => {
+    
 
-    if (o.voiceChannel && !n.voiceChannel) {
-
-        ss-=1
-
-        n.guild.channels.get("501125690675036193").edit({
-
-            name : "Voice Online : [ " + ss+ " ]"
-
-        })
-
-    };
-
-    if (n.voiceChannel && !o.voiceChannel) {
-
-        ss+=1
-
-        n.guild.channels.get("501125690675036193").edit({
-
-            name : "Voice Online : [ " + ss+ " ]"
-
-        })
-
-    }
-
-})
-
-client.on("ready", () => {
-
-    client.guilds.get("501096188792143883").members.forEach(m => {
-
-        if (m.voiceChannel) {
-
-            ss+=1
-
-        };
-
-        client.channels.get("501125690675036193").edit({
-
-            name : "Voice Online : [ " + ss+ " ]"
-
-        })
-
-    });
-
-});
-
-// جميع الحقوق محفوظة لدى :@┃HEART┃ ❦  4EVER#9512 
+// جميع الحقوق محفوظة لدى :@FOIL#4996
 
 
 
@@ -82,26 +35,6 @@ client.on("ready", () => {
 
 
 
-
-client.on('message', function(msg) {
-  if(msg.content.startsWith ('معلومات السيرفر')) {
-    if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
-    let embed = new Discord.RichEmbed()
-    .setColor('BLUE')
-    .setThumbnail(msg.guild.iconURL)
-    .addField(':globe_with_meridians: **اسم السيرفر : **' , `**[ __${msg.guild.name}__ ]**`,true)
-    .addField(':earth_africa: ** موقع السيرفر :**',`**[ __${"EGYPT"}__ ]**`,true)
-    .addField(':military_medal:** الرتب :**',`**[ __${msg.guild.roles.size}__ ]**`,true)
-    .addField(':bust_in_silhouette:** عدد الاعضاء :**',`**[ __${msg.guild.memberCount}__ ]**`,true)
-    .addField(':white_check_mark:** عدد الاعضاء الاونلاين :**',`**[ __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ ]**`,true)
-    .addField(':pencil:** الرومات الكتابية :**',`**[ __${msg.guild.channels.filter(m => m.type === 'text').size}__ ]**`,true)
-    .addField(':loud_sound:** رومات الصوت :**',`**[ __${msg.guild.channels.filter(m => m.type === 'voice').size}__ ]**`,true)
-    .addField(':crown:** صاحب السيرفر :**',`**[ __${msg.guild.owner}__ ]**`,true)
-    .addField(':id:** ايدي السيرفر :**',`**[ __${msg.guild.id}__ ]**`,true)
-    .addField(':date:** تم عمل السيرفر في : **',msg.guild.createdAt.toLocaleString())
-    msg.channel.send({embed:embed});
-  }
-});
 
  
 
@@ -1498,7 +1431,7 @@ mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${arg
 client.on('message', ( message ) => {
   if(message.author.bot) return;
 
-  if(message.channel.id !== '501330592231718912') return;
+  if(message.channel.id !== '501870864032071680') return;
 
   let types = [
     'jpg',
