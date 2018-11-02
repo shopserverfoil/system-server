@@ -6,7 +6,7 @@ const prefix = '';
 
 client.on('ready', () => {
 
-    console.log(`Logged in as [ !                Vida]`);
+    console.log(`Logged in as [! OBX Kingdom]`);
 
 });
 // جميع الحقوق محفوظة لدى :@FOIL#4996 
